@@ -1,0 +1,36 @@
+<!--
+Update the file paths as needed throughout
+-->
+
+<!--
+Not all case studies will need a Data Exploration subsection
+-->
+
+<!--
+At the end of this section, save incremental data (if changes were made) so that users can pause and come back later
+-->
+
+# **Data Exploration**
+***
+
+If you have been following along but stopped, we could load our imported data like so:
+
+```{r}
+load(here::here("data", "imported", "pm25_data_imported.rda"))
+```
+
+***
+<details> <summary> If you skipped the data import section click here. </summary>
+
+An RDA version (stands for R data) of the data can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/imported) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/imported/co2_data_imported.rda). Download this file and then place it in your current working directory within a subdirectory called "imported" within a directory called "data" to use the following code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
+
+```{r, eval=FALSE}
+load(here::here("data", "imported", "co2_data_imported.rda"))
+```
+
+</details>
+***
+
+<!--
+Use this section to walk through any exploration of the dataset conducted pre-analysis.
+-->

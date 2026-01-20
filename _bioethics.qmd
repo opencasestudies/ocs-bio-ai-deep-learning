@@ -1,0 +1,21 @@
+<!--
+List any important bioethics considerations when performing an analysis like this or working with data like this.
+
+See doi: 10.1007/s41649-019-00099-x and https://depts.washington.edu/bhdept/ethics-medicine/bioethics-topics/articles/principles-bioethics for principles and considerations.
+Examples may include: how identifiable (or re-identifiable) is your data? cell lines or consent? specific considerations for a specific population?
+-->
+
+
+# **Ethical Considerations**
+***
+
+There are some important ethical considerations when working with data relating to this case study's main questions.
+
+1. {FILL IN}
+1. {FILL IN}
+
+***
+
+<!--
+Consider incorporating a checklist of statements that learners should answer/discuss for every case study for bioethics principles.
+-->

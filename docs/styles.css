@@ -1,0 +1,203 @@
+
+/* To add some space below the navigation bar */
+
+ body {
+  margin-top: 100px;
+}
+
+
+/* add some color - if you want color behind a major point on your website */
+
+.banner_color {
+  background-color: lightblue;
+  font-weight:bold;
+
+}
+
+/* Style buttons - if you want some text centered and bolded */
+
+.center {
+  font-weight:bold;
+  text-align: center;
+}
+
+/* Style buttons - if you want to have a button */
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+
+.main_question{
+  margin: 1em 0;
+  border: 3px solid #7ce364;
+  border-left: 10px solid #7ce364;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.main_question_header {
+  margin-left: 0em;
+  padding-left: 60px;
+  padding-top: 5px;
+  padding-bottom: 0.1em;
+  color: black;
+  background-color: #7ce364;
+  font-size: 1em;
+  font-weight: bold;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  background-image: url("assets/box_images/question.png");
+}
+
+.inner_block {
+  padding-top: 5px;
+  padding-left: 10px;
+  color: black;
+  background-color: white;
+  border-bottom-right-radius: 10px;
+}
+
+.think_question{
+  margin: 1em 0;
+  border: 3px solid #beeffd;
+  border-left: 10px solid #beeffd;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.think_question_header{
+  margin-left: 0em;
+  padding-left: 60px;
+  padding-top: 5px;
+  padding-bottom: 0.1em;
+  color: black;
+  background-color: #beeffd;
+  font-size: 1em;
+  font-weight: bold;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  background-image: url("assets/box_images/thinking_face.png");
+}
+
+.reference_box{
+  margin: 1em 0;
+  border: 3px solid #beeffd;
+  border-left: 10px solid #beeffd;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.reference_box_header{
+  margin-left: 0em;
+  padding-left: 60px;
+  padding-top: 5px;
+  padding-bottom: 0.1em;
+  color: black;
+  background-color: #beeffd;
+  font-size: 1em;
+  font-weight: bold;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  background-image: url("assets/box_images/cite.png");
+}
+
+.definition_box{
+  margin: 1em 0;
+  border: 3px solid #b5a8d6;
+  border-left: 10px solid #b5a8d6;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.definition_box_header{
+  margin-left: 0em;
+  padding-left: 60px;
+  padding-top: 5px;
+  padding-bottom: 0.1em;
+  color: black;
+  background-color: #b5a8d6;
+  font-size: 1em;
+  font-weight: bold;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  background-image: url("assets/box_images/dictionary.png");
+}
+
+.disclaimer_box{
+  margin: 1em 0;
+  border: 3px solid #f08f9c;
+  border-left: 10px solid #f08f9c;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.disclaimer_box_header{
+  margin-left: 0em;
+  padding-left: 60px;
+  padding-top: 5px;
+  padding-bottom: 0.1em;
+  color: black;
+  background-color: #f08f9c;
+  font-size: 1em;
+  font-weight: bold;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  background-image: url("assets/box_images/warning.png");
+}
+
+.license_box{
+  margin: 1em 0;
+  border: 3px solid gray;
+  border-left: 10px solid gray;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.license_box_header{
+  margin-left: 0em;
+  padding-left: 60px;
+  padding-top: 5px;
+  padding-bottom: 0.1em;
+  color: white;
+  background-color: gray;
+  font-size: 1em;
+  font-weight: bold;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  background-image: url("assets/box_images/license.png");
+}
+
+.scrollable {
+   white-space: pre !important;
+   max-height: 400px;
+   overflow-y: scroll !important;
+   height: 50vh !important;
+}
+
+.outline {
+   padding: .1em;
+   border: 1px solid black;
+   background-color: #000000;
+   display: inline-block;
+}
+
+.blue-outline {
+   background-color: #beeffd;
+   padding:10px;
+   display: inline-block;
+}

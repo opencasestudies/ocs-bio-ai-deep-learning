@@ -1,0 +1,19 @@
+# **Additional Information**
+***
+
+<!--
+Use this section to provide any additional information or resources on the topic and methods covered in the case study
+-->
+
+## **Helpful Links**
+***
+
+<u>Terms and concepts covered:</u>
+
+<u>Packages used in this case study: </u>
+
+<!--
+Automatically include the packages table from _packages.qmd?
+-->
+
+***

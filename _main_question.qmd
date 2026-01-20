@@ -1,0 +1,20 @@
+<!--
+Describe the main biological questions for this case study.
+What will our analysis aim to answer? There can be more than 2.
+Fill them in within the inner_block section, but leave the custom box syntax
+See this previous case study as an example: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Main_Questions
+-->
+
+# **Main Question**
+***
+
+:::{.main_question}
+::::{.main_question_header}
+Our main question(s)
+::::
+::::{.inner_block}
+1. Question 1
+1. Question 2
+::::
+:::
+***

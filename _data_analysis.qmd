@@ -1,0 +1,44 @@
+# **Data Analysis**
+***
+
+If you have been following along but stopped, we could load our wrangled data like so:
+
+```{r}
+load(here::here("data", "wrangled", "wrangled_data.rda"))
+```
+
+***
+<details> <summary> If you skipped the data import section click here. </summary>
+
+An RDA file (stands for R data) of the data can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/wrangled) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled/wrangled_data.rda). Download this file and then place it in your current working directory within a subdirectory called "wrangled" within a subdirectory called "data" to use the following code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
+
+
+```{r}
+load(here::here("data", "wrangled", "wrangled_data.rda"))
+```
+
+</details>
+***
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+Pose a question about the data analysis.
+<details><summary>Answer</summary>
+You can use a collapsible details section to provide an answer
+</details>
+::::
+:::
+
+::: {.column-margin}
+We might use a column margin note to add an equation or some other annotation for learners or educators.
+:::
+
+<!--
+Use this section to walk through the methods and code used in the data analysis step-by-step.
+Explain how this analysis helps answer the main questions posed earlier in the case study.
+-->
+
+***

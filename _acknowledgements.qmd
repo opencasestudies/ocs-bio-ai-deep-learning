@@ -1,0 +1,10 @@
+## **Acknowledgments**
+***
+
+<!--
+Fill in any Acknowledgments using an example from a previous case study if needed: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Acknowledgments
+-->
+
+We would also like to acknowledge the National Institute of General Medical Sciences for funding this work (1R25GM160622).
+
+Icons are from [iconpacks](https://www.iconsets.com/).

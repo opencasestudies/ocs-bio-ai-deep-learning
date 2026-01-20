@@ -1,0 +1,10 @@
+#### {.outline }
+
+<!--
+Replace the `img/mainplot.png` image with the appropriate case study image or consider using ottrpal::include_slide() with a publicly viewable slide deck as needed.
+See image here for example: https://www.opencasestudies.org/ocs-bp-school-shootings-dashboard/
+-->
+
+![](img/mainplot.png){fig-alt="Map showing amount of pollution across the US localized to monitors." width=800 .lightbox}
+
+####

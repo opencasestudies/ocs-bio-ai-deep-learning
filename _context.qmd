@@ -1,0 +1,13 @@
+<!--
+More details on the background on the case study topic as well its relation to biomedical science.
+Videos or images may be helpful so this includes an example of embedding a video.
+-->
+
+# **Context**
+***
+
+{FILL IN}
+
+{{< video https://www.youtube.com/watch?v=j-I0Zgicjsk >}}
+
+***

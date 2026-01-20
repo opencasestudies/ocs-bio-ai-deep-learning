@@ -1,0 +1,40 @@
+<!--
+Update the file paths as needed throughout
+-->
+
+<!--
+At the end of this section, save incremental data so that users can pause and come back later
+-->
+
+# **Data Import**
+***
+
+<!--
+Describe how to import the case study data files into R or Python
+-->
+
+<!--
+Within your case study project folder,
+put the data files as they came from the source into a 'data/raw/' subfolder
+and use the `here` package. See the following example and update with your data:
+-->
+
+```{r}
+pm <-readr::read_csv(here("data", "raw", "pm25_data.csv"))
+```
+
+<!--
+At the end of the data import section, save the imported data as .rda files
+to allow users to stop and pick up where they left off:
+-->
+
+```{r}
+save(pm, file = here::here("data", "imported", "pm25_data_imported.rda"))
+```
+
+<!--
+NOTE that depending on the size of the data for Bio-OCS, the data may not be in the case study project folder directly
+and may need to be imported from an external source
+-->
+
+***

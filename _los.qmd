@@ -1,0 +1,28 @@
+# **Learning Objectives**
+***
+
+<!--
+Replace the shell content and enumerate the learning objectives in the referenced qmd files.
+For an example of this section, see this previous Open Case Study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
+
+Statistical LOs were provided in the original open case studies but they may be omitted here depending on the case study.
+Biological LOS were not provided in the original open case studies and should be included in all Bio-OCS case studies.
+-->
+
+In this case study, we will explore {}.
+
+This case study will particularly focus on {}.
+
+The skills, methods, and concepts that students will be familiar with by the end of this case study are:
+
+{{< include _data_science_los.qmd >}}
+
+::: {.content-hidden unless-meta="include-sections.stat-los"}
+
+{{< include _statistical_los.qmd >}}
+
+:::
+
+{{< include _biological_los.qmd >}}
+
+***

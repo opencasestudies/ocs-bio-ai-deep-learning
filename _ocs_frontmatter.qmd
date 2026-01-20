@@ -1,0 +1,58 @@
+<!--
+The disclaimer block, license block, and funding info generally will not need updated
+
+Please update the access information (e.g., github link and data access)
+as well as any system or server requirements to work with the data
+-->
+
+:::{.disclaimer_box}
+::::{.disclaimer_box_header}
+Disclaimer
+::::
+::::{.inner_block}
+The purpose of the [Open Case Studies](https://opencasestudies.github.io){target="_blank"} project is **to demonstrate the use of various data science methods, tools, and software in the context of messy, real-world data**. A given case study does not cover all aspects of the research process, is not claiming to be the most appropriate way to analyze a given data set, and should not be used in the context of making policy decisions without external consultation from scientific experts. In addition, due to size constraints, datasets used within a case study may be subset of the original/full dataset.
+::::
+:::
+
+:::{.license_box}
+::::{.license_box_header}
+License information
+::::
+::::{.inner_block}
+This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 [(CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/deed.en){target="_blank"}  United States License.
+::::
+:::
+
+This work is funded through the National Institutes of Health, specifically the National Institute of General Medical Sciences: Grant Number 1R25GM160622.
+
+---
+
+<!--
+UPDATE: ACCESS Information (github source and data)
+In this space, provide an open access link to the case study source files.
+This is necessary for users to get access to case study data, at a minimum.
+See the following example from a previous case study (prior to Motivation section): https://www.opencasestudies.org/ocs-bp-co2-emissions/
+-->
+
+To access the GitHub repository for this case study see here: {LINK}
+
+<!--
+If the data isn't in the main github repository, be sure to describe and link to the open source location of the data and how to access it
+-->
+
+<!--
+Include bioOCSdata package information once ready/applicable
+-->
+
+---
+
+<!--
+UPDATE: SYSTEM, SERVER, or MOCK COMPUTING Information:
+
+In this space, provide any necessary system requirements or instructions on how to access a server (if necessary)
+or submit a mock computing job within the learnr environment in order to receive pre-processed datasets (if necessary).
+In essence this section is useful to provide information to learners on how to work with the data and follow along with this case study.
+This section may not be needed for all case studies and can be removed if not
+-->
+
+---

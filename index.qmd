@@ -1,0 +1,85 @@
+---
+title: "**Biomedical Open Case Studies: {Title}**"
+include-sections:
+  stat-los: false
+  data-import: true
+  data-exploration: false
+  data-wrangling: true
+  data-viz: true
+  data-analysis: true
+---
+
+<!--
+  Update the various qmd documents below with each component of a Bio-OCS case study.
+  Besides filling in the title in the header of this document, no other changes should be necessary within this file.
+  Use the `include-sections` within the header to toggle section inclusion/exclusion as needed.
+  For documentation on quarto syntax possibilities, use https://quarto.org/docs/authoring/markdown-basics.html.
+  Examples in the documentation range from including images and videos to including margin notes, annotating code, and linking within a document.
+-->
+
+{{< include _main_image.qmd >}}
+
+{{< include _ocs_frontmatter.qmd >}}
+
+{{< include _cite.qmd >}}
+
+{{< include _motivation.qmd >}}
+
+{{< include _main_question.qmd >}}
+
+{{< include _los.qmd >}}
+
+{{< include _packages.qmd >}}
+
+{{< include _context.qmd >}}
+
+{{< include _data_description.qmd >}}
+
+{{< include _limitations.qmd >}}
+
+{{< include _bioethics.qmd >}}
+
+::: {.content-hidden unless-meta="include-sections.data-import"}
+
+{{< include _data_import.qmd >}}
+
+:::
+
+::: {.content-hidden unless-meta="include-sections.data-exploration"}
+
+{{< include _data_exploration.qmd >}}
+
+:::
+
+::: {.content-hidden unless-meta="include-sections.data-wrangling"}
+
+{{< include _data_wrangling.qmd >}}
+
+:::
+
+::: {.content-hidden unless-meta="include-sections.data-viz"}
+
+{{< include _data_visualization.qmd >}}
+
+:::
+
+::: {.content-hidden unless-meta="include-sections.data-analysis"}
+
+{{< include _data_analysis.qmd >}}
+
+:::
+
+{{< include _summary.qmd >}}
+
+{{< include _suggested_hw.qmd >}}
+
+{{< include _additional_info.qmd >}}
+
+## **Session Info**
+***
+
+```{r}
+devtools::session_info()
+```
+
+{{< include _acknowledgements.qmd >}}

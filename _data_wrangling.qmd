@@ -1,0 +1,58 @@
+<!--
+Update the file paths as needed throughout
+-->
+
+<!--
+Some case studies may wish to merge Data Exploration with this Wrangling subsection
+-->
+
+<!--
+At the end of this section, save incremental data so that users can pause and come back later
+-->
+
+# **Data Wrangling**
+***
+
+If you have been following along but stopped, we could load our imported data like so:
+
+```{r}
+load(here::here("data", "imported", "pm25_data_imported.rda"))
+```
+***
+
+<details> <summary> If you skipped the data import section click here. </summary>
+
+An RDA version (stands for R data) of the data can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/imported) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/imported/co2_data_imported.rda). Download this file and then place it in your current working directory within a subdirectory called "imported" within a directory called "data" to use the following code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
+
+```{r, eval=FALSE}
+load(here::here("data", "imported", "co2_data_imported.rda"))
+```
+
+</details>
+***
+
+<!--
+Use this section to explain step-by-step the data wrangling process used to prepare the data for analysis.
+This includes an example of code annotation with Quarto. See the documentation for more information: https://quarto.org/docs/authoring/code-annotation.html
+-->
+
+To allow users to skip import and wrangling we will save the data as an RDA file as well as a CSV file as this is often useful to send our data to collaborators. We will save this in a “wrangled” subdirectory of our “data” directory of our working directory.
+
+```{r}
+save(pm, file = here::here("data", "wrangled", "wrangled_data.rda")) # <1>
+readr::write_csv(pm, file = here::here("data","wrangled",            # <2>
+                                       "wrangled_data.csv"))         # <2>
+```
+
+1. saving the data as an RDA file within the wrangled data subdirectory
+2. saving the data as a CSV file within the wrangled data subdirectory
+
+<!--
+Note that with this code annotation example, we've used a new line to space the code so that the annotation doesn't overlay the code
+-->
+
+<!--
+Replace `pm` above with the name of the data object created at the end of data wrangling.
+-->
+
+***

@@ -1,0 +1,15 @@
+<!--
+Describe any limitations that exist in this analysis whether it be due to the data itself, methods used, nature of the topic, etc.
+You can list more than 2
+See the following example from a previous case study: https://www.opencasestudies.org/ocs-bp-opioid-rural-urban/#Limitations
+-->
+
+# **Limitations**
+***
+
+There are some important considerations regarding this data analysis to keep in mind:
+
+1. {FILL IN}
+1. {FILL IN}
+
+***

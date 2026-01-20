@@ -1,0 +1,25 @@
+# **Summary**
+***
+## **Synopsis**
+***
+
+<!--
+briefly recap everything that was covered in the case study from the motivation to the data analysis.
+Highlight conclusions made as well as limitations or future work to be done.
+-->
+
+<!--
+Connect back to the main questions and what answers the analysis might have
+-->
+
+***
+
+## **Summary Plot**
+***
+
+<!--
+construct a plot here that summarizes the conclusions found in the data, if applicable
+(connecting to a main question if possible)
+-->
+
+***

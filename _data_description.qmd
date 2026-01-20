@@ -1,0 +1,14 @@
+<!--
+Describe the data to be analyzed and where it came from.
+You may want to include a table about file or variable info.
+-->
+
+# **What are the data?**
+***
+
+Variable   | Details
+---------- |-------------
+**variable1**  | Variable info  <br> -- more details <br> -- more details <br>  **Example**: Content content
+**variable2**  | Variable info  <br> -- more details <br> -- more details <br>  **Example**: Content content
+
+***

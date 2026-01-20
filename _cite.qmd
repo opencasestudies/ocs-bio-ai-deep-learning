@@ -1,0 +1,12 @@
+<!--
+The reference block (specifically the inner_block) should be updated to reflect how this case study should be cited
+-->
+
+:::{.reference_box}
+::::{.reference_box_header}
+To cite this case study, please use:
+::::
+::::{.inner_block}
+{Fill In Authors}. {(YEAR)}. {github source url}. {Title} {(Version)}.
+::::
+:::

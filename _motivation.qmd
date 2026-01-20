@@ -1,0 +1,25 @@
+<!--
+Describe the biological motivation for this case study.
+Include relevant explanatory images and references throughout.
+See this previous case study as an example: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Motivation
+Images or videos may be helpful so this includes an example of including an image.
+-->
+
+# **Motivation**
+***
+This case study explores {}...
+
+:::{.definition_box}
+::::{.definition_box_header}
+Definition
+::::
+::::{.inner_block}
+Provide the definition here
+::::
+:::
+
+Images are very helpful within this section....
+
+![](img/motivation_map_of_monitors.jpg){fig-alt="Map showing location of air pollution monitors across the US." width=800 .lightbox}
+
+***

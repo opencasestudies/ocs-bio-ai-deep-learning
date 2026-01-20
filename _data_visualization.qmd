@@ -1,0 +1,41 @@
+<!--
+Update the file paths as needed throughout
+-->
+
+<!--
+At the end of this section, save incremental data so that users can pause and come back later
+-->
+
+# **Data Visualization**
+***
+
+If you have been following along but stopped, we could load our wrangled data like so:
+
+```{r}
+load(here::here("data", "wrangled", "wrangled_data.rda"))
+```
+
+***
+<details> <summary> If you skipped the data import section click here. </summary>
+
+An RDA file (stands for R data) of the data can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/wrangled) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled/wrangled_data.rda). Download this file and then place it in your current working directory within a subdirectory called "wrangled" within a subdirectory called "data" to use the following code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
+
+
+```{r}
+load(here::here("data", "wrangled", "wrangled_data.rda"))
+```
+
+</details>
+***
+
+<!--
+Use this section to walk through step by step how the wrangled data was visualized.
+Explain how these visualizations improve understanding and help extract insights.
+-->
+
+<!--
+If any further wrangling was conducted in this section,
+please save the most recent version of the data similar to previous sections.
+-->
+
+***
