@@ -34,7 +34,7 @@ This is necessary for users to get access to case study data, at a minimum.
 See the following example from a previous case study (prior to Motivation section): https://www.opencasestudies.org/ocs-bp-co2-emissions/
 -->
 
-To access the GitHub repository for this case study see here: {LINK}
+To access the GitHub repository for this case study see here: [https://github.com/opencasestudies/ocs-bio-ai-deep-learning](https://github.com/opencasestudies/ocs-bio-ai-deep-learning)
 
 <!--
 If the data isn't in the main github repository, be sure to describe and link to the open source location of the data and how to access it

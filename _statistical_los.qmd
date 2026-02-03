@@ -1,11 +1,21 @@
 <u>**Statistical Learning Objectives:**</u>
 
 <!--
-Enumerate the Statistical specific learning objectives here. (
-Can have more or less than 3 or be omitted completely dependent on the open case study overal topic).
-For an example, see this previous Open Case Study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
+  Enumerate the Statistical specific learning objectives here. (Can have more 
+  or less than 3 or be omitted completely dependent on the open case study 
+  overall topic). For an example, see this previous Open Case Study: 
+  https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
 -->
 
-1. {Fill In}
-1. {Fill In}
-1. {Fill In}
+1. Explain the bias-variance tradeoff in high-dimensional prediction problems.
+
+2. Describe penalized regression methods (e.g., elastic net) and their role in 
+feature selection.
+
+3. Understand loss functions, regularization, and optimization in neural 
+network training.
+
+4. Design and interpret cross-validation and study-level validation strategies.
+
+5. Critically assess interpretability versus complexity when building 
+prediction models.

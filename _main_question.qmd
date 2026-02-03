@@ -1,20 +1,37 @@
 <!--
-Describe the main biological questions for this case study.
-What will our analysis aim to answer? There can be more than 2.
-Fill them in within the inner_block section, but leave the custom box syntax
-See this previous case study as an example: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Main_Questions
+  Describe the main biological questions for this case study.
+  What will our analysis aim to answer? There can be more than 2.
+  Fill them in within the inner_block section, but leave the custom box syntax
+  See this previous case study as an example: 
+  https://www.opencasestudies.org/ocs-bp-co2-emissions/#Main_Questions
 -->
 
 # **Main Question**
+
 ***
 
 :::{.main_question}
+
 ::::{.main_question_header}
+
 Our main question(s)
+
 ::::
+
 ::::{.inner_block}
-1. Question 1
-1. Question 2
+
+1. Can a neural network-based epigenetic clock accurately predict chronological 
+age from publicly-available DNA methylation data?
+
+2. How does a deep learning-based epigenetic clock compare to a more 
+traditional, elastic net-based clock when trained on the same, harmonized data?
+
+3. What practical challenges arise when applying deep learning model to 
+high-dimensional biological data, and how can these challenges be addressed in 
+a reproducible R workflow?
+
 ::::
+
 :::
+
 ***

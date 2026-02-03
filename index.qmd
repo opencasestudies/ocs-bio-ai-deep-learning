@@ -1,7 +1,7 @@
 ---
-title: "**Biomedical Open Case Studies: {Title}**"
+title: "**Biomedical Open Case Studies: Building a Neural Network-Based Epigenetic Clock in R Using `scorcher`**"
 include-sections:
-  stat-los: false
+  stat-los: true
   data-import: true
   data-exploration: false
   data-wrangling: true
@@ -10,14 +10,17 @@ include-sections:
 ---
 
 <!--
-  Update the various qmd documents below with each component of a Bio-OCS case study.
-  Besides filling in the title in the header of this document, no other changes should be necessary within this file.
-  Use the `include-sections` within the header to toggle section inclusion/exclusion as needed.
-  For documentation on quarto syntax possibilities, use https://quarto.org/docs/authoring/markdown-basics.html.
-  Examples in the documentation range from including images and videos to including margin notes, annotating code, and linking within a document.
+  Update the various qmd documents below with each component of a Bio-OCS case 
+  study. Besides filling in the title in the header of this document, no other 
+  changes should be necessary within this file. Use the `include-sections` 
+  within the header to toggle section inclusion/exclusion as needed. For 
+  documentation on quarto syntax possibilities, use 
+  https://quarto.org/docs/authoring/markdown-basics.html.
+  Examples in the documentation range from including images and videos to 
+  including margin notes, annotating code, and linking within a document.
 -->
 
-{{< include _main_image.qmd >}}
+{{< include _main_image.qmd >}}                                                  <!-- NEED TO UPDATE THIS -->
 
 {{< include _ocs_frontmatter.qmd >}}
 

@@ -3,9 +3,21 @@
 <!--
 Enumerate the Data Science or Bioinformatic specific learning objectives here.
 (Can have more than 3).
-For an example, see this previous Open Case Study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
+For an example, see this previous Open Case Study: 
+https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
 -->
 
-1. {FILL IN}
-1. {FILL IN}
-1. {FILL IN}
+1. Work with high-dimensional biological datasets and understand common data 
+structures used in -omics analyses.
+
+2. Implement reproducible data preprocessing and wrangling workflows in `R` 
+for large-scale datasets.
+
+3. Train, tune, and evaluate deep learning-based predictive models using 
+modern machine learning workflows such as `scorcher`.
+
+4. Compare model performance using appropriate validation strategies and 
+metrics.
+
+5. Reason about computational tradeoffs, including memory usage, runtime, and 
+the use of GPUs.

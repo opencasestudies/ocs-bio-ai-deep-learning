@@ -1,19 +1,34 @@
 # **Learning Objectives**
+
 ***
 
 <!--
-Replace the shell content and enumerate the learning objectives in the referenced qmd files.
-For an example of this section, see this previous Open Case Study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
+  Replace the shell content and enumerate the learning objectives in the 
+  referenced qmd files. For an example of this section, see this previous 
+  Open Case Study: 
+  
+  https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
 
-Statistical LOs were provided in the original open case studies but they may be omitted here depending on the case study.
-Biological LOS were not provided in the original open case studies and should be included in all Bio-OCS case studies.
+  Statistical LOs were provided in the original open case studies but they may 
+  be omitted here depending on the case study. 
+  
+  Biological LOS were not provided in the original open case studies and should 
+  be included in all Bio-OCS case studies.
 -->
 
-In this case study, we will explore {}.
+In this case study, we will explore how deep learning methods can be applied 
+to high-dimensional biological data, using DNA methylation-based epigenetic 
+clocks as our motivation.
 
-This case study will particularly focus on {}.
+This case study will particularly focus on the practical and conceptual 
+challenges that arise when building neural network models for omics-scale 
+biological data, including data preprocessing, regularization, model 
+evaluation, and comparison with classical statistical approaches such as 
+elastic net regression. We will exemplify these concepts in within `R` 
+ecosystem using the `R` package, `scorcher`.
 
-The skills, methods, and concepts that students will be familiar with by the end of this case study are:
+The skills, methods, and concepts that students will be familiar with by the 
+end of this case study are:
 
 {{< include _data_science_los.qmd >}}
 

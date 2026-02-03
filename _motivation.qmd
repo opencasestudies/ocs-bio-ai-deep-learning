@@ -1,25 +1,55 @@
 <!--
-Describe the biological motivation for this case study.
-Include relevant explanatory images and references throughout.
-See this previous case study as an example: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Motivation
-Images or videos may be helpful so this includes an example of including an image.
+  Describe the biological motivation for this case study. Include relevant 
+  explanatory images and references throughout. See this previous case study 
+  as an example: 
+  https://www.opencasestudies.org/ocs-bp-co2-emissions/#Motivation
+  Images or videos may be helpful so this includes an example of including an 
+  image.
 -->
 
 # **Motivation**
+
 ***
-This case study explores {}...
+
+DNA methylation-based *epigenetic clocks* have transformed aging research by 
+providing quantitative markers of biological age that often outperform 
+chronological age in predicting morbidity, frailty, and mortality. Although 
+most established clocks to date rely on penalized linear regression (e.g., 
+elastic net), recent works have demonstrated that deep learning may capture 
+richer nonlinear relationships among DNA methylation sites, improving 
+predictive accuracy.
+
+This case study walks learners through reconstructing a neural network 
+epigenetic clock model in the `R` statistical programming language. Learners 
+will use `scorcher`, an `R` package designed for developing deep learning 
+models with ease. The goal is to give the learners a hands-on experience 
+working with DNA methylation data, introduce epigenetic clock models, teach 
+modern neural network construction in `R`, and highlight practical modeling 
+issues such as overfitting, interpretability, and biological validation.
 
 :::{.definition_box}
+
 ::::{.definition_box_header}
+
 Definition
+
 ::::
+
 ::::{.inner_block}
-Provide the definition here
+
+**Epigenetic clocks** are statistical or machine learning models that estimate 
+an individual's biological age by learning systematic patterns in DNA 
+methylation levels at specific genomic locations (CpG sites). These models 
+leverage age-associated changes in methylation to produce an age estimate that 
+can reflect not only chronological time but also aspects of biological aging, 
+health status, and disease risk.
+
 ::::
+
 :::
 
-Images are very helpful within this section....
+[Images are very helpful within this section....]{style="color: red;"}
 
-![](img/motivation_map_of_monitors.jpg){fig-alt="Map showing location of air pollution monitors across the US." width=800 .lightbox}
+[NEED IMAGE]{style="color: red;"} <!-- ![](img/motivation_map_of_monitors.jpg){fig-alt="Map showing location of air pollution monitors across the US." width=800 .lightbox} -->
 
 ***

@@ -6,6 +6,16 @@ Enumerate the topical Biological specific learning objectives here.
 Previous Open Case Studies do not have an example of this.
 -->
 
-1. {FILL IN}
-1. {FILL IN}
-1. {FILL IN}
+1. Describe the biological basis of DNA methylation and its relationship to 
+aging.
+
+2. Explain what epigenetic clocks are, how they are constructed, and their 
+historical development.
+
+3. Understand sources of biological and technical variation in methylation 
+data.
+
+4. Learn how to preprocess and wrangle large DNA methylation datasets. 
+
+5. Interpret predictive models in the context of biological plausibility and 
+discuss their limitations.

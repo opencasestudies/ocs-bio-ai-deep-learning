@@ -1,13 +1,91 @@
 <!--
-More details on the background on the case study topic as well its relation to biomedical science.
-Videos or images may be helpful so this includes an example of embedding a video.
+  More details on the background on the case study topic as well its relation 
+  to biomedical science. Videos or images may be helpful so this includes an 
+  example of embedding a video.
 -->
 
 # **Context**
+
 ***
 
-{FILL IN}
+**_What are Epigenetic Clocks?_**
 
-{{< video https://www.youtube.com/watch?v=j-I0Zgicjsk >}}
+DNA methylation is an epigenetic mechanism where methyl groups attach to DNA, 
+affecting gene regulation without changing the DNA sequence. Across the genomes 
+of many organisms, methylation levels change systematically with age. Early 
+studies found that these changes were predictable enough to allow for the 
+construction of statistical models that estimate age from methylation alone. 
+These models became known as *epigenetic clocks*.
+
+> *Epigenetic clocks* are predictive models that estimate an organism's 
+biological age based on methylation patterns at specific regions in DNA (i.e., 
+CpG sites, where a guanine nucleotide directly follows a cytosine nucleotide). 
+
+Early clocks focused on predicting chronological age, but over time, 
+researchers have developed “next-generation” clocks that correlate not just 
+with chronological age, but also with health outcomes, disease risk, and 
+mortality. Today, epigenetic clocks play roles in:
+
+- Aging research, as biomarkers of biological aging
+- Exposure science, tracking environmental/behavioral influences
+- Clinical prediction, including mortality risk and disease progression
+- Comparative genomics, identifying conserved aging signatures across species
+
+**_History of Epigenetic Clocks_**
+
+In 2011, a study showed that DNA methylation in saliva could predict 
+chronological age with an average error of ~5.2 years. Following this, 
+in 2013, two landmark clocks were published: the blood-based *Hannum clock* 
+and the cross-tissue *Horvath clock*. As the design of such clocks evolved, 
+newer models now include biological signals coming from biomarkers, disease 
+risk factors, and other lifestyle predictors to estimate *biological age* or 
+*age acceleration,* which may better reflect functional aging, morbidity, 
+and mortality.
+
+[Table here from nature paper that lists clocks, tissues, programming language, and model?]{style="color: red;"} 
+
+[Timeline diagram here?]{style="color: red;"} 
+
+**_Moving Beyond Classic Clock Models_**
+
+Nearly all canonical clocks, including the Horvath, Hannum, PhenoAge, and 
+GrimAge, are based on penalized linear regression models. As there are often 
+more CpG sites (~850k) than available samples [(###)]{style="color: red;"}, we 
+cannot directly fit a traditional linear regression model. Penalized models, 
+such as the elastic net model, identify subsets of sites (~100-500) with 
+methylation values that are predictive of chronological age. Penalized linear 
+regression models such as the elastic net have several advantages. Namely, they:
+
+- Have good performance in high-dimensional settings,
+- Perform automatic feature selection,
+- Are interpretable,
+- Are computationally inexpensive,
+- Generalize reasonably across studies and tissues.
+
+However, the biology of epigenetics is complex, and methylation patterns arise 
+from regulatory networks, chromatin structures, and biological interactions 
+that are often nonlinear processes. Linear models ignore interactions between 
+CpG sites, as the genome is organized as a set of physically interacting DNA 
+strands in three-dimensional space. Further, they struggle with 
+multicollinearity among related features, often leading penalization methods 
+to arbitrarily select one CpG from a group of similarly behaving sites. As 
+research advances, more flexible modeling approaches may better capture the 
+complexity of methylation dynamics. Recent works have begun moving beyond 
+linear models to deep learning, as deep learning may capture patterns that 
+linear models might miss. Specifically, deep learning models can:
+
+- Model nonlinear relationships,
+- Capture interactions between CpG sites,
+- Incorporate multi-omic features,
+- Leverage architectures reflecting genomic structure.
+
+Recently, [cite Bioc2025_torch-clock repository here]{style="color: red;"}  
+demonstrated how to build a deep learning-based epigenetic clock in `R`, 
+highlighting growing interest in such approaches. However, deep learning-based 
+pipelines introduce barriers for many researchers in genomics. This case study 
+explores how to build a neural network-based epigenetic clock using the `R` 
+package, scorcher.
+
+[NEED VIDEO]{style="color: red;"} <!-- {{< video https://www.youtube.com/watch?v=j-I0Zgicjsk >}} -->
 
 ***

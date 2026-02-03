@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Biomedical Open Case Studies: {Title} – Biomedical Open Case Studies</title>
+<title>Biomedical Open Case Studies: Building a Neural Network-Based Epigenetic Clock in R Using scorcher – Biomedical Open Case Studies</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,9 +21,8 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,25 +64,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./assets/Bio-OCS_Logo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ef5228b46bf8aae0248682688c88cb46.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-ef5228b46bf8aae0248682688c88cb46.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-ef5228b46bf8aae0248682688c88cb46.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -125,17 +114,13 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed slimcontent quarto-light">
+<body class="nav-sidebar floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./assets/Bio-OCS_Logo.png" alt="" class="navbar-logo light-content">
-    <img src="./assets/Bio-OCS_Logo.png" alt="" class="navbar-logo dark-content">
-    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Biomedical Open Case Studies</span>
     </a>
@@ -162,7 +147,7 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>Biomedical Open Case Studies: {Title}</strong></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>Biomedical Open Case Studies: Building a Neural Network-Based Epigenetic Clock in R Using <code>scorcher</code></strong></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -174,8 +159,7 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="https://www.opencasestudies.org/" class="sidebar-logo-link">
-      <img src="./assets/Bio-OCS_Logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./assets/Bio-OCS_Logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./assets/Bio-OCS_Logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
     <nav id="TOC" role="doc-toc" class="toc-active">
@@ -217,7 +201,7 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><strong>Biomedical Open Case Studies: {Title}</strong></h1>
+<h1 class="title"><strong>Biomedical Open Case Studies: Building a Neural Network-Based Epigenetic Clock in R Using <code>scorcher</code></strong></h1>
 </div>
 
 
@@ -235,22 +219,16 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
 
 
 <!--
-  Update the various qmd documents below with each component of a Bio-OCS case study.
-  Besides filling in the title in the header of this document, no other changes should be necessary within this file.
-  Use the `include-sections` within the header to toggle section inclusion/exclusion as needed.
-  For documentation on quarto syntax possibilities, use https://quarto.org/docs/authoring/markdown-basics.html.
-  Examples in the documentation range from including images and videos to including margin notes, annotating code, and linking within a document.
+  Update the various qmd documents below with each component of a Bio-OCS case 
+  study. Besides filling in the title in the header of this document, no other 
+  changes should be necessary within this file. Use the `include-sections` 
+  within the header to toggle section inclusion/exclusion as needed. For 
+  documentation on quarto syntax possibilities, use 
+  https://quarto.org/docs/authoring/markdown-basics.html.
+  Examples in the documentation range from including images and videos to 
+  including margin notes, annotating code, and linking within a document.
 -->
-<section id="section" class="level4 outline">
-<h4 class="outline anchored" data-anchor-id="section"></h4>
-<!--
-Replace the `img/mainplot.png` image with the appropriate case study image or consider using ottrpal::include_slide() with a publicly viewable slide deck as needed.
-See image here for example: https://www.opencasestudies.org/ocs-bp-school-shootings-dashboard/
--->
-<p><a href="img/mainplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/mainplot.png" class="img-fluid" alt="Map showing amount of pollution across the US localized to monitors." width="800"></a></p>
-</section>
-<section id="section-1" class="level4">
-<h4 class="anchored" data-anchor-id="section-1"></h4>
+<p>{{&lt; include _main_image.qmd &gt;}} <!-- NEED TO UPDATE THIS --></p>
 <!--
 The disclaimer block, license block, and funding info generally will not need updated
 
@@ -281,7 +259,7 @@ In this space, provide an open access link to the case study source files.
 This is necessary for users to get access to case study data, at a minimum.
 See the following example from a previous case study (prior to Motivation section): https://www.opencasestudies.org/ocs-bp-co2-emissions/
 -->
-<p>To access the GitHub repository for this case study see here: {LINK}</p>
+<p>To access the GitHub repository for this case study see here: <a href="https://github.com/opencasestudies/ocs-bio-ai-deep-learning">https://github.com/opencasestudies/ocs-bio-ai-deep-learning</a></p>
 <!--
 If the data isn't in the main github repository, be sure to describe and link to the open source location of the data and how to access it
 -->
@@ -310,32 +288,35 @@ The reference block (specifically the inner_block) should be updated to reflect 
 </div>
 </div>
 <!--
-Describe the biological motivation for this case study.
-Include relevant explanatory images and references throughout.
-See this previous case study as an example: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Motivation
-Images or videos may be helpful so this includes an example of including an image.
+  Describe the biological motivation for this case study. Include relevant 
+  explanatory images and references throughout. See this previous case study 
+  as an example: 
+  https://www.opencasestudies.org/ocs-bp-co2-emissions/#Motivation
+  Images or videos may be helpful so this includes an example of including an 
+  image.
 -->
-</section>
 <section id="motivation" class="level1">
 <h1><strong>Motivation</strong></h1>
 <hr>
-<p>This case study explores {}…</p>
+<p>DNA methylation-based <em>epigenetic clocks</em> have transformed aging research by providing quantitative markers of biological age that often outperform chronological age in predicting morbidity, frailty, and mortality. Although most established clocks to date rely on penalized linear regression (e.g., elastic net), recent works have demonstrated that deep learning may capture richer nonlinear relationships among DNA methylation sites, improving predictive accuracy.</p>
+<p>This case study walks learners through reconstructing a neural network epigenetic clock model in the <code>R</code> statistical programming language. Learners will use <code>scorcher</code>, an <code>R</code> package designed for developing deep learning models with ease. The goal is to give the learners a hands-on experience working with DNA methylation data, introduce epigenetic clock models, teach modern neural network construction in <code>R</code>, and highlight practical modeling issues such as overfitting, interpretability, and biological validation.</p>
 <div class="definition_box">
 <div class="definition_box_header">
 <p>Definition</p>
 </div>
 <div class="inner_block">
-<p>Provide the definition here</p>
+<p><strong>Epigenetic clocks</strong> are statistical or machine learning models that estimate an individual’s biological age by learning systematic patterns in DNA methylation levels at specific genomic locations (CpG sites). These models leverage age-associated changes in methylation to produce an age estimate that can reflect not only chronological time but also aspects of biological aging, health status, and disease risk.</p>
 </div>
 </div>
-<p>Images are very helpful within this section….</p>
-<p><a href="img/motivation_map_of_monitors.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/motivation_map_of_monitors.jpg" class="img-fluid" alt="Map showing location of air pollution monitors across the US." width="800"></a></p>
+<p><span style="color: red;">Images are very helpful within this section….</span></p>
+<p><span style="color: red;">NEED IMAGE</span> <!-- ![](img/motivation_map_of_monitors.jpg){fig-alt="Map showing location of air pollution monitors across the US." width=800 .lightbox} --></p>
 <hr>
 <!--
-Describe the main biological questions for this case study.
-What will our analysis aim to answer? There can be more than 2.
-Fill them in within the inner_block section, but leave the custom box syntax
-See this previous case study as an example: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Main_Questions
+  Describe the main biological questions for this case study.
+  What will our analysis aim to answer? There can be more than 2.
+  Fill them in within the inner_block section, but leave the custom box syntax
+  See this previous case study as an example: 
+  https://www.opencasestudies.org/ocs-bp-co2-emissions/#Main_Questions
 -->
 </section>
 <section id="main-question" class="level1">
@@ -347,8 +328,9 @@ See this previous case study as an example: https://www.opencasestudies.org/ocs-
 </div>
 <div class="inner_block">
 <ol type="1">
-<li>Question 1</li>
-<li>Question 2</li>
+<li><p>Can a neural network-based epigenetic clock accurately predict chronological age from publicly-available DNA methylation data?</p></li>
+<li><p>How does a deep learning-based epigenetic clock compare to a more traditional, elastic net-based clock when trained on the same, harmonized data?</p></li>
+<li><p>What practical challenges arise when applying deep learning model to high-dimensional biological data, and how can these challenges be addressed in a reproducible R workflow?</p></li>
 </ol>
 </div>
 </div>
@@ -358,25 +340,48 @@ See this previous case study as an example: https://www.opencasestudies.org/ocs-
 <h1><strong>Learning Objectives</strong></h1>
 <hr>
 <!--
-Replace the shell content and enumerate the learning objectives in the referenced qmd files.
-For an example of this section, see this previous Open Case Study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
+  Replace the shell content and enumerate the learning objectives in the 
+  referenced qmd files. For an example of this section, see this previous 
+  Open Case Study: 
+  
+  https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
 
-Statistical LOs were provided in the original open case studies but they may be omitted here depending on the case study.
-Biological LOS were not provided in the original open case studies and should be included in all Bio-OCS case studies.
+  Statistical LOs were provided in the original open case studies but they may 
+  be omitted here depending on the case study. 
+  
+  Biological LOS were not provided in the original open case studies and should 
+  be included in all Bio-OCS case studies.
 -->
-<p>In this case study, we will explore {}.</p>
-<p>This case study will particularly focus on {}.</p>
+<p>In this case study, we will explore how deep learning methods can be applied to high-dimensional biological data, using DNA methylation-based epigenetic clocks as our motivation.</p>
+<p>This case study will particularly focus on the practical and conceptual challenges that arise when building neural network models for omics-scale biological data, including data preprocessing, regularization, model evaluation, and comparison with classical statistical approaches such as elastic net regression. We will exemplify these concepts in within <code>R</code> ecosystem using the <code>R</code> package, <code>scorcher</code>.</p>
 <p>The skills, methods, and concepts that students will be familiar with by the end of this case study are:</p>
 <p><u><strong>Data Science/Bioinformatics Learning Objectives:</strong></u></p>
 <!--
 Enumerate the Data Science or Bioinformatic specific learning objectives here.
 (Can have more than 3).
-For an example, see this previous Open Case Study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
+For an example, see this previous Open Case Study: 
+https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
 -->
 <ol type="1">
-<li>{FILL IN}</li>
-<li>{FILL IN}</li>
-<li>{FILL IN}</li>
+<li><p>Work with high-dimensional biological datasets and understand common data structures used in -omics analyses.</p></li>
+<li><p>Implement reproducible data preprocessing and wrangling workflows in <code>R</code> for large-scale datasets.</p></li>
+<li><p>Train, tune, and evaluate deep learning-based predictive models using modern machine learning workflows such as <code>scorcher</code>.</p></li>
+<li><p>Compare model performance using appropriate validation strategies and metrics.</p></li>
+<li><p>Reason about computational tradeoffs, including memory usage, runtime, and the use of GPUs.</p></li>
+</ol>
+<p><u><strong>Statistical Learning Objectives:</strong></u></p>
+<!--
+  Enumerate the Statistical specific learning objectives here. (Can have more 
+  or less than 3 or be omitted completely dependent on the open case study 
+  overall topic). For an example, see this previous Open Case Study: 
+  https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
+-->
+<ol type="1">
+<li><p>Explain the bias-variance tradeoff in high-dimensional prediction problems.</p></li>
+<li><p>Describe penalized regression methods (e.g., elastic net) and their role in feature selection.</p></li>
+<li><p>Understand loss functions, regularization, and optimization in neural network training.</p></li>
+<li><p>Design and interpret cross-validation and study-level validation strategies.</p></li>
+<li><p>Critically assess interpretability versus complexity when building prediction models.</p></li>
 </ol>
 <p><u><strong>Biological/Topical Learning Objectives:</strong></u></p>
 <!--
@@ -385,9 +390,11 @@ Enumerate the topical Biological specific learning objectives here.
 Previous Open Case Studies do not have an example of this.
 -->
 <ol type="1">
-<li>{FILL IN}</li>
-<li>{FILL IN}</li>
-<li>{FILL IN}</li>
+<li><p>Describe the biological basis of DNA methylation and its relationship to aging.</p></li>
+<li><p>Explain what epigenetic clocks are, how they are constructed, and their historical development.</p></li>
+<li><p>Understand sources of biological and technical variation in methylation data.</p></li>
+<li><p>Learn how to preprocess and wrangle large DNA methylation datasets.</p></li>
+<li><p>Interpret predictive models in the context of biological plausibility and discuss their limitations.</p></li>
 </ol>
 <hr>
 <!--
@@ -397,10 +404,10 @@ Fill out the table and add rows as necessary providing a link to the source and 
 -->
 <p>We will begin by loading the packages that we will need:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add library() calls</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add library() calls</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /home</code></pre>
+<pre><code>here() starts at C:/Users/ssalerno/OneDrive - Fred Hutchinson Cancer Center/Desktop/ocs-bio-ai-deep-learning</code></pre>
 </div>
 </div>
 <table class="caption-top table">
@@ -423,15 +430,49 @@ Fill out the table and add rows as necessary providing a link to the source and 
 </table>
 <p>The first time we use a function, we will use the <code>::</code> to indicate which package we are using. Unless we have overlapping function names, this is not necessary, but we will include it here to be informative about where the functions we will use come from.</p>
 <!--
-More details on the background on the case study topic as well its relation to biomedical science.
-Videos or images may be helpful so this includes an example of embedding a video.
+  More details on the background on the case study topic as well its relation 
+  to biomedical science. Videos or images may be helpful so this includes an 
+  example of embedding a video.
 -->
 </section>
 <section id="context" class="level1">
 <h1><strong>Context</strong></h1>
 <hr>
-<p>{FILL IN}</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/j-I0Zgicjsk" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><strong><em>What are Epigenetic Clocks?</em></strong></p>
+<p>DNA methylation is an epigenetic mechanism where methyl groups attach to DNA, affecting gene regulation without changing the DNA sequence. Across the genomes of many organisms, methylation levels change systematically with age. Early studies found that these changes were predictable enough to allow for the construction of statistical models that estimate age from methylation alone. These models became known as <em>epigenetic clocks</em>.</p>
+<blockquote class="blockquote">
+<p><em>Epigenetic clocks</em> are predictive models that estimate an organism’s biological age based on methylation patterns at specific regions in DNA (i.e., CpG sites, where a guanine nucleotide directly follows a cytosine nucleotide).</p>
+</blockquote>
+<p>Early clocks focused on predicting chronological age, but over time, researchers have developed “next-generation” clocks that correlate not just with chronological age, but also with health outcomes, disease risk, and mortality. Today, epigenetic clocks play roles in:</p>
+<ul>
+<li>Aging research, as biomarkers of biological aging</li>
+<li>Exposure science, tracking environmental/behavioral influences</li>
+<li>Clinical prediction, including mortality risk and disease progression</li>
+<li>Comparative genomics, identifying conserved aging signatures across species</li>
+</ul>
+<p><strong><em>History of Epigenetic Clocks</em></strong></p>
+<p>In 2011, a study showed that DNA methylation in saliva could predict chronological age with an average error of ~5.2 years. Following this, in 2013, two landmark clocks were published: the blood-based <em>Hannum clock</em> and the cross-tissue <em>Horvath clock</em>. As the design of such clocks evolved, newer models now include biological signals coming from biomarkers, disease risk factors, and other lifestyle predictors to estimate <em>biological age</em> or <em>age acceleration,</em> which may better reflect functional aging, morbidity, and mortality.</p>
+<p><span style="color: red;">Table here from nature paper that lists clocks, tissues, programming language, and model?</span></p>
+<p><span style="color: red;">Timeline diagram here?</span></p>
+<p><strong><em>Moving Beyond Classic Clock Models</em></strong></p>
+<p>Nearly all canonical clocks, including the Horvath, Hannum, PhenoAge, and GrimAge, are based on penalized linear regression models. As there are often more CpG sites (~850k) than available samples <span style="color: red;">(###)</span>, we cannot directly fit a traditional linear regression model. Penalized models, such as the elastic net model, identify subsets of sites (~100-500) with methylation values that are predictive of chronological age. Penalized linear regression models such as the elastic net have several advantages. Namely, they:</p>
+<ul>
+<li>Have good performance in high-dimensional settings,</li>
+<li>Perform automatic feature selection,</li>
+<li>Are interpretable,</li>
+<li>Are computationally inexpensive,</li>
+<li>Generalize reasonably across studies and tissues.</li>
+</ul>
+<p>However, the biology of epigenetics is complex, and methylation patterns arise from regulatory networks, chromatin structures, and biological interactions that are often nonlinear processes. Linear models ignore interactions between CpG sites, as the genome is organized as a set of physically interacting DNA strands in three-dimensional space. Further, they struggle with multicollinearity among related features, often leading penalization methods to arbitrarily select one CpG from a group of similarly behaving sites. As research advances, more flexible modeling approaches may better capture the complexity of methylation dynamics. Recent works have begun moving beyond linear models to deep learning, as deep learning may capture patterns that linear models might miss. Specifically, deep learning models can:</p>
+<ul>
+<li>Model nonlinear relationships,</li>
+<li>Capture interactions between CpG sites,</li>
+<li>Incorporate multi-omic features,</li>
+<li>Leverage architectures reflecting genomic structure.</li>
+</ul>
+<p>Recently, <span style="color: red;">cite Bioc2025_torch-clock repository here</span><br>
+demonstrated how to build a deep learning-based epigenetic clock in <code>R</code>, highlighting growing interest in such approaches. However, deep learning-based pipelines introduce barriers for many researchers in genomics. This case study explores how to build a neural network-based epigenetic clock using the <code>R</code> package, scorcher.</p>
+<p><span style="color: red;">NEED VIDEO</span> <!--  --></p>
 <hr>
 <!--
 Describe the data to be analyzed and where it came from.
@@ -517,7 +558,7 @@ put the data files as they came from the source into a 'data/raw/' subfolder
 and use the `here` package. See the following example and update with your data:
 -->
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">&lt;-</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"raw"</span>, <span class="st">"pm25_data.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">&lt;-</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"raw"</span>, <span class="st">"pm25_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 876 Columns: 50
 ── Column specification ────────────────────────────────────────────────────────
@@ -534,7 +575,7 @@ At the end of the data import section, save the imported data as .rda files
 to allow users to stop and pick up where they left off:
 -->
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(pm, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"pm25_data_imported.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(pm, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"pm25_data_imported.rda"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!--
 NOTE that depending on the size of the data for Bio-OCS, the data may not be in the case study project folder directly
@@ -556,7 +597,7 @@ At the end of this section, save incremental data so that users can pause and co
 <hr>
 <p>If you have been following along but stopped, we could load our imported data like so:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"pm25_data_imported.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"pm25_data_imported.rda"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <details>
@@ -565,7 +606,7 @@ If you skipped the data import section click here.
 </summary>
 <p>An RDA version (stands for R data) of the data can be found <a href="https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/imported">here</a> or slightly more directly <a href="https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/imported/co2_data_imported.rda">here</a>. Download this file and then place it in your current working directory within a subdirectory called “imported” within a directory called “data” to use the following code. We used an RStudio project and the <a href="https://github.com/jennybc/here_here"><code>here</code> package</a> to navigate to the file more easily.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"co2_data_imported.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"co2_data_imported.rda"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
 <hr>
@@ -575,9 +616,9 @@ This includes an example of code annotation with Quarto. See the documentation f
 -->
 <p>To allow users to skip import and wrangling we will save the data as an RDA file as well as a CSV file as this is often useful to send our data to collaborators. We will save this in a “wrangled” subdirectory of our “data” directory of our working directory.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(pm, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
+<div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(pm, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(pm, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"wrangled"</span>,</span>
-<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"wrangled_data.csv"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"wrangled_data.csv"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
@@ -610,7 +651,7 @@ At the end of this section, save incremental data so that users can pause and co
 <hr>
 <p>If you have been following along but stopped, we could load our wrangled data like so:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <details>
@@ -619,7 +660,7 @@ If you skipped the data import section click here.
 </summary>
 <p>An RDA file (stands for R data) of the data can be found <a href="https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/wrangled">here</a> or slightly more directly <a href="https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled/wrangled_data.rda">here</a>. Download this file and then place it in your current working directory within a subdirectory called “wrangled” within a subdirectory called “data” to use the following code. We used an RStudio project and the <a href="https://github.com/jennybc/here_here"><code>here</code> package</a> to navigate to the file more easily.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
 <hr>
@@ -638,7 +679,7 @@ please save the most recent version of the data similar to previous sections.
 <hr>
 <p>If you have been following along but stopped, we could load our wrangled data like so:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <details>
@@ -647,7 +688,7 @@ If you skipped the data import section click here.
 </summary>
 <p>An RDA file (stands for R data) of the data can be found <a href="https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/wrangled">here</a> or slightly more directly <a href="https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled/wrangled_data.rda">here</a>. Download this file and then place it in your current working directory within a subdirectory called “wrangled” within a subdirectory called “data” to use the following code. We used an RStudio project and the <a href="https://github.com/jennybc/here_here"><code>here</code> package</a> to navigate to the file more easily.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </details>
 <hr>
@@ -728,81 +769,77 @@ Automatically include the packages table from _packages.qmd?
 <h2 class="anchored" data-anchor-id="session-info"><strong>Session Info</strong></h2>
 <hr>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in system2("quarto", "-V", stdout = TRUE, env = paste0("TMPDIR=", :
+running command '"quarto"
+TMPDIR=C:/Users/ssalerno/AppData/Local/Temp/Rtmp4oMWSp/file2f942dc43f66 -V' had
+status 1</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
- version  R version 4.3.2 (2023-10-31)
- os       Ubuntu 22.04.4 LTS
- system   x86_64, linux-gnu
- ui       X11
+ version  R version 4.5.2 (2025-10-31 ucrt)
+ os       Windows 10 x64 (build 19045)
+ system   x86_64, mingw32
+ ui       RTerm
  language (EN)
- collate  en_US.UTF-8
- ctype    en_US.UTF-8
- tz       Etc/UTC
- date     2026-01-20
- pandoc   3.1.1 @ /usr/local/bin/ (via rmarkdown)
+ collate  English_United States.utf8
+ ctype    English_United States.utf8
+ tz       America/Los_Angeles
+ date     2026-02-03
+ pandoc   3.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
+ quarto   NA @ C:\\PROGRA~1\\RStudio\\RESOUR~1\\app\\bin\\quarto\\bin\\quarto.exe
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date (UTC) lib source
- bit           4.0.5   2022-11-15 [1] RSPM (R 4.3.0)
- bit64         4.0.5   2020-08-30 [1] RSPM (R 4.3.0)
- cachem        1.0.8   2023-05-01 [1] RSPM (R 4.3.0)
- cli           3.6.5   2025-04-23 [1] CRAN (R 4.3.2)
- crayon        1.5.2   2022-09-29 [1] RSPM (R 4.3.0)
- devtools      2.4.5   2022-10-11 [1] RSPM (R 4.3.0)
- digest        0.6.34  2024-01-11 [1] RSPM (R 4.3.0)
- ellipsis      0.3.2   2021-04-29 [1] RSPM (R 4.3.0)
- evaluate      1.0.5   2025-08-27 [1] CRAN (R 4.3.2)
- fansi         1.0.6   2023-12-08 [1] RSPM (R 4.3.0)
- fastmap       1.1.1   2023-02-24 [1] RSPM (R 4.3.0)
- fs            1.6.3   2023-07-20 [1] RSPM (R 4.3.0)
- glue          1.7.0   2024-01-09 [1] RSPM (R 4.3.0)
- here        * 1.0.2   2025-09-15 [1] CRAN (R 4.3.2)
- hms           1.1.3   2023-03-21 [1] RSPM (R 4.3.0)
- htmltools     0.5.7   2023-11-03 [1] RSPM (R 4.3.0)
- htmlwidgets   1.6.4   2023-12-06 [1] RSPM (R 4.3.0)
- httpuv        1.6.14  2024-01-26 [1] RSPM (R 4.3.0)
- jsonlite      2.0.0   2025-03-27 [1] CRAN (R 4.3.2)
- knitr         1.50    2025-03-16 [1] CRAN (R 4.3.2)
- later         1.3.2   2023-12-06 [1] RSPM (R 4.3.0)
- lifecycle     1.0.4   2023-11-07 [1] RSPM (R 4.3.0)
- magrittr      2.0.3   2022-03-30 [1] RSPM (R 4.3.0)
- memoise       2.0.1   2021-11-26 [1] RSPM (R 4.3.0)
- mime          0.12    2021-09-28 [1] RSPM (R 4.3.0)
- miniUI        0.1.1.1 2018-05-18 [1] RSPM (R 4.3.0)
- pillar        1.9.0   2023-03-22 [1] RSPM (R 4.3.0)
- pkgbuild      1.4.3   2023-12-10 [1] RSPM (R 4.3.0)
- pkgconfig     2.0.3   2019-09-22 [1] RSPM (R 4.3.0)
- pkgload       1.4.1   2025-09-23 [1] CRAN (R 4.3.2)
- profvis       0.3.8   2023-05-02 [1] RSPM (R 4.3.0)
- promises      1.2.1   2023-08-10 [1] RSPM (R 4.3.0)
- purrr         1.0.2   2023-08-10 [1] RSPM (R 4.3.0)
- R6            2.6.1   2025-02-15 [1] CRAN (R 4.3.2)
- Rcpp          1.0.12  2024-01-09 [1] RSPM (R 4.3.0)
- readr         2.1.5   2024-01-10 [1] RSPM (R 4.3.0)
- remotes       2.4.2.1 2023-07-18 [1] RSPM (R 4.3.0)
- rlang         1.1.6   2025-04-11 [1] CRAN (R 4.3.2)
- rmarkdown     2.25    2023-09-18 [1] RSPM (R 4.3.0)
- rprojroot     2.1.1   2025-08-26 [1] CRAN (R 4.3.2)
- sessioninfo   1.2.2   2021-12-06 [1] RSPM (R 4.3.0)
- shiny         1.8.0   2023-11-17 [1] RSPM (R 4.3.0)
- stringi       1.8.3   2023-12-11 [1] RSPM (R 4.3.0)
- stringr       1.5.1   2023-11-14 [1] RSPM (R 4.3.0)
- tibble        3.3.0   2025-06-08 [1] CRAN (R 4.3.2)
- tidyselect    1.2.0   2022-10-10 [1] RSPM (R 4.3.0)
- tzdb          0.4.0   2023-05-12 [1] RSPM (R 4.3.0)
- urlchecker    1.0.1   2021-11-30 [1] RSPM (R 4.3.0)
- usethis       2.2.3   2024-02-19 [1] RSPM (R 4.3.0)
- utf8          1.2.4   2023-10-22 [1] RSPM (R 4.3.0)
- vctrs         0.6.5   2023-12-01 [1] RSPM (R 4.3.0)
- vroom         1.6.5   2023-12-05 [1] RSPM (R 4.3.0)
- xfun          0.55    2025-12-16 [1] CRAN (R 4.3.2)
- xtable        1.8-4   2019-04-21 [1] RSPM (R 4.3.0)
- yaml          2.3.12  2025-12-10 [1] CRAN (R 4.3.2)
+ bit           4.6.0   2025-03-06 [1] CRAN (R 4.5.2)
+ bit64         4.6.0-1 2025-01-16 [1] CRAN (R 4.5.2)
+ cachem        1.1.0   2024-05-16 [1] CRAN (R 4.5.2)
+ cli           3.6.5   2025-04-23 [1] CRAN (R 4.5.2)
+ crayon        1.5.3   2024-06-20 [1] CRAN (R 4.5.2)
+ devtools      2.4.6   2025-10-03 [1] CRAN (R 4.5.2)
+ digest        0.6.39  2025-11-19 [1] CRAN (R 4.5.2)
+ ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.5.2)
+ evaluate      1.0.5   2025-08-27 [1] CRAN (R 4.5.2)
+ fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.5.2)
+ fs            1.6.6   2025-04-12 [1] CRAN (R 4.5.2)
+ glue          1.8.0   2024-09-30 [1] CRAN (R 4.5.2)
+ here        * 1.0.2   2025-09-15 [1] CRAN (R 4.5.2)
+ hms           1.1.4   2025-10-17 [1] CRAN (R 4.5.2)
+ htmltools     0.5.9   2025-12-04 [1] CRAN (R 4.5.2)
+ htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.5.2)
+ jsonlite      2.0.0   2025-03-27 [1] CRAN (R 4.5.2)
+ knitr         1.51    2025-12-20 [1] CRAN (R 4.5.2)
+ lifecycle     1.0.5   2026-01-08 [1] CRAN (R 4.5.2)
+ magrittr      2.0.4   2025-09-12 [1] CRAN (R 4.5.2)
+ memoise       2.0.1   2021-11-26 [1] CRAN (R 4.5.2)
+ otel          0.2.0   2025-08-29 [1] CRAN (R 4.5.2)
+ pillar        1.11.1  2025-09-17 [1] CRAN (R 4.5.2)
+ pkgbuild      1.4.8   2025-05-26 [1] CRAN (R 4.5.2)
+ pkgconfig     2.0.3   2019-09-22 [1] CRAN (R 4.5.2)
+ pkgload       1.4.1   2025-09-23 [1] CRAN (R 4.5.2)
+ purrr         1.2.1   2026-01-09 [1] CRAN (R 4.5.2)
+ R6            2.6.1   2025-02-15 [1] CRAN (R 4.5.2)
+ readr         2.1.6   2025-11-14 [1] CRAN (R 4.5.2)
+ remotes       2.5.0   2024-03-17 [1] CRAN (R 4.5.2)
+ rlang         1.1.7   2026-01-09 [1] CRAN (R 4.5.2)
+ rmarkdown     2.30    2025-09-28 [1] CRAN (R 4.5.2)
+ rprojroot     2.1.1   2025-08-26 [1] CRAN (R 4.5.2)
+ rstudioapi    0.18.0  2026-01-16 [1] CRAN (R 4.5.2)
+ sessioninfo   1.2.3   2025-02-05 [1] CRAN (R 4.5.2)
+ tibble        3.3.1   2026-01-11 [1] CRAN (R 4.5.2)
+ tidyselect    1.2.1   2024-03-11 [1] CRAN (R 4.5.2)
+ tzdb          0.5.0   2025-03-15 [1] CRAN (R 4.5.2)
+ usethis       3.2.1   2025-09-06 [1] CRAN (R 4.5.2)
+ vctrs         0.7.1   2026-01-23 [1] CRAN (R 4.5.2)
+ vroom         1.6.7   2025-11-28 [1] CRAN (R 4.5.2)
+ xfun          0.56    2026-01-18 [1] CRAN (R 4.5.2)
+ yaml          2.3.12  2025-12-10 [1] CRAN (R 4.5.2)
 
- [1] /usr/local/lib/R/site-library
- [2] /usr/local/lib/R/library
+ [1] C:/Users/ssalerno/AppData/Local/R/win-library/4.5
+ [2] C:/Program Files/R/R-4.5.2/library
+ * ── Packages attached to the search path.
 
 ──────────────────────────────────────────────────────────────────────────────</code></pre>
 </div>
@@ -823,243 +860,239 @@ Fill in any Acknowledgments using an example from a previous case study if neede
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1067,161 +1100,185 @@ Fill in any Acknowledgments using an example from a previous case study if neede
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1243,38 +1300,6 @@ Fill in any Acknowledgments using an example from a previous case study if neede
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 
