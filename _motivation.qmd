@@ -11,6 +11,36 @@
 
 ***
 
+Aging is measurable long before it is visible. Although we often think of aging 
+in terms of clinical symptoms, frailty, or disease risk, biological aging begins 
+much earlier and unfolds across multiple molecular systems. One of the most 
+reproducible molecular correlates of aging is **DNA methylation**, a regulatory 
+chemical modification that alters gene activity without changing DNA sequence. 
+Over the past decade, researchers have discovered that methylation patterns at 
+specific regions in our DNA change systematically with age across populations, 
+environments, and disease states.
+
+These observations led to the development of **epigenetic clocks**: statistical 
+models that estimate chronological age directly from DNA methylation profiles. 
+The surprising accuracy of these clocks suggests that aging leaves a detectable 
+imprint across the genome. Even more intriguingly, deviations between predicted 
+age and chronological age may reflect biological differences in health status, 
+environmental exposure, or disease processes.
+
+This case study explores how machine learning models can learn those aging 
+signatures from high-dimensional DNA methylation data. We begin with classical 
+penalized regression models and then move toward deep neural networks capable of 
+capturing nonlinear structure across thousands of DNA regions simultaneously.
+
+
+
+
+
+
+
+
+
+
 DNA methylation-based *epigenetic clocks* have transformed aging research by 
 providing quantitative markers of biological age that often outperform 
 chronological age in predicting morbidity, frailty, and mortality. Although 

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>data_analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="_data_analysis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="_data_analysis_files/libs/quarto-html/quarto.js"></script>
+<script src="_data_analysis_files/libs/quarto-html/popper.min.js"></script>
+<script src="_data_analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="_data_analysis_files/libs/quarto-html/anchor.min.js"></script>
+<link href="_data_analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="_data_analysis_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="_data_analysis_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="_data_analysis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="_data_analysis_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="_data_analysis_files/libs/quarto-diagram/mermaid.min.js"></script>
+<script src="_data_analysis_files/libs/quarto-diagram/mermaid-init.js"></script>
+<link href="_data_analysis_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content page-columns page-full" id="quarto-document-content">
+
+
+
+
+<section id="data-analysis" class="level1 page-columns page-full">
+<h1><strong>Data Analysis</strong></h1>
+<hr>
+<p>In this section, we move from data preparation to predictive modeling. Our goal is to learn how patterns in DNA methylation across thousands of CpG sites can be translated into accurate estimates of chronological age. Because methylation data are high-dimensional and biologically structured, no single modeling strategy is sufficient on its own. Instead, we hope to build an understanding progressively by starting with a strong classical baseline model and then introducing more flexible nonlinear approaches. We begin with <strong>elastic net regression</strong>, which provides an interpretable and historically important foundation for epigenetic clock construction. We then introduce <strong>neural networks</strong>, which extend linear models by learning nonlinear combinations of CpG features. This leads naturally into <strong>deep learning</strong>, where layered architectures allow models to capture increasingly complex structure in genomic data. Finally, we discuss <strong>overfitting and regularization</strong>, two central concepts that determine whether predictive models generalize beyond the datasets on which they were trained. Throughout, we hope to provide both the statistical intuition and computational tools needed to understand how modern epigenetic clocks are constructed.</p>
+<section id="elastic-net-regression" class="level2">
+<h2 class="anchored" data-anchor-id="elastic-net-regression">Elastic Net Regression</h2>
+<p>Before introducing neural networks, we begin with <strong>elastic net regression</strong>, as it is central to the history of epigenetic clocks and remains one of the most important tools for high-dimensional biological prediction.</p>
+<p>Elastic net is a type of <em>regularized</em> linear regression model. In traditional linear regression, we model an outcome as a weighted sum of predictors:</p>
+<p><span class="math display">\[
+\text{Age} = \text{Intercept} + \theta_1 \times \text{CpG}_1 +
+\theta_2 \times \text{CpG}_2 + \ldots + \theta_p \times \text{CpG}_p
+\]</span></p>
+<p>Each CpG receives a coefficient. Positive coefficients indicate that higher methylation at that CpG site is associated with older age, while negative coefficients indicate that higher methylation is associated with younger age.</p>
+<p>The difficulty is that ordinary regression breaks down when there are more predictors than samples, or when predictors are highly correlated. DNA methylation data have both problems. Elastic net addresses this by adding a <em>penalty</em> that discourages the model from becoming too complex.</p>
+<p>Elastic net combines two penalties:</p>
+<ul>
+<li>L1 Penalty: Encourages sparsity</li>
+<li>L2 Penalty: Encourages shrinkage and stability</li>
+</ul>
+<p>The L1 penalty, also used in lasso regression, can set some coefficients exactly to zero. This performs <em>feature selection</em> by removing CpG sites that do not contribute strongly to prediction.</p>
+<p>The L2 penalty, also used in ridge regression, shrinks coefficients toward zero without necessarily eliminating them. This is helpful when predictors are correlated, because it stabilizes coefficient estimates and prevents the model from relying too heavily on any single CpG site.</p>
+<p>Elastic net is useful because it balances both behaviors. It can select a subset of predictive CpG sites while also handling correlation among methylation sites.</p>
+<p>In the context of epigenetic clocks, elastic net has several advantages. It is computationally efficient, relatively interpretable, and well suited to settings where the number of CpG sites is much larger than the number of samples. As we saw, many foundational epigenetic clocks used elastic net-style models for exactly these reasons.</p>
+<p><span style="color: red;">Add elastic net analysis here</span> <!-- NEED TO ADD! --></p>
+<p>However, elastic net is still a linear model. It assumes that CpG contributions are added together in a simple weighted sum. That assumption may be too restrictive for biological systems where regulatory mechanisms interact across genomic regions, cell states, and developmental pathways.</p>
+<p>This limitation motivates our next class of models, neural networks.</p>
+</section>
+<section id="neural-networks" class="level2">
+<h2 class="anchored" data-anchor-id="neural-networks">Neural Networks</h2>
+<p>A <strong>neural network</strong> is a flexible predictive model built from layers of simple mathematical transformations. The term <em>neural network</em> comes from an analogy to the brain: just as biological neurons receive signals from other neurons, combine those signals, and pass messages forward through interconnected circuits, artificial neural networks pass information through layers of computational ‘neurons’ that transform inputs step by step. Although neural networks are often described using this brain metaphor, they are best understood as adaptable function <em>approximators,</em> that is, mathematical systems that learn how to transform input data, such as CpG methylation measurements, into useful predictions like chronological age.</p>
+<p>In this case study, the input to the neural network is a vector of DNA methylation measurements collected across many CpG sites, and the output is a single predicted value representing chronological age. Rather than modeling age as a simple weighted sum of these measurements, a neural network learns a sequence of transformations that gradually reshape the information in the data. Each layer combines signals from many CpG sites, adjusts their importance through learned weights, and applies a nonlinear transformation that allows the model to capture complex biological relationships. By stacking multiple layers together, the network can represent patterns that are far more flexible than those available to standard linear regression models, making it especially well suited for high-dimensional genomic data.</p>
+<p>Conceptually:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A(Methylation Values) --&gt; B(Weighted Combination)
+  B --&gt; C(Nonlinear Activation)
+  C --&gt; D(Hidden Representation)
+  D --&gt; E(Predicted Age)
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>A hidden layer learns an intermediate representation of the data. Instead of directly predicting age from CpG sites, the model first transforms the DNA methylation values into new features. These learned features may capture combinations of CpG sites, nonlinear trends, or coordinated methylation patterns.</p>
+<p>When we stack multiple hidden layers, we create a <strong>deep neural network</strong>. Each layer transforms the representation from the previous layer. Early layers may learn simpler combinations of CpGs, while later layers may learn more abstract patterns useful for age prediction.</p>
+<p><span style="color: red;">Add illustration here</span> <!-- NEED TO ADD! --></p>
+<p>For DNA methylation data, this is appealing because aging is unlikely to be encoded by independent CpG effects alone. Methylation patterns are shaped by chromatin state, cell composition, gene regulation, immune aging, developmental programs, and environmental exposures. A neural network can, in principle, learn nonlinear relationships among these signals.</p>
+<p>However, flexibility comes with tradeoffs. Neural networks can overfit, require more computation, and are harder to interpret than elastic net models. They also require more modeling decisions: number of layers, number of neurons, activation functions, learning rate, dropout, batch size, optimizer, and regularization.</p>
+</section>
+<section id="deep-learning-why-deep-matters" class="level2">
+<h2 class="anchored" data-anchor-id="deep-learning-why-deep-matters">Deep Learning: Why “Deep” Matters</h2>
+<p>The word <strong>deep</strong> in “deep” learning refers to the use of multiple layers. A “shallow” model may transform the input once before prediction. A deep model transforms the input repeatedly, allowing each layer to build on the previous one.</p>
+<p>In image recognition, early layers might learn edges, intermediate layers might learn shapes, and later layers might learn object parts. In methylation data, the analogy is less visual but still useful. Early layers may learn combinations of nearby or correlated CpG sites. Later layers may learn broader patterns related to immune composition, developmental regulation, or age-associated methylation remodeling.</p>
+<p>A deep learning model is trained by minimizing a <em>loss function</em>. In this case study, the loss is based on absolute prediction error:</p>
+<p><span class="math display">\[
+\text{Absolute Error} = |\text{True Age} - \text{Predicted Age}|
+\]</span></p>
+<p>The model adjusts its weights to reduce this error across the training samples. This adjustment is done using an <em>optimization algorithm</em> such as Adam. <!-- Point to a reference here, maybe a margin comment? --></p>
+<p>The training process proceeds iteratively. The model makes predictions, calculates errors, updates weights, and repeats. Over many <em>epochs</em>, the model gradually improves its predictions.</p>
+<div class="definition_box">
+<div class="definition_box_header">
+<p>Important training concepts include:</p>
+</div>
+<div class="inner_block">
+<p><strong>Epoch</strong>: One full pass through the training data.</p>
+<p><strong>Batch Size</strong>: The number of samples used for each weight update.</p>
+<p><strong>Learning Rate</strong>: How large each update step should be.</p>
+<p><strong>Optimizer</strong>: The algorithm used to update model weights.</p>
+<p><strong>Loss Function</strong>: The quantity the model tries to minimize.</p>
+<p><strong>Validation Set</strong>: Held-out data used to monitor performance during training.</p>
+<p><strong>Test Set</strong>: Independent data used for final evaluation.</p>
+</div>
+</div>
+<p>These concepts are not specific to our motivating methylation data, but central to modern deep learning across many different applications. A goal of this case study is to make these ideas concrete by applying them to a biologically meaningful prediction task.</p>
+</section>
+<section id="overfitting-and-regularization" class="level2">
+<h2 class="anchored" data-anchor-id="overfitting-and-regularization">Overfitting and Regularization</h2>
+<p>One of the most important ideas in machine learning is <strong>overfitting</strong>.</p>
+<p>A model overfits when it learns patterns that are specific to the training data but do not generalize to new data. In genomics, overfitting is especially easy because there are many features and often relatively few samples. A model can accidentally learn technical artifacts, study-specific batch effects, or random noise.</p>
+<p>Overfitting can look impressive during training. The model may have very low error on the training set. But when applied to new studies, performance may collapse.</p>
+<p><strong>Regularization</strong> refers to methods that reduce overfitting by limiting model complexity.</p>
+<p>Elastic net uses regularization directly through coefficient penalties. Neural networks use several forms of regularization, including <strong>dropout</strong>, <strong>weight decay</strong>, <strong>early stopping</strong>, and <strong>validation monitoring</strong>.</p>
+<div class="definition_box">
+<div class="definition_box_header">
+<p>Regularization strategies for neural netwroks:</p>
+</div>
+<div class="inner_block">
+<p><strong>Dropout</strong> randomly removes a fraction of hidden units during training. This prevents the network from relying too heavily on any one pathway through the model. It encourages the network to learn more robust representations.</p>
+<p><strong>Weight decay</strong> penalizes large weights, encouraging smoother and less extreme models.</p>
+<p><strong>Cross-validation</strong> repeatedly splits training data into fitting and validation subsets, helping evaluate whether model performance is stable.</p>
+</div>
+</div>
+</section>
+<section id="why-compare-elastic-net-and-deep-learning" class="level2">
+<h2 class="anchored" data-anchor-id="why-compare-elastic-net-and-deep-learning">Why Compare Elastic Net and Deep Learning?</h2>
+<p>A central pedagogical theme of this case study is comparison. Deep learning should not be introduced as a replacement for statistical modeling. Instead, it should be introduced as one part of a modeling toolkit. To understand what deep learning contributes, we need meaningful comparisons.</p>
+<p>We compare to elastic net for several reasons:</p>
+<ol type="1">
+<li>First, it is historically central to epigenetic clocks. Many widely used<br>
+clocks were developed using penalized regression.</li>
+<li>Second, it performs well in high-dimensional settings. A neural network<br>
+that only slightly outperforms a simpler model is not very informative.</li>
+<li>Third, elastic net is easier to interpret. Its coefficients directly<br>
+indicate which CpG sites contribute to the prediction and in what direction.<br>
+Neural networks are more flexible but less transparent.</li>
+<li>Fourth, elastic net is computationally efficient. If elastic net performs<br>
+similarly to deep learning, then the added complexity of neural networks may<br>
+not be justified for some applications.</li>
+</ol>
+<p>This comparison encourages critical thinking. We do not assume that deep learning is universally better. Instead, we ask when additional flexibility improves prediction enough to justify increased complexity.</p>
+</section>
+<section id="introducing-scorcher" class="level2">
+<h2 class="anchored" data-anchor-id="introducing-scorcher">Introducing Scorcher</h2>
+<p>Deep learning is often taught using Python frameworks such as TensorFlow, <!-- NEED REFERENCES/LINKS --> Keras, or PyTorch. These tools are powerful, but many biomedical researchers, statisticians, and data scientists work primarily in R. Switching programming languages can create additional barrier and steeper learning curves.</p>
+<p>The <code>scorcher</code> package is designed to make deep learning more accessible in R by building on the <code>torch</code> ecosystem while providing a higher-level modeling interface. <code>Scorcher</code> aims to make neural networks easier to define, inspect, train, modify, compare, reuse, and teach. It emphasizes model construction through ‘tidy’ composable functions. This allows users to focus on the structure of the model: what the inputs are, what layers are added, what activation functions are used, what loss is optimized, and how predictions are evaluated.</p>
+<p>In this case study, <code>scorcher</code> serves two roles: 1. First, it is the computational tool used to build the neural network<br>
+epigenetic clock. 2. Second, it is a teaching framework that makes the deep learning architecture<br>
+visible. Each line in a scorcher pipeline corresponds to a modeling decision.</p>
+<p>For example, a model pipeline might say:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_layer</span>(linear, <span class="at">in_features =</span> <span class="dv">1000</span>, <span class="at">out_features =</span> <span class="dv">512</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_layer</span>(relu)                                           <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_dropout</span>(<span class="fl">0.3</span>)                                          <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_layer</span>(linear, <span class="at">in_features =</span> <span class="dv">512</span>,  <span class="at">out_features =</span> <span class="dv">512</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_layer</span>(relu)                                           <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_dropout</span>(<span class="fl">0.3</span>)                                          <span class="sc">|&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_layer</span>(linear, <span class="at">in_featues =</span> <span class="dv">512</span>, <span class="at">out_features =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here, we can see that the model takes 1,000 CpG sites as input, transforms them into a 512-dimensional hidden representation, applies a nonlinear (relu) activation, uses dropout for regularization, and ultimately returns one predicted age.</p>
+</section>
+<section id="a-note-on-tidy-function-composition-and-piping-in-r" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="a-note-on-tidy-function-composition-and-piping-in-r">A Note on Tidy Function Composition and Piping in R</h2>
+<p>Many R users are familiar with tidy workflows where data transformations are written as a sequence of readable steps. For example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_years =</span> <span class="fu">as.numeric</span>(age)) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sample_id, age_years)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is convenient because it makes analysis pipelines easier to read. Each line describes one transformation. The output of one step becomes the input to the next. <code>Scorcher</code> extends this design philosophy to neural networks. Instead of treating model architecture as a hidden object created all at once, we build it step by step. This mirrors how we think conceptually:</p>
+<pre class="text"><code>Start with inputs |&gt;
+  Add a dense layer |&gt;
+  Add a nonlinear activation |&gt;
+  Add regularization |&gt;
+  ... Repeat ...
+  Add output layer |&gt;
+  Compile |&gt;
+  Train |&gt;
+  Evaluate |&gt;</code></pre>
+<p>Piping also encourages modularity. If we want to change the model, we can add, remove, or modify one step. For example, we can change dropout from 0.3 to 0.5, replace the type of activation function, or add another hidden layer. This makes experimentation natural, but it also improves reproducibility: a model architecture written as a pipeline can be read, reviewed, and discussed.</p>
+<hr>
+<p>If you have been following along but stopped, we could load our wrangled data like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<details>
+<summary>
+If you skipped the data import section click here.
+</summary>
+<p>An RDA file (stands for R data) of the data can be found <a href="https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/wrangled">here</a> or slightly more directly <a href="https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled/wrangled_data.rda">here</a>. Download this file and then place it in your current working directory within a subdirectory called “wrangled” within a subdirectory called “data” to use the following code. We used an RStudio project and the <a href="https://github.com/jennybc/here_here"><code>here</code> package</a> to navigate to the file more easily.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</details>
+<hr>
+<div class="think_question">
+<div class="think_question_header">
+<p>Question opportunity</p>
+</div>
+<div class="inner_block">
+Pose a question about the data analysis.
+<details>
+<summary>
+Answer
+</summary>
+You can use a collapsible details section to provide an answer
+</details>
+</div>
+</div>
+
+<!--
+Use this section to walk through the methods and code used in the data analysis step-by-step.
+Explain how this analysis helps answer the main questions posed earlier in the case study.
+-->
+<div class="no-row-height column-margin column-container"><div class="">
+<p>We might use a column margin note to add an equation or some other annotation for learners or educators.</p>
+</div></div><hr>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

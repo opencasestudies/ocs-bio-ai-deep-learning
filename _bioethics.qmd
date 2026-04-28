@@ -7,12 +7,29 @@ Examples may include: how identifiable (or re-identifiable) is your data? cell l
 
 
 # **Ethical Considerations**
+
 ***
 
-There are some important ethical considerations when working with data relating to this case study's main questions.
+Epigenetic clocks illustrate both the promise and the complexity of applying 
+machine learning to human molecular data. As such, there are some important 
+ethical considerations when working with data relating to this case study's 
+main questions.
 
-1. {FILL IN}
-1. {FILL IN}
+1. Because methylation patterns encode information about aging, disease  
+exposure, and environmental history, predictions derived from these data may  
+reveal sensitive biological characteristics. Even anonymized genomic data  
+remain potentially identifiable and therefore require careful stewardship.
+2. Another ethical concern involves representativeness. Many public  
+methylation datasets disproportionately include individuals of European  
+ancestry. Models trained on such datasets may perform differently across  
+populations, raising concerns about fairness and generalizability.
+3. There is also a conceptual distinction between prediction and explanation.  
+A model that predicts age accurately does not necessarily explain the  
+biological mechanisms of aging. Communicating this distinction clearly is  
+essential when presenting results to clinical or public audiences.
+
+Responsible use of machine learning in genomics therefore requires transparency, 
+reproducibility, and careful interpretation.
 
 ***
 

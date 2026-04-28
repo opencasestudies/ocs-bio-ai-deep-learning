@@ -5,11 +5,27 @@ See the following example from a previous case study: https://www.opencasestudie
 -->
 
 # **Limitations**
+
 ***
 
-There are some important considerations regarding this data analysis to keep in mind:
+Although methylation-based age prediction is highly accurate, several 
+limitations affect interpretation. As such, there are some important 
+considerations regarding this data analysis to keep in mind:
 
-1. {FILL IN}
-1. {FILL IN}
+1. First, methylation patterns differ across tissues. Most public methylation  
+datasets are derived from whole blood. Clocks trained on blood samples may  
+not generalize to brain, liver, or muscle without modification.
+2. Second, technical variation across laboratories introduces batch effects  
+that may obscure biological signal. Even after normalization, residual  
+differences between studies can influence prediction accuracy.
+3. Third, chronological age is not equivalent to biological age. Prediction  
+error reflects both model uncertainty and genuine biological heterogeneity.
+4. Fourth, deep learning models require careful validation to avoid  
+overfitting. High-dimensional predictors increase flexibility but also  
+increase the risk that models capture study-specific noise rather than shared  
+aging signatures.
+
+Recognizing these limitations is essential for interpreting the results of this
+study, and more broadly, epigenetic clocks, within the appropriate context.
 
 ***

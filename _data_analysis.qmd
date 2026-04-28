@@ -1,5 +1,389 @@
 # **Data Analysis**
+
 ***
+
+In this section, we move from data preparation to predictive modeling. Our goal 
+is to learn how patterns in DNA methylation across thousands of CpG sites can 
+be translated into accurate estimates of chronological age. Because methylation 
+data are high-dimensional and biologically structured, no single modeling 
+strategy is sufficient on its own. Instead, we hope to build an understanding 
+progressively by starting with a strong classical baseline model and then 
+introducing more flexible nonlinear approaches. We begin with 
+**elastic net regression**, which provides an interpretable and historically 
+important foundation for epigenetic clock construction. We then introduce 
+**neural networks**, which extend linear models by learning nonlinear 
+combinations of CpG features. This leads naturally into **deep learning**, 
+where layered architectures allow models to capture increasingly complex 
+structure in genomic data. Finally, we discuss 
+**overfitting and regularization**, two central concepts that determine whether 
+predictive models generalize beyond the datasets on which they were trained. 
+Throughout, we hope to provide both the statistical intuition and computational 
+tools needed to understand how modern epigenetic clocks are constructed.
+
+## Elastic Net Regression
+
+Before introducing neural networks, we begin with **elastic net regression**, 
+as it is central to the history of epigenetic clocks and remains one of the 
+most important tools for high-dimensional biological prediction.
+
+Elastic net is a type of *regularized* linear regression model. In traditional 
+linear regression, we model an outcome as a weighted sum of predictors:
+
+$$
+\text{Age} = \text{Intercept} + \theta_1 \times \text{CpG}_1 + 
+\theta_2 \times \text{CpG}_2 + \ldots + \theta_p \times \text{CpG}_p
+$$
+
+Each CpG receives a coefficient. Positive coefficients indicate that higher 
+methylation at that CpG site is associated with older age, while negative 
+coefficients indicate that higher methylation is associated with younger age.
+
+The difficulty is that ordinary regression breaks down when there are more 
+predictors than samples, or when predictors are highly correlated. DNA 
+methylation data have both problems. Elastic net addresses this by adding a 
+*penalty* that discourages the model from becoming too complex.
+
+Elastic net combines two penalties:
+
+- L1 Penalty: Encourages sparsity
+- L2 Penalty: Encourages shrinkage and stability
+
+The L1 penalty, also used in lasso regression, can set some coefficients 
+exactly to zero. This performs *feature selection* by removing CpG sites that 
+do not contribute strongly to prediction.
+
+The L2 penalty, also used in ridge regression, shrinks coefficients toward 
+zero without necessarily eliminating them. This is helpful when predictors are 
+correlated, because it stabilizes coefficient estimates and prevents the model 
+from relying too heavily on any single CpG site.
+
+Elastic net is useful because it balances both behaviors. It can select a 
+subset of predictive CpG sites while also handling correlation among
+methylation sites.
+
+In the context of epigenetic clocks, elastic net has several advantages. It is 
+computationally efficient, relatively interpretable, and well suited to 
+settings where the number of CpG sites is much larger than the number of 
+samples. As we saw, many foundational epigenetic clocks used elastic net-style 
+models for exactly these reasons.
+
+[Add elastic net analysis here]{style="color: red;"}                             <!-- NEED TO ADD! -->
+
+However, elastic net is still a linear model. It assumes that CpG contributions 
+are added together in a simple weighted sum. That assumption may be too 
+restrictive for biological systems where regulatory mechanisms interact across 
+genomic regions, cell states, and developmental pathways.
+
+This limitation motivates our next class of models, neural networks.
+
+## Neural Networks
+
+A **neural network** is a flexible predictive model built from layers of simple 
+mathematical transformations. The term *neural network* comes from an analogy 
+to the brain: just as biological neurons receive signals from other neurons, 
+combine those signals, and pass messages forward through interconnected 
+circuits, artificial neural networks pass information through layers of 
+computational 'neurons' that transform inputs step by step. Although neural 
+networks are often described using this brain metaphor, they are best 
+understood as adaptable function *approximators,* that is, mathematical systems 
+that learn how to transform input data, such as CpG methylation measurements, 
+into useful predictions like chronological age.
+
+In this case study, the input to the neural network is a vector of DNA 
+methylation measurements collected across many CpG sites, and the output is a 
+single predicted value representing chronological age. Rather than modeling age 
+as a simple weighted sum of these measurements, a neural network learns a 
+sequence of transformations that gradually reshape the information in the data. 
+Each layer combines signals from many CpG sites, adjusts their importance 
+through learned weights, and applies a nonlinear transformation that allows 
+the model to capture complex biological relationships. By stacking multiple 
+layers together, the network can represent patterns that are far more flexible 
+than those available to standard linear regression models, making it especially 
+well suited for high-dimensional genomic data.
+
+Conceptually:
+
+```{mermaid}
+flowchart LR
+  A(Methylation Values) --> B(Weighted Combination)
+  B --> C(Nonlinear Activation)
+  C --> D(Hidden Representation)
+  D --> E(Predicted Age)
+```
+
+A hidden layer learns an intermediate representation of the data. Instead of 
+directly predicting age from CpG sites, the model first transforms the DNA
+methylation values into new features. These learned features may capture 
+combinations of CpG sites, nonlinear trends, or coordinated methylation 
+patterns.
+
+When we stack multiple hidden layers, we create a **deep neural network**. Each 
+layer transforms the representation from the previous layer. Early layers may 
+learn simpler combinations of CpGs, while later layers may learn more abstract 
+patterns useful for age prediction.
+
+[Add illustration here]{style="color: red;"}                                     <!-- NEED TO ADD! -->
+
+For DNA methylation data, this is appealing because aging is unlikely to be 
+encoded by independent CpG effects alone. Methylation patterns are shaped by 
+chromatin state, cell composition, gene regulation, immune aging, developmental 
+programs, and environmental exposures. A neural network can, in principle, 
+learn nonlinear relationships among these signals.
+
+However, flexibility comes with tradeoffs. Neural networks can overfit, require 
+more computation, and are harder to interpret than elastic net models. They 
+also require more modeling decisions: number of layers, number of neurons, 
+activation functions, learning rate, dropout, batch size, optimizer, and 
+regularization.
+
+## Deep Learning: Why "Deep" Matters
+
+The word **deep** in "deep" learning refers to the use of multiple layers. A 
+"shallow" model may transform the input once before prediction. A deep model 
+transforms the input repeatedly, allowing each layer to build on the previous 
+one.
+
+In image recognition, early layers might learn edges, intermediate layers might 
+learn shapes, and later layers might learn object parts. In methylation data, 
+the analogy is less visual but still useful. Early layers may learn combinations 
+of nearby or correlated CpG sites. Later layers may learn broader patterns 
+related to immune composition, developmental regulation, or age-associated 
+methylation remodeling.
+
+A deep learning model is trained by minimizing a *loss function*. In this case 
+study, the loss is based on absolute prediction error:
+
+$$
+\text{Absolute Error} = |\text{True Age} - \text{Predicted Age}|
+$$
+
+The model adjusts its weights to reduce this error across the training samples. 
+This adjustment is done using an *optimization algorithm* such as Adam.          <!-- Point to a reference here, maybe a margin comment? -->
+
+The training process proceeds iteratively. The model makes predictions, 
+calculates errors, updates weights, and repeats. Over many *epochs*, the model 
+gradually improves its predictions.
+
+:::{.definition_box}
+
+::::{.definition_box_header}
+
+Important training concepts include:
+
+::::
+
+::::{.inner_block}
+
+**Epoch**: One full pass through the training data.
+
+**Batch Size**: The number of samples used for each weight update.
+
+**Learning Rate**: How large each update step should be.
+
+**Optimizer**: The algorithm used to update model weights.
+
+**Loss Function**: The quantity the model tries to minimize.
+
+**Validation Set**: Held-out data used to monitor performance during training.
+
+**Test Set**: Independent data used for final evaluation.
+
+::::
+
+:::
+
+These concepts are not specific to our motivating methylation data, but central 
+to modern deep learning across many different applications. A goal of this case 
+study is to make these ideas concrete by applying them to a biologically 
+meaningful prediction task.
+
+## Overfitting and Regularization
+
+One of the most important ideas in machine learning is **overfitting**.
+
+A model overfits when it learns patterns that are specific to the training data 
+but do not generalize to new data. In genomics, overfitting is especially easy 
+because there are many features and often relatively few samples. A model can 
+accidentally learn technical artifacts, study-specific batch effects, or random 
+noise.
+
+Overfitting can look impressive during training. The model may have very low 
+error on the training set. But when applied to new studies, performance may 
+collapse.
+
+**Regularization** refers to methods that reduce overfitting by limiting model 
+complexity.
+
+Elastic net uses regularization directly through coefficient penalties. Neural 
+networks use several forms of regularization, including **dropout**, 
+**weight decay**, **early stopping**, and **validation monitoring**.
+
+:::{.definition_box}
+
+::::{.definition_box_header}
+
+Regularization strategies for neural netwroks:
+
+::::
+
+::::{.inner_block}
+
+**Dropout** randomly removes a fraction of hidden units during training. This 
+prevents the network from relying too heavily on any one pathway through the 
+model. It encourages the network to learn more robust representations.
+
+**Weight decay** penalizes large weights, encouraging smoother and less extreme 
+models.
+
+**Cross-validation** repeatedly splits training data into fitting and 
+validation subsets, helping evaluate whether model performance is stable.
+
+::::
+
+:::
+
+## Why Compare Elastic Net and Deep Learning?
+
+A central pedagogical theme of this case study is comparison. Deep learning 
+should not be introduced as a replacement for statistical modeling. Instead, it 
+should be introduced as one part of a modeling toolkit. To understand what deep 
+learning contributes, we need meaningful comparisons.
+
+We compare to elastic net for several reasons:
+
+1. First, it is historically central to epigenetic clocks. Many widely used  
+clocks were developed using penalized regression.
+2. Second, it performs well in high-dimensional settings. A neural network  
+that only slightly outperforms a simpler model is not very informative.
+3. Third, elastic net is easier to interpret. Its coefficients directly  
+indicate which CpG sites contribute to the prediction and in what direction.  
+Neural networks are more flexible but less transparent.
+4. Fourth, elastic net is computationally efficient. If elastic net performs  
+similarly to deep learning, then the added complexity of neural networks may  
+not be justified for some applications.
+
+This comparison encourages critical thinking. We do not assume that deep 
+learning is universally better. Instead, we ask when additional flexibility 
+improves prediction enough to justify increased complexity.
+
+## Introducing Scorcher
+
+Deep learning is often taught using Python frameworks such as TensorFlow,        <!-- NEED REFERENCES/LINKS -->
+Keras, or PyTorch. These tools are powerful, but many biomedical researchers, 
+statisticians, and data scientists work primarily in R. Switching programming 
+languages can create additional barrier and steeper learning curves.
+
+The `scorcher` package is designed to make deep learning more accessible in R 
+by building on the `torch` ecosystem while providing a higher-level modeling 
+interface. `Scorcher` aims to make neural networks easier to define, inspect, 
+train, modify, compare, reuse, and teach. It emphasizes model construction 
+through 'tidy' composable functions. This allows users to focus on the 
+structure of the model: what the inputs are, what layers are added, what 
+activation functions are used, what loss is optimized, and how predictions 
+are evaluated.
+
+In this case study, `scorcher` serves two roles:
+1. First, it is the computational tool used to build the neural network  
+epigenetic clock.
+2. Second, it is a teaching framework that makes the deep learning architecture  
+visible. Each line in a scorcher pipeline corresponds to a modeling decision.
+
+For example, a model pipeline might say:
+
+```r
+model |>
+  scorch_layer(linear, in_features = 1000, out_features = 512) |>
+  scorch_layer(relu)                                           |>
+  scorch_dropout(0.3)                                          |>
+  scorch_layer(linear, in_features = 512,  out_features = 512) |>
+  scorch_layer(relu)                                           |>
+  scorch_dropout(0.3)                                          |>
+  scorch_layer(linear, in_featues = 512, out_features = 1)
+```
+
+Here, we can see that the model takes 1,000 CpG sites as input, transforms them 
+into a 512-dimensional hidden representation, applies a nonlinear (relu) 
+activation, uses dropout for regularization, and ultimately returns one 
+predicted age.
+
+## A Note on Tidy Function Composition and Piping in R
+
+Many R users are familiar with tidy workflows where data transformations are 
+written as a sequence of readable steps. For example:
+
+```r
+data |>
+  filter(!is.na(age)) |>
+  mutate(age_years = as.numeric(age)) |>
+  select(sample_id, age_years)
+```
+
+This is convenient because it makes analysis pipelines easier to read. Each 
+line describes one transformation. The output of one step becomes the input to 
+the next. `Scorcher` extends this design philosophy to neural networks. Instead 
+of treating model architecture as a hidden object created all at once, we build 
+it step by step. This mirrors how we think conceptually:
+
+```text
+Start with inputs |>
+  Add a dense layer |>
+  Add a nonlinear activation |>
+  Add regularization |>
+  ... Repeat ...
+  Add output layer |>
+  Compile |>
+  Train |>
+  Evaluate |>
+```
+
+Piping also encourages modularity. If we want to change the model, we can add, 
+remove, or modify one step. For example, we can change dropout from 0.3 to 0.5, 
+replace the type of activation function, or add another hidden layer. This 
+makes experimentation natural, but it also improves reproducibility: a model 
+architecture written as a pipeline can be read, reviewed, and discussed. 
+
+[Add scorcher analysis here]{style="color: red;"}                                <!-- NEED TO ADD! -->
+
+***
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 If you have been following along but stopped, we could load our wrangled data like so:
 

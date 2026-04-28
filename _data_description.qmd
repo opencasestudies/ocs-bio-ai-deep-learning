@@ -3,12 +3,118 @@ Describe the data to be analyzed and where it came from.
 You may want to include a table about file or variable info.
 -->
 
-# **What are the data?**
-***
-
+<!--
 Variable   | Details
 ---------- |-------------
 **variable1**  | Variable info  <br> -- more details <br> -- more details <br>  **Example**: Content content
 **variable2**  | Variable info  <br> -- more details <br> -- more details <br>  **Example**: Content content
+-->
+
+# **What are the data?**
 
 ***
+
+All data for this case study come from public DNA methylation datasets hosted 
+on the National Center for Biotechnology Information's (NCBI) Gene Expression 
+Omnibus (GEO) repository, located at 
+[www.ncbi.nlm.nih.gov/geo/](www.ncbi.nlm.nih.gov/geo/). GEO is a public archive 
+of functional genomics experiments.
+
+Specifically, we have curated data from 32 studies which contain 6,411 DNA 
+methylation profiles in total. Among these, we designated 17 studies, 
+consisting of 4,930 samples, for use as our training set. We designated the 
+other 15 studies, consisting of 1,293 profiles, as our testing set. In both the 
+training and testing sets, we will focus only on those samples annotated as 
+being part of the control cohorts for their original studies. Further, we will focus only on data obtained from blood samples on Infinium Human Methylation 450K and 27K BeadChip (Illumina) platforms and only those studies with available age metadata. 
+
+
+
+
+
+
+ Each study contains DNA methylation measurements generated using Illumina HumanMethylation450 or EPIC BeadChip arrays.
+
+These arrays measure methylation levels at hundreds of thousands of CpG sites across the genome. At each CpG site, the assay produces a beta value between zero and one representing the fraction of methylated DNA molecules observed at that locus.
+
+Each sample therefore consists of:
+
+a vector of CpG beta values
+a reported chronological age
+study-level metadata describing sample collection and processing
+
+Across all thirty-two studies included in the DeepMAge-style workflow, the combined dataset contains thousands of individuals spanning a wide age range. Importantly, these studies were conducted independently, often using different laboratory conditions and preprocessing pipelines. This creates a realistic setting for evaluating whether predictive models generalize beyond their training environment.
+
+In the full workflow:
+
+seventeen studies form the training set
+fifteen studies form the testing set
+
+During this case study, learners interact directly with one training study and one testing study. Precomputed combined matrices allow us to demonstrate how the same steps scale to the full dataset.
+
+This approach mirrors how computational genomics analyses are typically conducted: preprocessing is performed once at scale, while methodological exploration happens on representative subsets.
+
+
+
+
+
+
+
+
+
+
+
+***
+
+**Table 1. Study Characteristics and Cohort Use Cases**
+*Training = main training analysis; Testing = main held-out evaluation; Case cohorts = additional side quest data.*
+
+| Study     | Platform | Cohort/Use                 |   N | Male Ratio (%) | Age Range (yrs) |
+| --------- | -------: | -------------------------- | --: | -------------: | --------------: |
+| GSE81961  |     450k | Training (Main Analysis)   |  40 |              0 |           21–43 |
+| GSE52588  |     450k | Training (Main Analysis)   |  58 |             12 |            9–83 |
+| GSE52588  |     450k | Case Training (Side Quest) |  29 |             62 |           10–43 |
+| GSE97362  |     450k | Training (Main Analysis)   |  83 |             67 |            3–19 |
+| GSE97362  |     450k | Case Training (Side Quest) | 150 |             61 |            0–52 |
+| GSE41037  |      27k | Training (Main Analysis)   | 720 |             62 |           16–88 |
+| GSE30870  |     450k | Training (Main Analysis)   |  39 |              0 |           0–103 |
+| GSE61496  |     450k | Testing (Main Analysis)    | 310 |             53 |           30–74 |
+| GSE98876  |     450k | Testing (Main Analysis)    |  71 |            100 |           26–69 |
+| GSE37008  |      27k | Testing (Main Analysis)    |  99 |             37 |           24–45 |
+| GSE128235 |     450k | Training (Main Analysis)   | 536 |             43 |           18–87 |
+| GSE87640  |     450k | Case Testing (Side Quest)  | 156 |             65 |           18–63 |
+| GSE87640  |     450k | Testing (Main Analysis)    |  84 |             62 |           20–58 |
+| GSE87582  |     450k | Case Testing (Side Quest)  |  20 |             90 |           50–71 |
+| GSE87582  |     450k | Testing (Main Analysis)    |   1 |            100 |           60–60 |
+| GSE19711  |      27k | Training (Main Analysis)   | 272 |              0 |           52–78 |
+| GSE19711  |      27k | Case Training (Side Quest) | 264 |              0 |           49–91 |
+| GSE34639  |     450k | Testing (Main Analysis)    |  48 |             33 |             0–1 |
+| GSE79329  |     450k | Testing (Main Analysis)    |  34 |            100 |           43–70 |
+| GSE67530  |     450k | Training (Main Analysis)   | 105 |             53 |           22–93 |
+| GSE67530  |     450k | Case Training (Side Quest) |  39 |             59 |           22–91 |
+| GSE105123 |     450k | Testing (Main Analysis)    | 107 |             58 |           19–23 |
+| GSE99624  |     450k | Case Testing (Side Quest)  |  32 |             12 |           50–87 |
+| GSE99624  |     450k | Testing (Main Analysis)    |  16 |             38 |           49–82 |
+| GSE125105 |     450k | Training (Main Analysis)   | 688 |             45 |           17–87 |
+| GSE102177 |     450k | Case Testing (Side Quest)  |  18 |             61 |            4–10 |
+| GSE102177 |     450k | Testing (Main Analysis)    |  18 |             56 |            4–14 |
+| GSE20067  |      27k | Case Testing (Side Quest)  | 195 |             49 |           24–74 |
+| GSE27044  |      27k | Training (Main Analysis)   | 889 |            100 |            3–26 |
+| GSE103911 |     450k | Testing (Main Analysis)    |  65 |             71 |           27–77 |
+| GSE53740  |     450k | Training (Main Analysis)   | 197 |             32 |           37–93 |
+| GSE53740  |     450k | Case Training (Side Quest) | 186 |             35 |           34–91 |
+| GSE59065  |     450k | Testing (Main Analysis)    | 295 |             48 |           22–84 |
+| GSE112696 |     450k | Case Testing (Side Quest)  |   6 |             67 |           18–29 |
+| GSE112696 |     450k | Testing (Main Analysis)    |   6 |             67 |           22–27 |
+| GSE77696  |     450k | Training (Main Analysis)   | 117 |             88 |           27–76 |
+| GSE77696  |     450k | Case Training (Side Quest) | 261 |             96 |           25–75 |
+| GSE58119  |      27k | Training (Main Analysis)   | 282 |              0 |           50–75 |
+| GSE106648 |     450k | Training (Main Analysis)   | 139 |             25 |           20–65 |
+| GSE106648 |     450k | Case Training (Side Quest) | 140 |             30 |           16–66 |
+| GSE77445  |     450k | Training (Main Analysis)   |  85 |             51 |           18–69 |
+| GSE84624  |     450k | Training (Main Analysis)   |  24 |             50 |             0–5 |
+| GSE84624  |     450k | Case Training (Side Quest) |  24 |             54 |             0–7 |
+| GSE107737 |     450k | Case Testing (Side Quest)  |  12 |            100 |           18–27 |
+| GSE107737 |     450k | Testing (Main Analysis)    |  12 |            100 |           18–29 |
+| GSE40279  |     450k | Training (Main Analysis)   | 656 |             48 |          19–101 |
+| GSE107459 |     450k | Testing (Main Analysis)    | 127 |              0 |           18–35 |
+

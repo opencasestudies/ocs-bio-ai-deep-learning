@@ -10,6 +10,10 @@
 
 ***
 
+This case study investigates whether DNA methylation profiles can be used to 
+accurately predict chronological age across independent studies and populations 
+using both classical and deep learning approaches.
+
 :::{.main_question}
 
 ::::{.main_question_header}

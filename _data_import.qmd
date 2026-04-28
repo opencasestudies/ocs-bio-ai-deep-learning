@@ -6,9 +6,6 @@ Update the file paths as needed throughout
 At the end of this section, save incremental data so that users can pause and come back later
 -->
 
-# **Data Import**
-***
-
 <!--
 Describe how to import the case study data files into R or Python
 -->
@@ -17,16 +14,14 @@ Describe how to import the case study data files into R or Python
 Within your case study project folder,
 put the data files as they came from the source into a 'data/raw/' subfolder
 and use the `here` package. See the following example and update with your data:
--->
+
 
 ```{r}
 pm <-readr::read_csv(here("data", "raw", "pm25_data.csv"))
 ```
 
-<!--
 At the end of the data import section, save the imported data as .rda files
 to allow users to stop and pick up where they left off:
--->
 
 ```{r}
 save(pm, file = here::here("data", "imported", "pm25_data_imported.rda"))
@@ -36,5 +31,38 @@ save(pm, file = here::here("data", "imported", "pm25_data_imported.rda"))
 NOTE that depending on the size of the data for Bio-OCS, the data may not be in the case study project folder directly
 and may need to be imported from an external source
 -->
+
+# **Data Import**
+
+***
+
+In DNA methylation studies, raw measurements are stored as `.IDAT files` 
+containing probe-level fluorescence intensities. These intensities must be 
+converted into beta values using standard bioinformatics preprocessing 
+pipelines. The full workflow processes all 32 GEO studies into a shared CpG 
+matrix. In  this case study, we demonstrate the import pipeline using one 
+training study and one testing study. Conceptually, the steps are:
+
+1. Download supplementary GEO files
+2. Extract IDAT archives
+3. Read probe intensities
+4. Compute beta values
+5. Align CpG identifiers
+6. Merge phenotype metadata
+
+After preprocessing, the dataset has the structure:
+
+- Rows = samples
+- Columns = CpG sites
+- Target = chronological age
+
+Once this matrix is constructed, it becomes suitable for machine learning.
+
+We use the `GEOquery` R package to retrieve the study metadata and to ensure 
+reproducibility for this case study. As a potential side quest, we will then make use of the samples annotated as cases from each study to evaluate how performance may shift on these “out of distribution” samples. To simplify preprocessing for learners as another possible homework/side quest, we can also use curated, preprocessed DNA methylation matrices from the Li et al. (2025) Zenodo release as another data source for model training. The main analysis in the case study, however, benefits learners by showing how to reproducibly aggregate multiple aging-related GEO studies into a consistent format.
+Data Preprocessing: We will download data as either raw intensities or files in the IDAT format, as available. We will use the minfi R package for intra-study color correction and normalization, following Aryee et al. (2014).4 Further, following the DeepMAge paper, only 24,538 CpG sites are shared between the 450K and 27K platforms. As part of our data preprocessing, we will walk learners through filtering and aligning these data to use only those probes shared between the two Illumina platforms. We will further remove sex chromosome sites and sites with orthologous sequences on multiple chromosomes. Further, roughly 17% of the samples have integer age metadata, while the majority of the samples have continuous (float) age values. Following the DeepMAge paper, we will add 0.5-year counts to samples with integer age values to help mitigate bias.
+
+
+We will use the GEOquery R package to programmatically retrieve and inspect each study’s metadata and sample annotations, ensuring that the inclusion criteria align with those of DeepMAge. We will use GEOquery to both ensure transparent data provenance and to extract our sample-level metadata for study inclusion, such as the study identifiers, chronological age, and tissue source. As the metadata labeling conventions vary substantially across GEO studies (e.g., the labeling and formatting of chronological age), we will standardize and harmonize these data to align the variable names and formats across studies (see below). Lastly, when available, we will use the raw methylation data from each study and preprocess these data as described below. We will download the raw methylation intensity files (IDATs) directly from the GEO supplementary files. IDATs contain red and green channel fluorescence intensities measured at each CpG probe and represent the closest available form to the original experimental data. We will use GEOquery’s supplementary file download utilities to extract these data locally for preprocessing. This will allow us to discuss and exemplify the full preprocessing pipeline for conceptual completeness and reproducibility. However, not all GEO studies provide IDAT files. In such cases, we will use the already preprocessed methylation matrices from the study and document this in our analytic write-up.
 
 ***

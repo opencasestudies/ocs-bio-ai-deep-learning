@@ -11,7 +11,48 @@ At the end of this section, save incremental data so that users can pause and co
 -->
 
 # **Data Wrangling**
+
 ***
+
+As the GEO studies are generated independently, their CpG coverage does not 
+perfectly overlap. Some probes appear only in certain array versions. Others 
+are filtered during preprocessing.
+
+To combine studies, we identify CpG sites shared across all datasets and 
+restrict the analysis to those common probes. This produces a harmonized 
+matrix suitable for cross-study modeling.
+
+We then standardize phenotype variables, extract age information from metadata 
+tables, remove samples with missing age values, and partition datasets into 
+training and testing groups.
+
+
+::: {.callout-note}
+Here we will process one study from each of the training and testing sets
+interactively, and we will provide the final combined data from all 32 studies 
+at then end.
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 If you have been following along but stopped, we could load our imported data like so:
 
