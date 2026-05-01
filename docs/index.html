@@ -78,9 +78,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ef5228b46bf8aae0248682688c88cb46.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-ef5228b46bf8aae0248682688c88cb46.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-ef5228b46bf8aae0248682688c88cb46.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a95afc1d4477775b6a54dc81685639da.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-a95afc1d4477775b6a54dc81685639da.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a95afc1d4477775b6a54dc81685639da.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -117,7 +117,39 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
 </script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -182,14 +214,27 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
   <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><strong>Motivation</strong></a></li>
   <li><a href="#main-question" id="toc-main-question" class="nav-link" data-scroll-target="#main-question"><strong>Main Question</strong></a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><strong>Learning Objectives</strong></a></li>
-  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><strong>Context</strong></a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><strong>Context</strong></a>
+  <ul class="collapse">
+  <li><a href="#from-statistical-modeling-to-machine-learning" id="toc-from-statistical-modeling-to-machine-learning" class="nav-link" data-scroll-target="#from-statistical-modeling-to-machine-learning">From Statistical Modeling to Machine Learning</a></li>
+  <li><a href="#what-makes-omics-data-hard-for-machine-learning" id="toc-what-makes-omics-data-hard-for-machine-learning" class="nav-link" data-scroll-target="#what-makes-omics-data-hard-for-machine-learning">What Makes Omics Data Hard for Machine Learning?</a></li>
+  </ul></li>
   <li><a href="#what-are-the-data" id="toc-what-are-the-data" class="nav-link" data-scroll-target="#what-are-the-data"><strong>What are the data?</strong></a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations"><strong>Limitations</strong></a></li>
   <li><a href="#ethical-considerations" id="toc-ethical-considerations" class="nav-link" data-scroll-target="#ethical-considerations"><strong>Ethical Considerations</strong></a></li>
   <li><a href="#data-import" id="toc-data-import" class="nav-link" data-scroll-target="#data-import"><strong>Data Import</strong></a></li>
   <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling"><strong>Data Wrangling</strong></a></li>
   <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization"><strong>Data Visualization</strong></a></li>
-  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis"><strong>Data Analysis</strong></a></li>
+  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis"><strong>Data Analysis</strong></a>
+  <ul class="collapse">
+  <li><a href="#elastic-net-regression" id="toc-elastic-net-regression" class="nav-link" data-scroll-target="#elastic-net-regression">Elastic Net Regression</a></li>
+  <li><a href="#neural-networks" id="toc-neural-networks" class="nav-link" data-scroll-target="#neural-networks">Neural Networks</a></li>
+  <li><a href="#deep-learning-why-deep-matters" id="toc-deep-learning-why-deep-matters" class="nav-link" data-scroll-target="#deep-learning-why-deep-matters">Deep Learning: Why “Deep” Matters</a></li>
+  <li><a href="#overfitting-and-regularization" id="toc-overfitting-and-regularization" class="nav-link" data-scroll-target="#overfitting-and-regularization">Overfitting and Regularization</a></li>
+  <li><a href="#why-compare-elastic-net-and-deep-learning" id="toc-why-compare-elastic-net-and-deep-learning" class="nav-link" data-scroll-target="#why-compare-elastic-net-and-deep-learning">Why Compare Elastic Net and Deep Learning?</a></li>
+  <li><a href="#introducing-scorcher" id="toc-introducing-scorcher" class="nav-link" data-scroll-target="#introducing-scorcher">Introducing Scorcher</a></li>
+  <li><a href="#a-note-on-tidy-function-composition-and-piping-in-r" id="toc-a-note-on-tidy-function-composition-and-piping-in-r" class="nav-link" data-scroll-target="#a-note-on-tidy-function-composition-and-piping-in-r">A Note on Tidy Function Composition and Piping in R</a></li>
+  </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><strong>Summary</strong></a>
   <ul class="collapse">
   <li><a href="#synopsis" id="toc-synopsis" class="nav-link" data-scroll-target="#synopsis"><strong>Synopsis</strong></a></li>
@@ -311,6 +356,9 @@ The reference block (specifically the inner_block) should be updated to reflect 
 <section id="motivation" class="level1">
 <h1><strong>Motivation</strong></h1>
 <hr>
+<p>Aging is measurable long before it is visible. Although we often think of aging in terms of clinical symptoms, frailty, or disease risk, biological aging begins much earlier and unfolds across multiple molecular systems. One of the most reproducible molecular correlates of aging is <strong>DNA methylation</strong>, a regulatory chemical modification that alters gene activity without changing DNA sequence. Over the past decade, researchers have discovered that methylation patterns at specific regions in our DNA change systematically with age across populations, environments, and disease states.</p>
+<p>These observations led to the development of <strong>epigenetic clocks</strong>: statistical models that estimate chronological age directly from DNA methylation profiles. The surprising accuracy of these clocks suggests that aging leaves a detectable imprint across the genome. Even more intriguingly, deviations between predicted age and chronological age may reflect biological differences in health status, environmental exposure, or disease processes.</p>
+<p>This case study explores how machine learning models can learn those aging signatures from high-dimensional DNA methylation data. We begin with classical penalized regression models and then move toward deep neural networks capable of capturing nonlinear structure across thousands of DNA regions simultaneously.</p>
 <p>DNA methylation-based <em>epigenetic clocks</em> have transformed aging research by providing quantitative markers of biological age that often outperform chronological age in predicting morbidity, frailty, and mortality. Although most established clocks to date rely on penalized linear regression (e.g., elastic net), recent works have demonstrated that deep learning may capture richer nonlinear relationships among DNA methylation sites, improving predictive accuracy.</p>
 <p>This case study walks learners through reconstructing a neural network epigenetic clock model in the <code>R</code> statistical programming language. Learners will use <code>scorcher</code>, an <code>R</code> package designed for developing deep learning models with ease. The goal is to give the learners a hands-on experience working with DNA methylation data, introduce epigenetic clock models, teach modern neural network construction in <code>R</code>, and highlight practical modeling issues such as overfitting, interpretability, and biological validation.</p>
 <div class="definition_box">
@@ -335,6 +383,7 @@ The reference block (specifically the inner_block) should be updated to reflect 
 <section id="main-question" class="level1">
 <h1><strong>Main Question</strong></h1>
 <hr>
+<p>This case study investigates whether DNA methylation profiles can be used to accurately predict chronological age across independent studies and populations using both classical and deep learning approaches.</p>
 <div class="main_question">
 <div class="main_question_header">
 <p>Our main question(s)</p>
@@ -487,37 +536,502 @@ Fill out the table and add rows as necessary providing a link to the source and 
 demonstrated how to build a deep learning-based epigenetic clock in <code>R</code>, highlighting growing interest in such approaches. However, deep learning-based pipelines introduce barriers for many researchers in genomics. This case study explores how to build a neural network-based epigenetic clock using the <code>R</code> package, scorcher.</p>
 <p><span style="color: red;">NEED VIDEO</span> <!--  --></p>
 <hr>
+<p>Epigenetic clocks are among the most successful predictive models in modern molecular epidemiology. Since the introduction of early clocks such as the Horvath multi-tissue clock and the Hannum blood-based clock, researchers have increasingly used methylation-based age prediction to study disease risk, environmental exposure, and biological resilience.</p>
+<p>The central insight behind epigenetic clocks is that aging is not random at the molecular level. Instead, methylation changes follow reproducible trajectories across populations. Some CpG sites exhibit monotonic increases in methylation with age, while others decrease predictably. When aggregated across thousands of genomic locations, these changes form a stable signal that can be learned statistically.</p>
+<p>Early epigenetic clocks relied primarily on penalized regression models. Elastic net regression proved particularly effective because it handles correlated predictors well and performs automatic feature selection. However, methylation signals arise from regulatory networks rather than independent CpG effects. This motivates the use of neural networks capable of representing interactions among genomic loci.</p>
+<p>DeepMAge represents one of the earliest demonstrations that deep neural networks can outperform classical clocks in predicting age from blood methylation profiles. It trained a multilayer perceptron on nearly five thousand samples drawn from seventeen GEO studies and evaluated performance on more than one thousand independent samples from fifteen additional studies. The reported median absolute error of approximately three years highlights the remarkable predictive power of methylation-based models.</p>
+<p>This case study reconstructs the conceptual workflow behind that analysis using publicly available GEO datasets and modern deep learning infrastructure in R.</p>
+<section id="from-statistical-modeling-to-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="from-statistical-modeling-to-machine-learning">From Statistical Modeling to Machine Learning</h2>
+<p>At a high level, <strong>machine learning</strong> is the practice of using data to learn patterns that can be used to make predictions, classify observations, or discover structure. In this case study, we focus on one form of machine learning, <strong>supervised learning</strong>, where each observation comes with both input features (predictors) and a known outcome. Here, our input features are DNA methylation values at CpG sites, and our outcome is chronological age.</p>
+<p>A supervised learning problem can be written conceptually as:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A(Input Data) --&gt; B(Model)
+  B --&gt; C(Prediction)
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Or, in our case:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A(CpG Values) --&gt; B(Epigenetic Clock)
+  B --&gt; C(Predicted Age)
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>The epigenetic clock model learns a function that maps a methylation profile to a predicted age. During training, the model sees many examples where the true age is known. It adjusts its internal parameters so that its predictions become closer to the observed ages.</p>
+<p>This setup is very similar to familiar statistical modeling approaches. For example, in linear regression, we estimate coefficients that relate predictors to an outcome. Machine learning uses the same general idea but often emphasizes <strong>prediction</strong>, <strong>generalization</strong>, and <strong>performance on new data</strong>. Rather than asking whether a particular CpG site is statistically associated with age, we ask whether the model can accurately predict age for samples it has never seen before.</p>
+<p>This distinction is especially important in biomedical data science. A model that fits our training data well may still fail on a new cohort if it has learned study-specific artifacts, batch effects, or technical noise. For this reason, we evaluate models using held-out test studies, not only the same samples used during training.</p>
+<p>In this case study, the learning task is concrete:</p>
+<blockquote class="blockquote">
+<p>Given a person’s blood DNA methylation profile, can we predict their chronological age?</p>
+</blockquote>
+<p>This makes epigenetic clock construction an excellent machine learning example, as the outcome is interpretable, the data are biologically meaningful, and model errors are measured in years.</p>
+</section>
+<section id="what-makes-omics-data-hard-for-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="what-makes-omics-data-hard-for-machine-learning">What Makes Omics Data Hard for Machine Learning?</h2>
+<p>DNA methylation data are high-dimensional. A single sample may contain tens or hundreds of thousands of CpG measurements. In contrast, the number of individuals is usually much smaller. This produces a common problem in genomics in that we have many more features than samples. Here, for example, we have 4,930 training samples and 24,538 CpG sites, so the model has access to far more predictors than observations. This is very different from many classical regression settings, where the number of observations is much larger than the number of covariates.</p>
+<p>High-dimensional omics data create several challenges:</p>
+<ol type="1">
+<li>First, many CpG sites are correlated with each other. Nearby CpGs may share<br>
+regulatory context, and distant CpGs may be coordinated through cell-type<br>
+composition, immune activity, disease state, or developmental programs. A<br>
+model must therefore handle strong dependence among predictors.</li>
+<li>Second, not all CpG sites are informative for age. Some are highly<br>
+predictive, some are weakly predictive, and many may contribute mostly noise.<br>
+Without feature selection or regularization, a model may overfit by assigning<br>
+importance to random variation.</li>
+<li>Third, technical variation can be substantial. Methylation arrays are<br>
+affected by platform differences, laboratory processing, normalization<br>
+choices, and batch effects. A model trained across multiple studies must<br>
+learn age-related methylation signals while avoiding study-specific artifacts.</li>
+<li>Fourth, biological interpretation is subtle. A CpG site that improves age<br>
+prediction is not necessarily causal for aging. It may be a marker of cell<br>
+composition, immune shifts, environmental exposure, developmental regulation,<br>
+or correlated molecular change.</li>
+</ol>
+<p>These challenges motivate the modeling choices in this case study. Elastic net regression gives us a strong, interpretable baseline for high-dimensional data. Deep learning gives us a more flexible nonlinear model. Cross-study validation helps test whether either model generalizes beyond the studies used to train our epigentic clock.</p>
 <!--
 Describe the data to be analyzed and where it came from.
 You may want to include a table about file or variable info.
 -->
+<!--
+Variable   | Details
+---------- |-------------
+**variable1**  | Variable info  <br> -- more details <br> -- more details <br>  **Example**: Content content
+**variable2**  | Variable info  <br> -- more details <br> -- more details <br>  **Example**: Content content
+-->
+</section>
 </section>
 <section id="what-are-the-data" class="level1">
 <h1><strong>What are the data?</strong></h1>
 <hr>
+<p>All data for this case study come from public DNA methylation datasets hosted on the National Center for Biotechnology Information’s (NCBI) Gene Expression Omnibus (GEO) repository, located at <a href="www.ncbi.nlm.nih.gov/geo/">www.ncbi.nlm.nih.gov/geo/</a>. GEO is a public archive of functional genomics experiments.</p>
+<p>Specifically, we have curated data from 32 studies which contain 6,411 DNA methylation profiles in total. Among these, we designated 17 studies, consisting of 4,930 samples, for use as our training set. We designated the other 15 studies, consisting of 1,293 profiles, as our testing set. In both the training and testing sets, we will focus only on those samples annotated as being part of the control cohorts for their original studies. Further, we will focus only on data obtained from blood samples on Infinium Human Methylation 450K and 27K BeadChip (Illumina) platforms and only those studies with available age metadata.</p>
+<p>Each study contains DNA methylation measurements generated using Illumina HumanMethylation450 or EPIC BeadChip arrays.</p>
+<p>These arrays measure methylation levels at hundreds of thousands of CpG sites across the genome. At each CpG site, the assay produces a beta value between zero and one representing the fraction of methylated DNA molecules observed at that locus.</p>
+<p>Each sample therefore consists of:</p>
+<p>a vector of CpG beta values a reported chronological age study-level metadata describing sample collection and processing</p>
+<p>Across all thirty-two studies included in the DeepMAge-style workflow, the combined dataset contains thousands of individuals spanning a wide age range. Importantly, these studies were conducted independently, often using different laboratory conditions and preprocessing pipelines. This creates a realistic setting for evaluating whether predictive models generalize beyond their training environment.</p>
+<p>In the full workflow:</p>
+<p>seventeen studies form the training set fifteen studies form the testing set</p>
+<p>During this case study, learners interact directly with one training study and one testing study. Precomputed combined matrices allow us to demonstrate how the same steps scale to the full dataset.</p>
+<p>This approach mirrors how computational genomics analyses are typically conducted: preprocessing is performed once at scale, while methodological exploration happens on representative subsets.</p>
+<hr>
+<p><strong>Table 1. Study Characteristics and Cohort Use Cases</strong> <em>Training = main training analysis; Testing = main held-out evaluation; Case cohorts = additional side quest data.</em></p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 43%">
-<col style="width: 56%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 34%">
+<col style="width: 4%">
+<col style="width: 18%">
+<col style="width: 20%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Variable</th>
-<th>Details</th>
+<th>Study</th>
+<th style="text-align: right;">Platform</th>
+<th>Cohort/Use</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">Male Ratio (%)</th>
+<th style="text-align: right;">Age Range (yrs)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>variable1</strong></td>
-<td>Variable info <br> – more details <br> – more details <br> <strong>Example</strong>: Content content</td>
+<td>GSE81961</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">21–43</td>
 </tr>
 <tr class="even">
-<td><strong>variable2</strong></td>
-<td>Variable info <br> – more details <br> – more details <br> <strong>Example</strong>: Content content</td>
+<td>GSE52588</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">9–83</td>
+</tr>
+<tr class="odd">
+<td>GSE52588</td>
+<td style="text-align: right;">450k</td>
+<td>Case Training (Side Quest)</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">10–43</td>
+</tr>
+<tr class="even">
+<td>GSE97362</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">3–19</td>
+</tr>
+<tr class="odd">
+<td>GSE97362</td>
+<td style="text-align: right;">450k</td>
+<td>Case Training (Side Quest)</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">0–52</td>
+</tr>
+<tr class="even">
+<td>GSE41037</td>
+<td style="text-align: right;">27k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">720</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">16–88</td>
+</tr>
+<tr class="odd">
+<td>GSE30870</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0–103</td>
+</tr>
+<tr class="even">
+<td>GSE61496</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">310</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">30–74</td>
+</tr>
+<tr class="odd">
+<td>GSE98876</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">26–69</td>
+</tr>
+<tr class="even">
+<td>GSE37008</td>
+<td style="text-align: right;">27k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">24–45</td>
+</tr>
+<tr class="odd">
+<td>GSE128235</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">536</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">18–87</td>
+</tr>
+<tr class="even">
+<td>GSE87640</td>
+<td style="text-align: right;">450k</td>
+<td>Case Testing (Side Quest)</td>
+<td style="text-align: right;">156</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">18–63</td>
+</tr>
+<tr class="odd">
+<td>GSE87640</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">20–58</td>
+</tr>
+<tr class="even">
+<td>GSE87582</td>
+<td style="text-align: right;">450k</td>
+<td>Case Testing (Side Quest)</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">50–71</td>
+</tr>
+<tr class="odd">
+<td>GSE87582</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">60–60</td>
+</tr>
+<tr class="even">
+<td>GSE19711</td>
+<td style="text-align: right;">27k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">272</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">52–78</td>
+</tr>
+<tr class="odd">
+<td>GSE19711</td>
+<td style="text-align: right;">27k</td>
+<td>Case Training (Side Quest)</td>
+<td style="text-align: right;">264</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">49–91</td>
+</tr>
+<tr class="even">
+<td>GSE34639</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">0–1</td>
+</tr>
+<tr class="odd">
+<td>GSE79329</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">43–70</td>
+</tr>
+<tr class="even">
+<td>GSE67530</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">22–93</td>
+</tr>
+<tr class="odd">
+<td>GSE67530</td>
+<td style="text-align: right;">450k</td>
+<td>Case Training (Side Quest)</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">22–91</td>
+</tr>
+<tr class="even">
+<td>GSE105123</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">19–23</td>
+</tr>
+<tr class="odd">
+<td>GSE99624</td>
+<td style="text-align: right;">450k</td>
+<td>Case Testing (Side Quest)</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">50–87</td>
+</tr>
+<tr class="even">
+<td>GSE99624</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">49–82</td>
+</tr>
+<tr class="odd">
+<td>GSE125105</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">688</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">17–87</td>
+</tr>
+<tr class="even">
+<td>GSE102177</td>
+<td style="text-align: right;">450k</td>
+<td>Case Testing (Side Quest)</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">4–10</td>
+</tr>
+<tr class="odd">
+<td>GSE102177</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">4–14</td>
+</tr>
+<tr class="even">
+<td>GSE20067</td>
+<td style="text-align: right;">27k</td>
+<td>Case Testing (Side Quest)</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">24–74</td>
+</tr>
+<tr class="odd">
+<td>GSE27044</td>
+<td style="text-align: right;">27k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">889</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">3–26</td>
+</tr>
+<tr class="even">
+<td>GSE103911</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">27–77</td>
+</tr>
+<tr class="odd">
+<td>GSE53740</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">37–93</td>
+</tr>
+<tr class="even">
+<td>GSE53740</td>
+<td style="text-align: right;">450k</td>
+<td>Case Training (Side Quest)</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">34–91</td>
+</tr>
+<tr class="odd">
+<td>GSE59065</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">295</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">22–84</td>
+</tr>
+<tr class="even">
+<td>GSE112696</td>
+<td style="text-align: right;">450k</td>
+<td>Case Testing (Side Quest)</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">18–29</td>
+</tr>
+<tr class="odd">
+<td>GSE112696</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">22–27</td>
+</tr>
+<tr class="even">
+<td>GSE77696</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">117</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">27–76</td>
+</tr>
+<tr class="odd">
+<td>GSE77696</td>
+<td style="text-align: right;">450k</td>
+<td>Case Training (Side Quest)</td>
+<td style="text-align: right;">261</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">25–75</td>
+</tr>
+<tr class="even">
+<td>GSE58119</td>
+<td style="text-align: right;">27k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">282</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">50–75</td>
+</tr>
+<tr class="odd">
+<td>GSE106648</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">139</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">20–65</td>
+</tr>
+<tr class="even">
+<td>GSE106648</td>
+<td style="text-align: right;">450k</td>
+<td>Case Training (Side Quest)</td>
+<td style="text-align: right;">140</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">16–66</td>
+</tr>
+<tr class="odd">
+<td>GSE77445</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">18–69</td>
+</tr>
+<tr class="even">
+<td>GSE84624</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0–5</td>
+</tr>
+<tr class="odd">
+<td>GSE84624</td>
+<td style="text-align: right;">450k</td>
+<td>Case Training (Side Quest)</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">0–7</td>
+</tr>
+<tr class="even">
+<td>GSE107737</td>
+<td style="text-align: right;">450k</td>
+<td>Case Testing (Side Quest)</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">18–27</td>
+</tr>
+<tr class="odd">
+<td>GSE107737</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">18–29</td>
+</tr>
+<tr class="even">
+<td>GSE40279</td>
+<td style="text-align: right;">450k</td>
+<td>Training (Main Analysis)</td>
+<td style="text-align: right;">656</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">19–101</td>
+</tr>
+<tr class="odd">
+<td>GSE107459</td>
+<td style="text-align: right;">450k</td>
+<td>Testing (Main Analysis)</td>
+<td style="text-align: right;">127</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">18–35</td>
 </tr>
 </tbody>
 </table>
-<hr>
 <!--
 Describe any limitations that exist in this analysis whether it be due to the data itself, methods used, nature of the topic, etc.
 You can list more than 2
@@ -527,11 +1041,22 @@ See the following example from a previous case study: https://www.opencasestudie
 <section id="limitations" class="level1">
 <h1><strong>Limitations</strong></h1>
 <hr>
-<p>There are some important considerations regarding this data analysis to keep in mind:</p>
+<p>Although methylation-based age prediction is highly accurate, several limitations affect interpretation. As such, there are some important considerations regarding this data analysis to keep in mind:</p>
 <ol type="1">
-<li>{FILL IN}</li>
-<li>{FILL IN}</li>
+<li>First, methylation patterns differ across tissues. Most public methylation<br>
+datasets are derived from whole blood. Clocks trained on blood samples may<br>
+not generalize to brain, liver, or muscle without modification.</li>
+<li>Second, technical variation across laboratories introduces batch effects<br>
+that may obscure biological signal. Even after normalization, residual<br>
+differences between studies can influence prediction accuracy.</li>
+<li>Third, chronological age is not equivalent to biological age. Prediction<br>
+error reflects both model uncertainty and genuine biological heterogeneity.</li>
+<li>Fourth, deep learning models require careful validation to avoid<br>
+overfitting. High-dimensional predictors increase flexibility but also<br>
+increase the risk that models capture study-specific noise rather than shared<br>
+aging signatures.</li>
 </ol>
+<p>Recognizing these limitations is essential for interpreting the results of this study, and more broadly, epigenetic clocks, within the appropriate context.</p>
 <hr>
 <!--
 List any important bioethics considerations when performing an analysis like this or working with data like this.
@@ -543,11 +1068,22 @@ Examples may include: how identifiable (or re-identifiable) is your data? cell l
 <section id="ethical-considerations" class="level1">
 <h1><strong>Ethical Considerations</strong></h1>
 <hr>
-<p>There are some important ethical considerations when working with data relating to this case study’s main questions.</p>
+<p>Epigenetic clocks illustrate both the promise and the complexity of applying machine learning to human molecular data. As such, there are some important ethical considerations when working with data relating to this case study’s main questions.</p>
 <ol type="1">
-<li>{FILL IN}</li>
-<li>{FILL IN}</li>
+<li>Because methylation patterns encode information about aging, disease<br>
+exposure, and environmental history, predictions derived from these data may<br>
+reveal sensitive biological characteristics. Even anonymized genomic data<br>
+remain potentially identifiable and therefore require careful stewardship.</li>
+<li>Another ethical concern involves representativeness. Many public<br>
+methylation datasets disproportionately include individuals of European<br>
+ancestry. Models trained on such datasets may perform differently across<br>
+populations, raising concerns about fairness and generalizability.</li>
+<li>There is also a conceptual distinction between prediction and explanation.<br>
+A model that predicts age accurately does not necessarily explain the<br>
+biological mechanisms of aging. Communicating this distinction clearly is<br>
+essential when presenting results to clinical or public audiences.</li>
 </ol>
+<p>Responsible use of machine learning in genomics therefore requires transparency, reproducibility, and careful interpretation.</p>
 <hr>
 <!--
 Consider incorporating a checklist of statements that learners should answer/discuss for every case study for bioethics principles.
@@ -558,10 +1094,6 @@ Update the file paths as needed throughout
 <!--
 At the end of this section, save incremental data so that users can pause and come back later
 -->
-</section>
-<section id="data-import" class="level1">
-<h1><strong>Data Import</strong></h1>
-<hr>
 <!--
 Describe how to import the case study data files into R or Python
 -->
@@ -569,31 +1101,71 @@ Describe how to import the case study data files into R or Python
 Within your case study project folder,
 put the data files as they came from the source into a 'data/raw/' subfolder
 and use the `here` package. See the following example and update with your data:
--->
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">&lt;-</span>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"raw"</span>, <span class="st">"pm25_data.csv"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 876 Columns: 50
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+pm <-readr::read_csv(here("data", "raw", "pm25_data.csv"))
+```
+
+::: {.cell-output .cell-output-stderr}
+
+```
+Rows: 876 Columns: 50
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr  (3): state, county, city
 dbl (47): id, value, fips, lat, lon, CMAQ, zcta, zcta_area, zcta_pop, imp_a5...
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-</div>
-<!--
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+
+:::
+:::
+
+
 At the end of the data import section, save the imported data as .rda files
 to allow users to stop and pick up where they left off:
--->
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(pm, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"pm25_data_imported.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+
+
+::: {.cell}
+
+```{.r .cell-code}
+save(pm, file = here::here("data", "imported", "pm25_data_imported.rda"))
+```
+:::
+
+
 <!--
 NOTE that depending on the size of the data for Bio-OCS, the data may not be in the case study project folder directly
 and may need to be imported from an external source
 -->
+</section>
+<section id="data-import" class="level1">
+<h1><strong>Data Import</strong></h1>
+<hr>
+<p>In DNA methylation studies, raw measurements are stored as <code>.IDAT files</code> containing probe-level fluorescence intensities. These intensities must be converted into beta values using standard bioinformatics preprocessing pipelines. The full workflow processes all 32 GEO studies into a shared CpG matrix. In this case study, we demonstrate the import pipeline using one training study and one testing study. Conceptually, the steps are:</p>
+<ol type="1">
+<li>Download supplementary GEO files</li>
+<li>Extract IDAT archives</li>
+<li>Read probe intensities</li>
+<li>Compute beta values</li>
+<li>Align CpG identifiers</li>
+<li>Merge phenotype metadata</li>
+</ol>
+<p>After preprocessing, the dataset has the structure:</p>
+<ul>
+<li>Rows = samples</li>
+<li>Columns = CpG sites</li>
+<li>Target = chronological age</li>
+</ul>
+<p>Once this matrix is constructed, it becomes suitable for machine learning.</p>
+<p>We use the <code>GEOquery</code> R package to retrieve the study metadata and to ensure reproducibility for this case study. As a potential side quest, we will then make use of the samples annotated as cases from each study to evaluate how performance may shift on these “out of distribution” samples. To simplify preprocessing for learners as another possible homework/side quest, we can also use curated, preprocessed DNA methylation matrices from the Li et al.&nbsp;(2025) Zenodo release as another data source for model training. The main analysis in the case study, however, benefits learners by showing how to reproducibly aggregate multiple aging-related GEO studies into a consistent format. Data Preprocessing: We will download data as either raw intensities or files in the IDAT format, as available. We will use the minfi R package for intra-study color correction and normalization, following Aryee et al.&nbsp;(2014).4 Further, following the DeepMAge paper, only 24,538 CpG sites are shared between the 450K and 27K platforms. As part of our data preprocessing, we will walk learners through filtering and aligning these data to use only those probes shared between the two Illumina platforms. We will further remove sex chromosome sites and sites with orthologous sequences on multiple chromosomes. Further, roughly 17% of the samples have integer age metadata, while the majority of the samples have continuous (float) age values. Following the DeepMAge paper, we will add 0.5-year counts to samples with integer age values to help mitigate bias.</p>
+<p>We will use the GEOquery R package to programmatically retrieve and inspect each study’s metadata and sample annotations, ensuring that the inclusion criteria align with those of DeepMAge. We will use GEOquery to both ensure transparent data provenance and to extract our sample-level metadata for study inclusion, such as the study identifiers, chronological age, and tissue source. As the metadata labeling conventions vary substantially across GEO studies (e.g., the labeling and formatting of chronological age), we will standardize and harmonize these data to align the variable names and formats across studies (see below). Lastly, when available, we will use the raw methylation data from each study and preprocess these data as described below. We will download the raw methylation intensity files (IDATs) directly from the GEO supplementary files. IDATs contain red and green channel fluorescence intensities measured at each CpG probe and represent the closest available form to the original experimental data. We will use GEOquery’s supplementary file download utilities to extract these data locally for preprocessing. This will allow us to discuss and exemplify the full preprocessing pipeline for conceptual completeness and reproducibility. However, not all GEO studies provide IDAT files. In such cases, we will use the already preprocessed methylation matrices from the study and document this in our analytic write-up.</p>
 <hr>
 <!--
 Update the file paths as needed throughout
@@ -608,9 +1180,25 @@ At the end of this section, save incremental data so that users can pause and co
 <section id="data-wrangling" class="level1">
 <h1><strong>Data Wrangling</strong></h1>
 <hr>
+<p>As the GEO studies are generated independently, their CpG coverage does not perfectly overlap. Some probes appear only in certain array versions. Others are filtered during preprocessing.</p>
+<p>To combine studies, we identify CpG sites shared across all datasets and restrict the analysis to those common probes. This produces a harmonized matrix suitable for cross-study modeling.</p>
+<p>We then standardize phenotype variables, extract age information from metadata tables, remove samples with missing age values, and partition datasets into training and testing groups.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Here we will process one study from each of the training and testing sets interactively, and we will provide the final combined data from all 32 studies at then end.</p>
+</div>
+</div>
 <p>If you have been following along but stopped, we could load our imported data like so:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"pm25_data_imported.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"pm25_data_imported.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <details>
@@ -619,7 +1207,7 @@ If you skipped the data import section click here.
 </summary>
 <p>An RDA version (stands for R data) of the data can be found <a href="https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/imported">here</a> or slightly more directly <a href="https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/imported/co2_data_imported.rda">here</a>. Download this file and then place it in your current working directory within a subdirectory called “imported” within a directory called “data” to use the following code. We used an RStudio project and the <a href="https://github.com/jennybc/here_here"><code>here</code> package</a> to navigate to the file more easily.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"co2_data_imported.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"co2_data_imported.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 <hr>
@@ -629,18 +1217,18 @@ This includes an example of code annotation with Quarto. See the documentation f
 -->
 <p>To allow users to skip import and wrangling we will save the data as an RDA file as well as a CSV file as this is often useful to send our data to collaborators. We will save this in a “wrangled” subdirectory of our “data” directory of our working directory.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(pm, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(pm, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"wrangled"</span>,</span>
-<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"wrangled_data.csv"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(pm, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(pm, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"wrangled"</span>,</span>
+<span id="annotated-cell-6-3"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"wrangled_data.csv"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="1" data-code-annotation="1">saving the data as an RDA file within the wrangled data subdirectory</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1">saving the data as an RDA file within the wrangled data subdirectory</span>
 </dd>
-<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="2,3" data-code-annotation="2">saving the data as a CSV file within the wrangled data subdirectory</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="2,3" data-code-annotation="2">saving the data as a CSV file within the wrangled data subdirectory</span>
 </dd>
 </dl>
 </div>
@@ -664,7 +1252,7 @@ At the end of this section, save incremental data so that users can pause and co
 <hr>
 <p>If you have been following along but stopped, we could load our wrangled data like so:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <details>
@@ -673,7 +1261,7 @@ If you skipped the data import section click here.
 </summary>
 <p>An RDA file (stands for R data) of the data can be found <a href="https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/wrangled">here</a> or slightly more directly <a href="https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled/wrangled_data.rda">here</a>. Download this file and then place it in your current working directory within a subdirectory called “wrangled” within a subdirectory called “data” to use the following code. We used an RStudio project and the <a href="https://github.com/jennybc/here_here"><code>here</code> package</a> to navigate to the file more easily.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 <hr>
@@ -689,6 +1277,157 @@ please save the most recent version of the data similar to previous sections.
 </section>
 <section id="data-analysis" class="level1 page-columns page-full">
 <h1><strong>Data Analysis</strong></h1>
+<hr>
+<p>In this section, we move from data preparation to predictive modeling. Our goal is to learn how patterns in DNA methylation across thousands of CpG sites can be translated into accurate estimates of chronological age. Because methylation data are high-dimensional and biologically structured, no single modeling strategy is sufficient on its own. Instead, we hope to build an understanding progressively by starting with a strong classical baseline model and then introducing more flexible nonlinear approaches. We begin with <strong>elastic net regression</strong>, which provides an interpretable and historically important foundation for epigenetic clock construction. We then introduce <strong>neural networks</strong>, which extend linear models by learning nonlinear combinations of CpG features. This leads naturally into <strong>deep learning</strong>, where layered architectures allow models to capture increasingly complex structure in genomic data. Finally, we discuss <strong>overfitting and regularization</strong>, two central concepts that determine whether predictive models generalize beyond the datasets on which they were trained. Throughout, we hope to provide both the statistical intuition and computational tools needed to understand how modern epigenetic clocks are constructed.</p>
+<section id="elastic-net-regression" class="level2">
+<h2 class="anchored" data-anchor-id="elastic-net-regression">Elastic Net Regression</h2>
+<p>Before introducing neural networks, we begin with <strong>elastic net regression</strong>, as it is central to the history of epigenetic clocks and remains one of the most important tools for high-dimensional biological prediction.</p>
+<p>Elastic net is a type of <em>regularized</em> linear regression model. In traditional linear regression, we model an outcome as a weighted sum of predictors:</p>
+<p><span class="math display">\[
+\text{Age} = \text{Intercept} + \theta_1 \times \text{CpG}_1 +
+\theta_2 \times \text{CpG}_2 + \ldots + \theta_p \times \text{CpG}_p
+\]</span></p>
+<p>Each CpG receives a coefficient. Positive coefficients indicate that higher methylation at that CpG site is associated with older age, while negative coefficients indicate that higher methylation is associated with younger age.</p>
+<p>The difficulty is that ordinary regression breaks down when there are more predictors than samples, or when predictors are highly correlated. DNA methylation data have both problems. Elastic net addresses this by adding a <em>penalty</em> that discourages the model from becoming too complex.</p>
+<p>Elastic net combines two penalties:</p>
+<ul>
+<li>L1 Penalty: Encourages sparsity</li>
+<li>L2 Penalty: Encourages shrinkage and stability</li>
+</ul>
+<p>The L1 penalty, also used in lasso regression, can set some coefficients exactly to zero. This performs <em>feature selection</em> by removing CpG sites that do not contribute strongly to prediction.</p>
+<p>The L2 penalty, also used in ridge regression, shrinks coefficients toward zero without necessarily eliminating them. This is helpful when predictors are correlated, because it stabilizes coefficient estimates and prevents the model from relying too heavily on any single CpG site.</p>
+<p>Elastic net is useful because it balances both behaviors. It can select a subset of predictive CpG sites while also handling correlation among methylation sites.</p>
+<p>In the context of epigenetic clocks, elastic net has several advantages. It is computationally efficient, relatively interpretable, and well suited to settings where the number of CpG sites is much larger than the number of samples. As we saw, many foundational epigenetic clocks used elastic net-style models for exactly these reasons.</p>
+<p><span style="color: red;">Add elastic net analysis here</span> <!-- NEED TO ADD! --></p>
+<p>However, elastic net is still a linear model. It assumes that CpG contributions are added together in a simple weighted sum. That assumption may be too restrictive for biological systems where regulatory mechanisms interact across genomic regions, cell states, and developmental pathways.</p>
+<p>This limitation motivates our next class of models, neural networks.</p>
+</section>
+<section id="neural-networks" class="level2">
+<h2 class="anchored" data-anchor-id="neural-networks">Neural Networks</h2>
+<p>A <strong>neural network</strong> is a flexible predictive model built from layers of simple mathematical transformations. The term <em>neural network</em> comes from an analogy to the brain: just as biological neurons receive signals from other neurons, combine those signals, and pass messages forward through interconnected circuits, artificial neural networks pass information through layers of computational ‘neurons’ that transform inputs step by step. Although neural networks are often described using this brain metaphor, they are best understood as adaptable function <em>approximators,</em> that is, mathematical systems that learn how to transform input data, such as CpG methylation measurements, into useful predictions like chronological age.</p>
+<p>In this case study, the input to the neural network is a vector of DNA methylation measurements collected across many CpG sites, and the output is a single predicted value representing chronological age. Rather than modeling age as a simple weighted sum of these measurements, a neural network learns a sequence of transformations that gradually reshape the information in the data. Each layer combines signals from many CpG sites, adjusts their importance through learned weights, and applies a nonlinear transformation that allows the model to capture complex biological relationships. By stacking multiple layers together, the network can represent patterns that are far more flexible than those available to standard linear regression models, making it especially well suited for high-dimensional genomic data.</p>
+<p>Conceptually:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A(Methylation Values) --&gt; B(Weighted Combination)
+  B --&gt; C(Nonlinear Activation)
+  C --&gt; D(Hidden Representation)
+  D --&gt; E(Predicted Age)
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>A hidden layer learns an intermediate representation of the data. Instead of directly predicting age from CpG sites, the model first transforms the DNA methylation values into new features. These learned features may capture combinations of CpG sites, nonlinear trends, or coordinated methylation patterns.</p>
+<p>When we stack multiple hidden layers, we create a <strong>deep neural network</strong>. Each layer transforms the representation from the previous layer. Early layers may learn simpler combinations of CpGs, while later layers may learn more abstract patterns useful for age prediction.</p>
+<p><span style="color: red;">Add illustration here</span> <!-- NEED TO ADD! --></p>
+<p>For DNA methylation data, this is appealing because aging is unlikely to be encoded by independent CpG effects alone. Methylation patterns are shaped by chromatin state, cell composition, gene regulation, immune aging, developmental programs, and environmental exposures. A neural network can, in principle, learn nonlinear relationships among these signals.</p>
+<p>However, flexibility comes with tradeoffs. Neural networks can overfit, require more computation, and are harder to interpret than elastic net models. They also require more modeling decisions: number of layers, number of neurons, activation functions, learning rate, dropout, batch size, optimizer, and regularization.</p>
+</section>
+<section id="deep-learning-why-deep-matters" class="level2">
+<h2 class="anchored" data-anchor-id="deep-learning-why-deep-matters">Deep Learning: Why “Deep” Matters</h2>
+<p>The word <strong>deep</strong> in “deep” learning refers to the use of multiple layers. A “shallow” model may transform the input once before prediction. A deep model transforms the input repeatedly, allowing each layer to build on the previous one.</p>
+<p>In image recognition, early layers might learn edges, intermediate layers might learn shapes, and later layers might learn object parts. In methylation data, the analogy is less visual but still useful. Early layers may learn combinations of nearby or correlated CpG sites. Later layers may learn broader patterns related to immune composition, developmental regulation, or age-associated methylation remodeling.</p>
+<p>A deep learning model is trained by minimizing a <em>loss function</em>. In this case study, the loss is based on absolute prediction error:</p>
+<p><span class="math display">\[
+\text{Absolute Error} = |\text{True Age} - \text{Predicted Age}|
+\]</span></p>
+<p>The model adjusts its weights to reduce this error across the training samples. This adjustment is done using an <em>optimization algorithm</em> such as Adam. <!-- Point to a reference here, maybe a margin comment? --></p>
+<p>The training process proceeds iteratively. The model makes predictions, calculates errors, updates weights, and repeats. Over many <em>epochs</em>, the model gradually improves its predictions.</p>
+<div class="definition_box">
+<div class="definition_box_header">
+<p>Important training concepts include:</p>
+</div>
+<div class="inner_block">
+<p><strong>Epoch</strong>: One full pass through the training data.</p>
+<p><strong>Batch Size</strong>: The number of samples used for each weight update.</p>
+<p><strong>Learning Rate</strong>: How large each update step should be.</p>
+<p><strong>Optimizer</strong>: The algorithm used to update model weights.</p>
+<p><strong>Loss Function</strong>: The quantity the model tries to minimize.</p>
+<p><strong>Validation Set</strong>: Held-out data used to monitor performance during training.</p>
+<p><strong>Test Set</strong>: Independent data used for final evaluation.</p>
+</div>
+</div>
+<p>These concepts are not specific to our motivating methylation data, but central to modern deep learning across many different applications. A goal of this case study is to make these ideas concrete by applying them to a biologically meaningful prediction task.</p>
+</section>
+<section id="overfitting-and-regularization" class="level2">
+<h2 class="anchored" data-anchor-id="overfitting-and-regularization">Overfitting and Regularization</h2>
+<p>One of the most important ideas in machine learning is <strong>overfitting</strong>.</p>
+<p>A model overfits when it learns patterns that are specific to the training data but do not generalize to new data. In genomics, overfitting is especially easy because there are many features and often relatively few samples. A model can accidentally learn technical artifacts, study-specific batch effects, or random noise.</p>
+<p>Overfitting can look impressive during training. The model may have very low error on the training set. But when applied to new studies, performance may collapse.</p>
+<p><strong>Regularization</strong> refers to methods that reduce overfitting by limiting model complexity.</p>
+<p>Elastic net uses regularization directly through coefficient penalties. Neural networks use several forms of regularization, including <strong>dropout</strong>, <strong>weight decay</strong>, <strong>early stopping</strong>, and <strong>validation monitoring</strong>.</p>
+<div class="definition_box">
+<div class="definition_box_header">
+<p>Regularization strategies for neural netwroks:</p>
+</div>
+<div class="inner_block">
+<p><strong>Dropout</strong> randomly removes a fraction of hidden units during training. This prevents the network from relying too heavily on any one pathway through the model. It encourages the network to learn more robust representations.</p>
+<p><strong>Weight decay</strong> penalizes large weights, encouraging smoother and less extreme models.</p>
+<p><strong>Cross-validation</strong> repeatedly splits training data into fitting and validation subsets, helping evaluate whether model performance is stable.</p>
+</div>
+</div>
+</section>
+<section id="why-compare-elastic-net-and-deep-learning" class="level2">
+<h2 class="anchored" data-anchor-id="why-compare-elastic-net-and-deep-learning">Why Compare Elastic Net and Deep Learning?</h2>
+<p>A central pedagogical theme of this case study is comparison. Deep learning should not be introduced as a replacement for statistical modeling. Instead, it should be introduced as one part of a modeling toolkit. To understand what deep learning contributes, we need meaningful comparisons.</p>
+<p>We compare to elastic net for several reasons:</p>
+<ol type="1">
+<li>First, it is historically central to epigenetic clocks. Many widely used<br>
+clocks were developed using penalized regression.</li>
+<li>Second, it performs well in high-dimensional settings. A neural network<br>
+that only slightly outperforms a simpler model is not very informative.</li>
+<li>Third, elastic net is easier to interpret. Its coefficients directly<br>
+indicate which CpG sites contribute to the prediction and in what direction.<br>
+Neural networks are more flexible but less transparent.</li>
+<li>Fourth, elastic net is computationally efficient. If elastic net performs<br>
+similarly to deep learning, then the added complexity of neural networks may<br>
+not be justified for some applications.</li>
+</ol>
+<p>This comparison encourages critical thinking. We do not assume that deep learning is universally better. Instead, we ask when additional flexibility improves prediction enough to justify increased complexity.</p>
+</section>
+<section id="introducing-scorcher" class="level2">
+<h2 class="anchored" data-anchor-id="introducing-scorcher">Introducing Scorcher</h2>
+<p>Deep learning is often taught using Python frameworks such as TensorFlow, <!-- NEED REFERENCES/LINKS --> Keras, or PyTorch. These tools are powerful, but many biomedical researchers, statisticians, and data scientists work primarily in R. Switching programming languages can create additional barrier and steeper learning curves.</p>
+<p>The <code>scorcher</code> package is designed to make deep learning more accessible in R by building on the <code>torch</code> ecosystem while providing a higher-level modeling interface. <code>Scorcher</code> aims to make neural networks easier to define, inspect, train, modify, compare, reuse, and teach. It emphasizes model construction through ‘tidy’ composable functions. This allows users to focus on the structure of the model: what the inputs are, what layers are added, what activation functions are used, what loss is optimized, and how predictions are evaluated.</p>
+<p>In this case study, <code>scorcher</code> serves two roles: 1. First, it is the computational tool used to build the neural network<br>
+epigenetic clock. 2. Second, it is a teaching framework that makes the deep learning architecture<br>
+visible. Each line in a scorcher pipeline corresponds to a modeling decision.</p>
+<p>For example, a model pipeline might say:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_layer</span>(linear, <span class="at">in_features =</span> <span class="dv">1000</span>, <span class="at">out_features =</span> <span class="dv">512</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_layer</span>(relu)                                           <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_dropout</span>(<span class="fl">0.3</span>)                                          <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_layer</span>(linear, <span class="at">in_features =</span> <span class="dv">512</span>,  <span class="at">out_features =</span> <span class="dv">512</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_layer</span>(relu)                                           <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_dropout</span>(<span class="fl">0.3</span>)                                          <span class="sc">|&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scorch_layer</span>(linear, <span class="at">in_featues =</span> <span class="dv">512</span>, <span class="at">out_features =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here, we can see that the model takes 1,000 CpG sites as input, transforms them into a 512-dimensional hidden representation, applies a nonlinear (relu) activation, uses dropout for regularization, and ultimately returns one predicted age.</p>
+</section>
+<section id="a-note-on-tidy-function-composition-and-piping-in-r" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="a-note-on-tidy-function-composition-and-piping-in-r">A Note on Tidy Function Composition and Piping in R</h2>
+<p>Many R users are familiar with tidy workflows where data transformations are written as a sequence of readable steps. For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_years =</span> <span class="fu">as.numeric</span>(age)) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sample_id, age_years)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is convenient because it makes analysis pipelines easier to read. Each line describes one transformation. The output of one step becomes the input to the next. <code>Scorcher</code> extends this design philosophy to neural networks. Instead of treating model architecture as a hidden object created all at once, we build it step by step. This mirrors how we think conceptually:</p>
+<pre class="text"><code>Start with inputs |&gt;
+  Add a dense layer |&gt;
+  Add a nonlinear activation |&gt;
+  Add regularization |&gt;
+  ... Repeat ...
+  Add output layer |&gt;
+  Compile |&gt;
+  Train |&gt;
+  Evaluate |&gt;</code></pre>
+<p>Piping also encourages modularity. If we want to change the model, we can add, remove, or modify one step. For example, we can change dropout from 0.3 to 0.5, replace the type of activation function, or add another hidden layer. This makes experimentation natural, but it also improves reproducibility: a model architecture written as a pipeline can be read, reviewed, and discussed.</p>
+<p><span style="color: red;">Add scorcher analysis here</span> <!-- NEED TO ADD! --></p>
 <hr>
 <p>If you have been following along but stopped, we could load our wrangled data like so:</p>
 <div class="cell">
@@ -727,6 +1466,7 @@ Explain how this analysis helps answer the main questions posed earlier in the c
 <div class="no-row-height column-margin column-container"><div class="">
 <p>We might use a column margin note to add an equation or some other annotation for learners or educators.</p>
 </div></div><hr>
+</section>
 </section>
 <section id="summary" class="level1">
 <h1><strong>Summary</strong></h1>
@@ -794,7 +1534,7 @@ Automatically include the packages table from _packages.qmd?
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Etc/UTC
- date     2026-02-03
+ date     2026-05-01
  pandoc   3.1.1 @ /usr/local/bin/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
