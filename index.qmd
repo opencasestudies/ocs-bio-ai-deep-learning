@@ -82,7 +82,7 @@ include-sections:
 ***
 
 ```{r}
-devtools::session_info()
+devtools::session_info() 
 ```
 
 {{< include _acknowledgements.qmd >}}
