@@ -1,0 +1,32 @@
+## Glossary
+***
+
+```{r}
+#| results: asis
+#| echo: false
+
+library(yaml)
+
+glossary_table <- function(path = "glossary.yml") {
+
+  g <- yaml::read_yaml(path)
+  g_sorted <- g[order(names(g))]
+
+  out <- c(
+    "<table class='glossary_table'>",
+    "<tr><th><b>Term</b></th><th><b>Definition</b></th></tr>"
+  )
+
+  for (term in names(g_sorted)) {
+    def <- paste(g_sorted[[term]], collapse = "\n")
+    row <- sprintf("<tr><td>%s</td><td>%s</td></tr>", term, def)
+    out <- c(out, row)
+  }
+
+  out <- c(out, "</table>")
+
+  knitr::asis_output(paste(out, collapse = "\n"))
+}
+
+glossary_table("glossary.yml")
+```
