@@ -14,7 +14,7 @@ website:
     logo: "assets/Bio-OCS_Logo.png"
     foreground: "#1B365D"
   google-analytics:
-    tracking-id: "G-XXXXXXXXXX"
+    tracking-id: "G-5R5B1JFCGE"
   page-footer:
     left: |
       This book was built with <a href="https://quarto.org/" style="color: #0000FF;">Quarto</a> using
@@ -27,9 +27,16 @@ website:
       - icon: github
         href: https://github.com/opencasestudies/ocs-template-quarto
 
+glossary:
+  path: glossary.yml
+  popup: click
+  show: true
+
 brand: _brand.yml
 format:
   html:
+    code-copy: true
+    code-block-bg: true
     grid:
        sidebar-width: 260px
     theme: cosmo
@@ -38,3 +45,6 @@ format:
     toc: true
     toc-location: left
     license: "CC BY-NC 4.0"
+
+filters:
+  - auto-add-ai-disclaimer.lua
