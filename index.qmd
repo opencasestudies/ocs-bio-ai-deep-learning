@@ -1,5 +1,5 @@
 ---
-title: "**Biomedical Open Case Studies: {Fill In Title}**"
+title: "**Biomedical Open Case Studies: Building a Neural Network-Based Epigenetic Clock in R Using `scorcher`**"
 bibliography: resources/references.bib
 include-sections:
   stat-los: false
