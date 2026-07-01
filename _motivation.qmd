@@ -11,35 +11,110 @@
 
 ***
 
-Aging is measurable long before it is visible. Although we often think of aging 
-in terms of clinical symptoms, frailty, or disease risk, biological aging begins 
-much earlier and unfolds across multiple molecular systems. One of the most 
-reproducible molecular correlates of aging is **DNA methylation**, a regulatory 
-chemical modification that alters gene activity without changing DNA sequence. 
-Over the past decade, researchers have discovered that methylation patterns at 
-specific regions in our DNA change systematically with age across populations, 
-environments, and disease states.
+Aging is measurable before it is visible. Although we often think of aging in 
+terms of clinical frailty, or disease risk, 
+{{< glossary "biological age" display="biological aging" >}} begins much earlier 
+and unfolds across multiple molecular systems. One of the most reproducible 
+correlates of aging is **{{< glossary "DNA methylation" >}}**, a regulatory 
+chemical modification that alters gene activity without changing the DNA 
+sequence itself.
 
-These observations led to the development of **epigenetic clocks**: statistical 
-models that estimate chronological age directly from DNA methylation profiles. 
+Over the past decade, researchers have discovered that 
+{{< glossary "DNA methylation" display="methylation patterns" >}} at specific 
+regions in our DNA change systematically with age across populations, 
+environments, and disease states. These observations led to the development of 
+**{{< glossary "epigenetic clock" display="epigenetic clocks" >}}**: statistical 
+models that estimate {{< glossary "chronological age" >}} directly from 
+{{< glossary "methylation profile" display="DNA methylation profiles" >}}. 
 The surprising accuracy of these clocks suggests that aging leaves a detectable 
-imprint across the genome. Even more intriguingly, deviations between predicted 
-age and chronological age may reflect biological differences in health status, 
-environmental exposure, or disease processes.
+imprint across the {{< glossary genome >}}. Even more intriguingly, deviations 
+between {{< glossary "chronological age" display="predicted age" >}} and 
+{{< glossary "chronological age" >}} may reflect biological differences in 
+health status, environmental exposure, or disease processes.
+
+### What Are Epigenetic Clocks?
+
+:::: {.definition_box}
+
+::: {.definition_box_header}
+
+Definition
+
+:::
+
+::: {.inner_block}
+
+**{{< glossary "epigenetic clock" display="Epigenetic clocks" >}}** are 
+statistical or 
+{{< glossary "machine learning" display="machine learning models" >}} that 
+estimate an individual's {{< glossary "biological age" >}} by learning 
+systematic patterns in 
+{{< glossary "DNA methylation" display="DNA methylation levels" >}} at specific 
+genomic locations ({{< glossary "CpG site" display="CpG sites" >}}). These 
+models leverage age-associated changes in 
+{{< glossary "DNA methylation" display="methylation" >}} to produce an age 
+estimate that can reflect not only chronological time but also aspects of 
+{{< glossary "biological age" display="biological aging" >}}, health status, 
+and disease risk.
+
+:::
+
+::::
+
+Early {{< glossary "epigenetic clock" display="epigenetic clocks" >}} (like the 
+Horvath and Hannum clocks, developed in 2013) were based on 
+**{{< glossary "elastic net regression" >}}**, a 
+{{< glossary "penalized regression" display="penalized linear regression" >}} 
+technique. These models were highly successful because they:
+
+- Handle {{< glossary "high-dimensional data" >}} (many more 
+  {{< glossary "CpG site" display="CpGs" >}} than samples)
+- Automatically select {{< glossary feature display="predictive features" >}}
+- Are computationally efficient
+- Generalize reasonably well across tissues and populations
+
+However, biology is complex. 
+{{< glossary "DNA methylation" display="Methylation patterns" >}} arise from 
+{{< glossary chromatin display="regulatory networks" >}}, 
+{{< glossary chromatin display="chromatin structures" >}}, and biological 
+{{< glossary interaction display="interactions" >}} that are often 
+**{{< glossary nonlinear >}}** processes. Recent work suggests that 
+**{{< glossary "deep neural network" display="deep neural networks" >}}** may 
+capture patterns that linear models miss by:
+
+- Modeling {{< glossary nonlinear display="nonlinear relationships" >}} 
+  among {{< glossary "CpG site" display="CpGs" >}}
+- Capturing {{< glossary interaction display="interactions" >}} between 
+  genomic regions
+- Learning multi-scale patterns across thousands of sites simultaneously
+
+This case study explores how 
+{{< glossary "machine learning" display="machine learning models" >}} can learn 
+aging signatures from 
+{{< glossary "high-dimensional data" display="high-dimensional" >}} 
+{{< glossary "DNA methylation" display="DNA methylation data" >}}, beginning 
+with the classical 
+{{< glossary "elastic net regression" display="elastic net" >}} baseline and 
+progressing to 
+{{< glossary "deep neural network" display="deep neural networks" >}}.
+
+
+
+
+
+
+
+
+
+<!--- EXTRA?                                                                     --- INCORPORATE THIS?
+
+
+
 
 This case study explores how machine learning models can learn those aging 
 signatures from high-dimensional DNA methylation data. We begin with classical 
 penalized regression models and then move toward deep neural networks capable of 
 capturing nonlinear structure across thousands of DNA regions simultaneously.
-
-
-
-
-
-
-
-
-
 
 DNA methylation-based *epigenetic clocks* have transformed aging research by 
 providing quantitative markers of biological age that often outperform 
@@ -57,26 +132,6 @@ working with DNA methylation data, introduce epigenetic clock models, teach
 modern neural network construction in `R`, and highlight practical modeling 
 issues such as overfitting, interpretability, and biological validation.
 
-:::{.definition_box}
-
-::::{.definition_box_header}
-
-Definition
-
-::::
-
-::::{.inner_block}
-
-**Epigenetic clocks** are statistical or machine learning models that estimate 
-an individual's biological age by learning systematic patterns in DNA 
-methylation levels at specific genomic locations (CpG sites). These models 
-leverage age-associated changes in methylation to produce an age estimate that 
-can reflect not only chronological time but also aspects of biological aging, 
-health status, and disease risk.
-
-::::
-
-:::
 
 [Images are very helpful within this section....]{style="color: red;"}
 

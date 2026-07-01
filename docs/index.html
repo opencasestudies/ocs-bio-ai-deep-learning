@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Biomedical Open Case Studies: Building a Neural Network-Based Epigenetic Clock in R Using scorcher – Biomedical Open Case Studies</title>
+<title>quarto-input82b79cf9a5ede589 – Biomedical Open Case Studies</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -68,25 +71,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./assets/Bio-OCS_Logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<<<<<<< HEAD
 <link href="site_libs/bootstrap/bootstrap-2ccc2715d22c855d98d1c4a9487fc79c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-2ccc2715d22c855d98d1c4a9487fc79c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-2ccc2715d22c855d98d1c4a9487fc79c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-=======
-<link href="site_libs/bootstrap/bootstrap-0c405366042b49ef95aaabe92e50da43.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-0c405366042b49ef95aaabe92e50da43.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-0c405366042b49ef95aaabe92e50da43.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
->>>>>>> dae83e32a54bbee84ed3f7b05e89e768607636de
+<link href="site_libs/quarto-contrib/glossary/glossary.css" rel="stylesheet">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -114,25 +114,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MFRJSR7FLK"></script>
 
 <script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
+gtag('config', 'G-MFRJSR7FLK', { 'anonymize_ip': true});
 </script>
 <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-<<<<<<< HEAD
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-=======
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
->>>>>>> dae83e32a54bbee84ed3f7b05e89e768607636de
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -172,8 +168,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./assets/Bio-OCS_Logo.png" alt="" class="navbar-logo light-content">
-    <img src="./assets/Bio-OCS_Logo.png" alt="" class="navbar-logo dark-content">
+    <img src="./assets\Bio-OCS_Logo.png" alt="" class="navbar-logo light-content">
+    <img src="./assets\Bio-OCS_Logo.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Biomedical Open Case Studies</span>
@@ -201,7 +197,8 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><strong>Biomedical Open Case Studies: Building a Neural Network-Based Epigenetic Clock in R Using <code>scorcher</code></strong></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><div class="line-block"><strong>Biomedical Open Case Studies:</strong><br>
+<strong>Building a Neural Network-Based Epigenetic Clock in R Using <em>scorcher</em></strong></div></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -221,7 +218,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><strong>Motivation</strong></a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><strong>Motivation</strong></a>
+  <ul class="collapse">
+  <li><a href="#what-are-epigenetic-clocks" id="toc-what-are-epigenetic-clocks" class="nav-link" data-scroll-target="#what-are-epigenetic-clocks">What Are Epigenetic Clocks?</a></li>
+  </ul></li>
   <li><a href="#main-question" id="toc-main-question" class="nav-link" data-scroll-target="#main-question"><strong>Main Question</strong></a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><strong>Learning Objectives</strong></a></li>
   <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><strong>Context</strong></a>
@@ -269,7 +269,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><strong>Biomedical Open Case Studies: Building a Neural Network-Based Epigenetic Clock in R Using <code>scorcher</code></strong></h1>
+<h1 class="title"><div class="line-block"><strong>Biomedical Open Case Studies:</strong><br>
+<strong>Building a Neural Network-Based Epigenetic Clock in R Using <em>scorcher</em></strong></div></h1>
 </div>
 
 
@@ -296,7 +297,16 @@ window.Quarto = {
   Examples in the documentation range from including images and videos to 
   including margin notes, annotating code, and linking within a document.
 -->
-<p>{{&lt; include _main_image.qmd &gt;}} <!-- NEED TO UPDATE THIS --></p>
+<section id="section" class="level4 outline">
+<h4 class="outline anchored" data-anchor-id="section"></h4>
+<!--
+Replace the `img/mainplot.png` image with the appropriate case study image or consider using ottrpal::include_slide() with a publicly viewable slide deck as needed.
+See image here for example: https://www.opencasestudies.org/ocs-bp-school-shootings-dashboard/
+-->
+<p><a href="img/mainplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/mainplot.png" class="img-fluid" alt="Map showing amount of pollution across the US localized to monitors." width="800"></a></p>
+</section>
+<section id="section-1" class="level4">
+<h4 class="anchored" data-anchor-id="section-1"></h4>
 <!--
 The disclaimer block, license block, and funding info generally will not need updated
 
@@ -363,24 +373,66 @@ The reference block (specifically the inner_block) should be updated to reflect 
   Images or videos may be helpful so this includes an example of including an 
   image.
 -->
+</section>
 <section id="motivation" class="level1">
 <h1><strong>Motivation</strong></h1>
 <hr>
-<p>Aging is measurable long before it is visible. Although we often think of aging in terms of clinical symptoms, frailty, or disease risk, biological aging begins much earlier and unfolds across multiple molecular systems. One of the most reproducible molecular correlates of aging is <strong>DNA methylation</strong>, a regulatory chemical modification that alters gene activity without changing DNA sequence. Over the past decade, researchers have discovered that methylation patterns at specific regions in our DNA change systematically with age across populations, environments, and disease states.</p>
-<p>These observations led to the development of <strong>epigenetic clocks</strong>: statistical models that estimate chronological age directly from DNA methylation profiles. The surprising accuracy of these clocks suggests that aging leaves a detectable imprint across the genome. Even more intriguingly, deviations between predicted age and chronological age may reflect biological differences in health status, environmental exposure, or disease processes.</p>
-<p>This case study explores how machine learning models can learn those aging signatures from high-dimensional DNA methylation data. We begin with classical penalized regression models and then move toward deep neural networks capable of capturing nonlinear structure across thousands of DNA regions simultaneously.</p>
-<p>DNA methylation-based <em>epigenetic clocks</em> have transformed aging research by providing quantitative markers of biological age that often outperform chronological age in predicting morbidity, frailty, and mortality. Although most established clocks to date rely on penalized linear regression (e.g., elastic net), recent works have demonstrated that deep learning may capture richer nonlinear relationships among DNA methylation sites, improving predictive accuracy.</p>
-<p>This case study walks learners through reconstructing a neural network epigenetic clock model in the <code>R</code> statistical programming language. Learners will use <code>scorcher</code>, an <code>R</code> package designed for developing deep learning models with ease. The goal is to give the learners a hands-on experience working with DNA methylation data, introduce epigenetic clock models, teach modern neural network construction in <code>R</code>, and highlight practical modeling issues such as overfitting, interpretability, and biological validation.</p>
+<p>Aging is measurable before it is visible. Although we often think of aging in terms of clinical frailty, or disease risk, <button class="glossary"><span class="def">An estimate of physiological or molecular aging that may differ from chronological age.</span>biological aging</button> begins much earlier and unfolds across multiple molecular systems. One of the most reproducible correlates of aging is <strong><button class="glossary"><span class="def">An epigenetic chemical modification of DNA, often at CpG sites, that can influence gene regulation without changing the DNA sequence.</span>DNA methylation</button></strong>, a regulatory chemical modification that alters gene activity without changing the DNA sequence itself.</p>
+<p>Over the past decade, researchers have discovered that <button class="glossary"><span class="def">An epigenetic chemical modification of DNA, often at CpG sites, that can influence gene regulation without changing the DNA sequence.</span>methylation patterns</button> at specific regions in our DNA change systematically with age across populations, environments, and disease states. These observations led to the development of <strong><button class="glossary"><span class="def">A statistical or machine learning model that estimates age from molecular epigenetic patterns such as DNA methylation.</span>epigenetic clocks</button></strong>: statistical models that estimate <button class="glossary"><span class="def">Age measured by elapsed calendar time since birth.</span>chronological age</button> directly from <button class="glossary"><span class="def">A vector of DNA methylation measurements for one sample.</span>DNA methylation profiles</button>. The surprising accuracy of these clocks suggests that aging leaves a detectable imprint across the <button class="glossary"><span class="def">The complete DNA sequence of an organism.</span>genome</button>. Even more intriguingly, deviations between <button class="glossary"><span class="def">Age measured by elapsed calendar time since birth.</span>predicted age</button> and <button class="glossary"><span class="def">Age measured by elapsed calendar time since birth.</span>chronological age</button> may reflect biological differences in health status, environmental exposure, or disease processes.</p>
+<section id="what-are-epigenetic-clocks" class="level3">
+<h3 class="anchored" data-anchor-id="what-are-epigenetic-clocks">What Are Epigenetic Clocks?</h3>
 <div class="definition_box">
 <div class="definition_box_header">
 <p>Definition</p>
 </div>
 <div class="inner_block">
-<p><strong>Epigenetic clocks</strong> are statistical or machine learning models that estimate an individual’s biological age by learning systematic patterns in DNA methylation levels at specific genomic locations (CpG sites). These models leverage age-associated changes in methylation to produce an age estimate that can reflect not only chronological time but also aspects of biological aging, health status, and disease risk.</p>
+<p><strong><button class="glossary"><span class="def">A statistical or machine learning model that estimates age from molecular epigenetic patterns such as DNA methylation.</span>Epigenetic clocks</button></strong> are statistical or <button class="glossary"><span class="def">A set of methods that learn patterns from data to make predictions, classifications, or decisions.</span>machine learning models</button> that estimate an individual’s <button class="glossary"><span class="def">An estimate of physiological or molecular aging that may differ from chronological age.</span>biological age</button> by learning systematic patterns in <button class="glossary"><span class="def">An epigenetic chemical modification of DNA, often at CpG sites, that can influence gene regulation without changing the DNA sequence.</span>DNA methylation levels</button> at specific genomic locations (<button class="glossary"><span class="def">A genomic location where a cytosine nucleotide is followed by a guanine nucleotide. CpG sites are common targets for DNA methylation measurement.</span>CpG sites</button>). These models leverage age-associated changes in <button class="glossary"><span class="def">An epigenetic chemical modification of DNA, often at CpG sites, that can influence gene regulation without changing the DNA sequence.</span>methylation</button> to produce an age estimate that can reflect not only chronological time but also aspects of <button class="glossary"><span class="def">An estimate of physiological or molecular aging that may differ from chronological age.</span>biological aging</button>, health status, and disease risk.</p>
 </div>
 </div>
-<p><span style="color: red;">Images are very helpful within this section….</span></p>
-<p><span style="color: red;">NEED IMAGE</span> <!-- ![](img/motivation_map_of_monitors.jpg){fig-alt="Map showing location of air pollution monitors across the US." width=800 .lightbox} --></p>
+<p>Early <button class="glossary"><span class="def">A statistical or machine learning model that estimates age from molecular epigenetic patterns such as DNA methylation.</span>epigenetic clocks</button> (like the Horvath and Hannum clocks, developed in 2013) were based on <strong><button class="glossary"><span class="def">A penalized regression method that combines L1 and L2 penalties to handle high-dimensional and correlated predictors.</span>elastic net regression</button></strong>, a <button class="glossary"><span class="def">Regression that adds a penalty term to the loss function to discourage overly complex models.</span>penalized linear regression</button> technique. These models were highly successful because they:</p>
+<ul>
+<li>Handle <button class="glossary"><span class="def">Data with a large number of measured features, often many more features than samples.</span>high-dimensional data</button> (many more <button class="glossary"><span class="def">A genomic location where a cytosine nucleotide is followed by a guanine nucleotide. CpG sites are common targets for DNA methylation measurement.</span>CpGs</button> than samples)</li>
+<li>Automatically select <button class="glossary"><span class="def">An input variable used by a model. In this case study, features are usually CpG methylation measurements.</span>predictive features</button></li>
+<li>Are computationally efficient</li>
+<li>Generalize reasonably well across tissues and populations</li>
+</ul>
+<p>However, biology is complex. <button class="glossary"><span class="def">An epigenetic chemical modification of DNA, often at CpG sites, that can influence gene regulation without changing the DNA sequence.</span>Methylation patterns</button> arise from <button class="glossary"><span class="def">The complex of DNA and proteins that packages DNA in cells and influences gene regulation.</span>regulatory networks</button>, <button class="glossary"><span class="def">The complex of DNA and proteins that packages DNA in cells and influences gene regulation.</span>chromatin structures</button>, and biological <button class="glossary"><span class="def">A pattern where the effect of one feature depends on the value of another feature.</span>interactions</button> that are often <strong><button class="glossary"><span class="def">Describing a relationship that cannot be represented as a simple straight-line effect.</span>nonlinear</button></strong> processes. Recent work suggests that <strong><button class="glossary"><span class="def">A neural network with multiple hidden layers.</span>deep neural networks</button></strong> may capture patterns that linear models miss by:</p>
+<ul>
+<li>Modeling <button class="glossary"><span class="def">Describing a relationship that cannot be represented as a simple straight-line effect.</span>nonlinear relationships</button> among <button class="glossary"><span class="def">A genomic location where a cytosine nucleotide is followed by a guanine nucleotide. CpG sites are common targets for DNA methylation measurement.</span>CpGs</button></li>
+<li>Capturing <button class="glossary"><span class="def">A pattern where the effect of one feature depends on the value of another feature.</span>interactions</button> between genomic regions</li>
+<li>Learning multi-scale patterns across thousands of sites simultaneously</li>
+</ul>
+<p>This case study explores how <button class="glossary"><span class="def">A set of methods that learn patterns from data to make predictions, classifications, or decisions.</span>machine learning models</button> can learn aging signatures from <button class="glossary"><span class="def">Data with a large number of measured features, often many more features than samples.</span>high-dimensional</button> <button class="glossary"><span class="def">An epigenetic chemical modification of DNA, often at CpG sites, that can influence gene regulation without changing the DNA sequence.</span>DNA methylation data</button>, beginning with the classical <button class="glossary"><span class="def">A penalized regression method that combines L1 and L2 penalties to handle high-dimensional and correlated predictors.</span>elastic net</button> baseline and progressing to <button class="glossary"><span class="def">A neural network with multiple hidden layers.</span>deep neural networks</button>.</p>
+<!--- EXTRA?                                                                     --- INCORPORATE THIS?
+
+
+
+
+This case study explores how machine learning models can learn those aging 
+signatures from high-dimensional DNA methylation data. We begin with classical 
+penalized regression models and then move toward deep neural networks capable of 
+capturing nonlinear structure across thousands of DNA regions simultaneously.
+
+DNA methylation-based *epigenetic clocks* have transformed aging research by 
+providing quantitative markers of biological age that often outperform 
+chronological age in predicting morbidity, frailty, and mortality. Although 
+most established clocks to date rely on penalized linear regression (e.g., 
+elastic net), recent works have demonstrated that deep learning may capture 
+richer nonlinear relationships among DNA methylation sites, improving 
+predictive accuracy.
+
+This case study walks learners through reconstructing a neural network 
+epigenetic clock model in the `R` statistical programming language. Learners 
+will use `scorcher`, an `R` package designed for developing deep learning 
+models with ease. The goal is to give the learners a hands-on experience 
+working with DNA methylation data, introduce epigenetic clock models, teach 
+modern neural network construction in `R`, and highlight practical modeling 
+issues such as overfitting, interpretability, and biological validation.
+
+
+[Images are very helpful within this section....]{style="color: red;"}
+
+[NEED IMAGE]{style="color: red;"} <!-- ![](img/motivation_map_of_monitors.jpg){fig-alt="Map showing location of air pollution monitors across the US." width=800 .lightbox} -->
 <hr>
 <!--
   Describe the main biological questions for this case study.
@@ -390,26 +442,23 @@ The reference block (specifically the inner_block) should be updated to reflect 
   https://www.opencasestudies.org/ocs-bp-co2-emissions/#Main_Questions
 -->
 </section>
+</section>
 <section id="main-question" class="level1">
 <h1><strong>Main Question</strong></h1>
 <hr>
-<p>This case study investigates whether DNA methylation profiles can be used to accurately predict chronological age across independent studies and populations using both classical and deep learning approaches.</p>
+<p>This case study investigates whether <button class="glossary"><span class="def">A vector of DNA methylation measurements for one sample.</span>DNA methylation profiles</button> can be used to accurately predict <button class="glossary"><span class="def">Age measured by elapsed calendar time since birth.</span>chronological age</button> across independent studies and populations using both classical and <button class="glossary"><span class="def">A family of machine learning methods based on neural networks with multiple layers that can learn complex representations from data.</span>deep learning</button> approaches. This case study investigates the following research questions:</p>
 <div class="main_question">
 <div class="main_question_header">
 <p>Our main question(s)</p>
 </div>
 <div class="inner_block">
 <ol type="1">
-<li><p>Can a neural network-based epigenetic clock accurately predict chronological age from publicly-available DNA methylation data?</p></li>
-<li><p>How does a deep learning-based epigenetic clock compare to a more traditional, elastic net-based clock when trained on the same, harmonized data?</p></li>
-<li><p>What practical challenges arise when applying deep learning model to high-dimensional biological data, and how can these challenges be addressed in a reproducible R workflow?</p></li>
+<li><p>Can a <button class="glossary"><span class="def">A machine learning model composed of connected layers of units that transform input features into predictions.</span>neural network-based</button> <button class="glossary"><span class="def">A statistical or machine learning model that estimates age from molecular epigenetic patterns such as DNA methylation.</span>epigenetic clock</button> accurately predict <button class="glossary"><span class="def">Age measured by elapsed calendar time since birth.</span>chronological age</button> from publicly-available <button class="glossary"><span class="def">An epigenetic chemical modification of DNA, often at CpG sites, that can influence gene regulation without changing the DNA sequence.</span>DNA methylation data</button>?</p></li>
+<li><p>How does a <button class="glossary"><span class="def">A family of machine learning methods based on neural networks with multiple layers that can learn complex representations from data.</span>deep learning-based</button> <button class="glossary"><span class="def">A statistical or machine learning model that estimates age from molecular epigenetic patterns such as DNA methylation.</span>epigenetic clock</button> compare to a more traditional, <button class="glossary"><span class="def">A penalized regression method that combines L1 and L2 penalties to handle high-dimensional and correlated predictors.</span>elastic net-based</button> clock when trained on the same, <button class="glossary"><span class="def">Processing data from multiple sources into a shared format or feature space so they can be analyzed together.</span>harmonized</button> data?</p></li>
+<li><p>What practical challenges arise when applying <button class="glossary"><span class="def">A family of machine learning methods based on neural networks with multiple layers that can learn complex representations from data.</span>deep learning</button> models to <button class="glossary"><span class="def">Data with a large number of measured features, often many more features than samples.</span>high-dimensional data</button>, and how can these challenges be addressed in a reproducible R workflow?</p></li>
 </ol>
 </div>
 </div>
-<hr>
-</section>
-<section id="learning-objectives" class="level1">
-<h1><strong>Learning Objectives</strong></h1>
 <hr>
 <!--
   Replace the shell content and enumerate the learning objectives in the 
@@ -424,6 +473,10 @@ The reference block (specifically the inner_block) should be updated to reflect 
   Biological LOS were not provided in the original open case studies and should 
   be included in all Bio-OCS case studies.
 -->
+</section>
+<section id="learning-objectives" class="level1">
+<h1><strong>Learning Objectives</strong></h1>
+<hr>
 <p>In this case study, we will explore how deep learning methods can be applied to high-dimensional biological data, using DNA methylation-based epigenetic clocks as our motivation.</p>
 <p>This case study will particularly focus on the practical and conceptual challenges that arise when building neural network models for omics-scale biological data, including data preprocessing, regularization, model evaluation, and comparison with classical statistical approaches such as elastic net regression. We will exemplify these concepts in within <code>R</code> ecosystem using the <code>R</code> package, <code>scorcher</code>.</p>
 <p>The skills, methods, and concepts that students will be familiar with by the end of this case study are:</p>
@@ -479,7 +532,7 @@ Fill out the table and add rows as necessary providing a link to the source and 
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add library() calls</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /home</code></pre>
+<pre><code>here() starts at C:/Users/ssalerno/OneDrive - Fred Hutchinson Cancer Center/Desktop/ocs-bio-ai-deep-learning</code></pre>
 </div>
 </div>
 <table class="caption-top table">
@@ -1532,100 +1585,77 @@ Automatically include the packages table from _packages.qmd?
 <h2 class="anchored" data-anchor-id="session-info"><strong>Session Info</strong></h2>
 <hr>
 <div class="cell">
-<<<<<<< HEAD
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in system2("quarto", "-V", stdout = TRUE, env = paste0("TMPDIR=", :
 running command '"quarto"
-TMPDIR=C:/Users/ssalerno/AppData/Local/Temp/Rtmp6xztS0/file2ed826e63516 -V' had
+TMPDIR=C:/Users/ssalerno/AppData/Local/Temp/Rtmpi6NdQ5/filec7d8367e536b -V' had
 status 1</code></pre>
 </div>
-=======
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
->>>>>>> dae83e32a54bbee84ed3f7b05e89e768607636de
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
- version  R version 4.3.2 (2023-10-31)
- os       Ubuntu 22.04.4 LTS
- system   x86_64, linux-gnu
- ui       X11
+ version  R version 4.5.2 (2025-10-31 ucrt)
+ os       Windows 10 x64 (build 19045)
+ system   x86_64, mingw32
+ ui       RTerm
  language (EN)
-<<<<<<< HEAD
  collate  English_United States.utf8
  ctype    English_United States.utf8
  tz       America/Los_Angeles
- date     2026-06-09
+ date     2026-06-24
  pandoc   3.8.3 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
  quarto   NA @ C:\\PROGRA~1\\RStudio\\RESOUR~1\\app\\bin\\quarto\\bin\\quarto.exe
-=======
- collate  en_US.UTF-8
- ctype    en_US.UTF-8
- tz       Etc/UTC
- date     2026-06-09
- pandoc   3.1.1 @ /usr/local/bin/ (via rmarkdown)
->>>>>>> dae83e32a54bbee84ed3f7b05e89e768607636de
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date (UTC) lib source
- bit           4.0.5   2022-11-15 [1] RSPM (R 4.3.0)
- bit64         4.0.5   2020-08-30 [1] RSPM (R 4.3.0)
- cachem        1.0.8   2023-05-01 [1] RSPM (R 4.3.0)
- cli           3.6.5   2025-04-23 [1] CRAN (R 4.3.2)
- crayon        1.5.2   2022-09-29 [1] RSPM (R 4.3.0)
- devtools      2.4.5   2022-10-11 [1] RSPM (R 4.3.0)
- digest        0.6.34  2024-01-11 [1] RSPM (R 4.3.0)
- ellipsis      0.3.2   2021-04-29 [1] RSPM (R 4.3.0)
- evaluate      1.0.5   2025-08-27 [1] CRAN (R 4.3.2)
- fansi         1.0.6   2023-12-08 [1] RSPM (R 4.3.0)
- fastmap       1.1.1   2023-02-24 [1] RSPM (R 4.3.0)
- fs            1.6.3   2023-07-20 [1] RSPM (R 4.3.0)
- glue          1.7.0   2024-01-09 [1] RSPM (R 4.3.0)
- here        * 1.0.2   2025-09-15 [1] CRAN (R 4.3.2)
- hms           1.1.3   2023-03-21 [1] RSPM (R 4.3.0)
- htmltools     0.5.7   2023-11-03 [1] RSPM (R 4.3.0)
- htmlwidgets   1.6.4   2023-12-06 [1] RSPM (R 4.3.0)
- httpuv        1.6.14  2024-01-26 [1] RSPM (R 4.3.0)
- jsonlite      2.0.0   2025-03-27 [1] CRAN (R 4.3.2)
- knitr         1.50    2025-03-16 [1] CRAN (R 4.3.2)
- later         1.3.2   2023-12-06 [1] RSPM (R 4.3.0)
- lifecycle     1.0.4   2023-11-07 [1] RSPM (R 4.3.0)
- magrittr      2.0.3   2022-03-30 [1] RSPM (R 4.3.0)
- memoise       2.0.1   2021-11-26 [1] RSPM (R 4.3.0)
- mime          0.12    2021-09-28 [1] RSPM (R 4.3.0)
- miniUI        0.1.1.1 2018-05-18 [1] RSPM (R 4.3.0)
- pillar        1.9.0   2023-03-22 [1] RSPM (R 4.3.0)
- pkgbuild      1.4.3   2023-12-10 [1] RSPM (R 4.3.0)
- pkgconfig     2.0.3   2019-09-22 [1] RSPM (R 4.3.0)
- pkgload       1.4.1   2025-09-23 [1] CRAN (R 4.3.2)
- profvis       0.3.8   2023-05-02 [1] RSPM (R 4.3.0)
- promises      1.2.1   2023-08-10 [1] RSPM (R 4.3.0)
- purrr         1.0.2   2023-08-10 [1] RSPM (R 4.3.0)
- R6            2.6.1   2025-02-15 [1] CRAN (R 4.3.2)
- Rcpp          1.0.12  2024-01-09 [1] RSPM (R 4.3.0)
- readr         2.1.5   2024-01-10 [1] RSPM (R 4.3.0)
- remotes       2.4.2.1 2023-07-18 [1] RSPM (R 4.3.0)
- rlang         1.1.6   2025-04-11 [1] CRAN (R 4.3.2)
- rmarkdown     2.25    2023-09-18 [1] RSPM (R 4.3.0)
- rprojroot     2.1.1   2025-08-26 [1] CRAN (R 4.3.2)
- sessioninfo   1.2.2   2021-12-06 [1] RSPM (R 4.3.0)
- shiny         1.8.0   2023-11-17 [1] RSPM (R 4.3.0)
- stringi       1.8.3   2023-12-11 [1] RSPM (R 4.3.0)
- stringr       1.5.1   2023-11-14 [1] RSPM (R 4.3.0)
- tibble        3.3.0   2025-06-08 [1] CRAN (R 4.3.2)
- tidyselect    1.2.0   2022-10-10 [1] RSPM (R 4.3.0)
- tzdb          0.4.0   2023-05-12 [1] RSPM (R 4.3.0)
- urlchecker    1.0.1   2021-11-30 [1] RSPM (R 4.3.0)
- usethis       2.2.3   2024-02-19 [1] RSPM (R 4.3.0)
- utf8          1.2.4   2023-10-22 [1] RSPM (R 4.3.0)
- vctrs         0.6.5   2023-12-01 [1] RSPM (R 4.3.0)
- vroom         1.6.5   2023-12-05 [1] RSPM (R 4.3.0)
- xfun          0.55    2025-12-16 [1] CRAN (R 4.3.2)
- xtable        1.8-4   2019-04-21 [1] RSPM (R 4.3.0)
- yaml          2.3.12  2025-12-10 [1] CRAN (R 4.3.2)
+ bit           4.6.0   2025-03-06 [1] CRAN (R 4.5.2)
+ bit64         4.6.0-1 2025-01-16 [1] CRAN (R 4.5.2)
+ cachem        1.1.0   2024-05-16 [1] CRAN (R 4.5.2)
+ cli           3.6.5   2025-04-23 [1] CRAN (R 4.5.2)
+ crayon        1.5.3   2024-06-20 [1] CRAN (R 4.5.2)
+ devtools      2.4.6   2025-10-03 [1] CRAN (R 4.5.2)
+ digest        0.6.39  2025-11-19 [1] CRAN (R 4.5.2)
+ ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.5.2)
+ evaluate      1.0.5   2025-08-27 [1] CRAN (R 4.5.2)
+ fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.5.2)
+ fs            1.6.6   2025-04-12 [1] CRAN (R 4.5.2)
+ glue          1.8.0   2024-09-30 [1] CRAN (R 4.5.2)
+ here        * 1.0.2   2025-09-15 [1] CRAN (R 4.5.2)
+ hms           1.1.4   2025-10-17 [1] CRAN (R 4.5.2)
+ htmltools     0.5.9   2025-12-04 [1] CRAN (R 4.5.2)
+ htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.5.2)
+ jsonlite      2.0.0   2025-03-27 [1] CRAN (R 4.5.2)
+ knitr         1.51    2025-12-20 [1] CRAN (R 4.5.2)
+ lifecycle     1.0.5   2026-01-08 [1] CRAN (R 4.5.2)
+ magrittr      2.0.4   2025-09-12 [1] CRAN (R 4.5.2)
+ memoise       2.0.1   2021-11-26 [1] CRAN (R 4.5.2)
+ otel          0.2.0   2025-08-29 [1] CRAN (R 4.5.2)
+ pillar        1.11.1  2025-09-17 [1] CRAN (R 4.5.2)
+ pkgbuild      1.4.8   2025-05-26 [1] CRAN (R 4.5.2)
+ pkgconfig     2.0.3   2019-09-22 [1] CRAN (R 4.5.2)
+ pkgload       1.5.0   2026-02-03 [1] CRAN (R 4.5.2)
+ purrr         1.2.1   2026-01-09 [1] CRAN (R 4.5.2)
+ R6            2.6.1   2025-02-15 [1] CRAN (R 4.5.2)
+ readr         2.1.6   2025-11-14 [1] CRAN (R 4.5.2)
+ remotes       2.5.0   2024-03-17 [1] CRAN (R 4.5.2)
+ rlang         1.1.7   2026-01-09 [1] CRAN (R 4.5.2)
+ rmarkdown     2.30    2025-09-28 [1] CRAN (R 4.5.2)
+ rprojroot     2.1.1   2025-08-26 [1] CRAN (R 4.5.2)
+ rstudioapi    0.18.0  2026-01-16 [1] CRAN (R 4.5.2)
+ sessioninfo   1.2.3   2025-02-05 [1] CRAN (R 4.5.2)
+ tibble        3.3.1   2026-01-11 [1] CRAN (R 4.5.2)
+ tidyselect    1.2.1   2024-03-11 [1] CRAN (R 4.5.2)
+ tzdb          0.5.0   2025-03-15 [1] CRAN (R 4.5.2)
+ usethis       3.2.1   2025-09-06 [1] CRAN (R 4.5.2)
+ vctrs         0.7.1   2026-01-23 [1] CRAN (R 4.5.2)
+ vroom         1.7.0   2026-01-27 [1] CRAN (R 4.5.2)
+ xfun          0.56    2026-01-18 [1] CRAN (R 4.5.2)
+ yaml          2.3.12  2025-12-10 [1] CRAN (R 4.5.2)
 
- [1] /usr/local/lib/R/site-library
- [2] /usr/local/lib/R/library
+ [1] C:/Users/ssalerno/AppData/Local/R/win-library/4.5
+ [2] C:/Program Files/R/R-4.5.2/library
+ * ── Packages attached to the search path.
 
 ──────────────────────────────────────────────────────────────────────────────</code></pre>
 </div>
@@ -2066,6 +2096,38 @@ Fill in any Acknowledgments using an example from a previous case study if neede
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

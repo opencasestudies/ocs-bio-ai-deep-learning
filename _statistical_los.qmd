@@ -1,11 +1,11 @@
-<u>**Statistical Learning Objectives:**</u>
-
 <!--
   Enumerate the Statistical specific learning objectives here. (Can have more 
   or less than 3 or be omitted completely dependent on the open case study 
   overall topic). For an example, see this previous Open Case Study: 
   https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
 -->
+
+<u>**Statistical Learning Objectives:**</u>
 
 1. Explain the bias-variance tradeoff in high-dimensional prediction problems.
 

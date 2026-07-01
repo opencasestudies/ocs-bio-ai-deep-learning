@@ -14,7 +14,7 @@ website:
     logo: "assets/Bio-OCS_Logo.png"
     foreground: "#1B365D"
   google-analytics:
-    tracking-id: "G-XXXXXXXXXX"
+    tracking-id: "G-MFRJSR7FLK"
   page-footer:
     left: |
       This book was built with <a href="https://quarto.org/" style="color: #0000FF;">Quarto</a> using

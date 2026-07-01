@@ -1,0 +1,168 @@
+Adam: |
+  An adaptive gradient-based optimization algorithm commonly used to train neural networks.
+AMSGrad: |
+  A variant of Adam that keeps a nondecreasing estimate of past squared gradients to improve convergence behavior in some settings.
+autosomal: |
+  Located on non-sex chromosomes. In humans, autosomes are chromosomes 1 through 22.
+batch effects: |
+  Systematic technical differences between groups of samples caused by processing date, laboratory, platform, reagent lot, or other non-biological factors.
+beta value: |
+  A DNA methylation measurement ranging from 0 to 1, where 0 indicates no observed methylation and 1 indicates complete observed methylation at a CpG site.
+Bioconductor: |
+  An open-source R project that provides software packages for bioinformatics and computational biology.
+biological age: |
+  An estimate of physiological or molecular aging that may differ from chronological age.
+biomedical data science: |
+  Data science methods applied to biological, clinical, and public-health data.
+bias-variance tradeoff: |
+  The modeling tradeoff between systematic error from overly simple models (bias) and sensitivity to random variation from overly flexible models (variance).
+chromatin: |
+  The complex of DNA and proteins that packages DNA in cells and influences gene regulation.
+chronological age: |
+  Age measured by elapsed calendar time since birth.
+coefficient: |
+  A fitted parameter in a statistical model that quantifies the contribution of a predictor to the model output.
+covariate: |
+  A measured variable used as an input, adjustment factor, or predictor in a statistical model.
+CpG site: |
+  A genomic location where a cytosine nucleotide is followed by a guanine nucleotide. CpG sites are common targets for DNA methylation measurement.
+cross-validation: |
+  A model evaluation strategy that repeatedly splits data into training and validation subsets to estimate out-of-sample performance.
+data leakage: |
+  A modeling error where information from the test or validation data is used during training or preprocessing, producing overly optimistic performance estimates.
+DeepMAge: |
+  A deep neural network-based epigenetic clock framework for predicting age from DNA methylation profiles.
+deep learning: |
+  A family of machine learning methods based on neural networks with multiple layers that can learn complex representations from data.
+deep neural network: |
+  A neural network with multiple hidden layers.
+DNA methylation: |
+  An epigenetic chemical modification of DNA, often at CpG sites, that can influence gene regulation without changing the DNA sequence.
+dropout: |
+  A neural network regularization method that randomly disables a fraction of hidden units during training.
+elastic net regression: |
+  A penalized regression method that combines L1 and L2 penalties to handle high-dimensional and correlated predictors.
+ELU: |
+  Exponential Linear Unit, a nonlinear activation function used in neural networks.
+EPIC BeadChip: |
+  An Illumina DNA methylation array platform that measures methylation at hundreds of thousands of CpG sites.
+epigenetic clock: |
+  A statistical or machine learning model that estimates age from molecular epigenetic patterns such as DNA methylation.
+fairness: |
+  The goal that models and analyses perform appropriately and avoid unjustified harms or systematic disadvantages across groups.
+feature: |
+  An input variable used by a model. In this case study, features are usually CpG methylation measurements.
+feature selection: |
+  The process of choosing a subset of input variables for model fitting or interpretation.
+Gene Expression Omnibus: |
+  A public NCBI repository for functional genomics data, including DNA methylation datasets.
+generalization: |
+  A model's ability to perform well on new data that were not used for training.
+genome: |
+  The complete DNA sequence of an organism.
+genomics: |
+  The study of genomes and genome-scale biological measurements.
+GEO accession: |
+  A stable identifier assigned to a dataset, study, or sample in the Gene Expression Omnibus.
+GEOquery: |
+  A Bioconductor package for downloading and working with Gene Expression Omnibus data in R.
+gradient: |
+  A vector of derivatives describing how a model output or loss changes with respect to inputs or parameters.
+gradient importance: |
+  A feature-importance measure based on the magnitude of the gradient of a model output with respect to input features.
+GPU: |
+  Graphics Processing Unit, hardware often used to accelerate neural network training and other parallel numerical computations.
+harmonization: |
+  Processing data from multiple sources into a shared format or feature space so they can be analyzed together.
+held-out test set: |
+  Data reserved until final evaluation and not used for model training or tuning.
+high-dimensional data: |
+  Data with a large number of measured features, often many more features than samples.
+HM450 array: |
+  The Illumina HumanMethylation450 BeadChip array, which measures methylation at roughly 450,000 CpG sites.
+hyperparameter: |
+  A model setting chosen before or during training control, such as learning rate, dropout, or regularization strength.
+IDAT file: |
+  A raw Illumina methylation array file containing fluorescence intensity measurements.
+imputation: |
+  The process of replacing missing values with estimated values.
+input-gradient magnitude: |
+  The absolute size of the gradient of a model output with respect to each input feature.
+interaction: |
+  A pattern where the effect of one feature depends on the value of another feature.
+lambda: |
+  A regularization-strength parameter commonly used in penalized regression.
+learning rate: |
+  A hyperparameter controlling the size of parameter updates during neural network optimization.
+linear regression: |
+  A statistical model that represents an outcome as a weighted sum of input variables.
+loss function: |
+  A function that measures how far model predictions are from observed outcomes during training.
+machine learning: |
+  A set of methods that learn patterns from data to make predictions, classifications, or decisions.
+MAE: |
+  Mean Absolute Error: the average absolute difference between predicted and observed values.
+median absolute error: |
+  The median of absolute prediction errors; a robust alternative to mean absolute error.
+methylation array: |
+  A microarray technology that measures DNA methylation at many genomic sites simultaneously.
+methylation profile: |
+  A vector of DNA methylation measurements for one sample.
+mini-batch: |
+  A subset of training samples used for one model update during neural network training.
+model evaluation: |
+  The process of measuring predictive performance using metrics and validation data.
+Nadam: |
+  An Adam-like optimizer that incorporates Nesterov momentum.
+neural network: |
+  A machine learning model composed of connected layers of units that transform input features into predictions.
+nonlinear: |
+  Describing a relationship that cannot be represented as a simple straight-line effect.
+normalization: |
+  A preprocessing step that adjusts data to reduce technical variation or put measurements on comparable scales.
+omics: |
+  A broad term for high-throughput biological measurements such as genomics, transcriptomics, proteomics, and epigenomics.
+optimization: |
+  The process of adjusting model parameters to minimize a loss function.
+overfitting: |
+  A modeling failure where performance is good on training data but poor on new data because the model learned noise or artifacts.
+penalized regression: |
+  Regression that adds a penalty term to the loss function to discourage overly complex models.
+phenotype: |
+  Measured characteristics or metadata for a biological sample or individual, such as age, disease status, or tissue type.
+probe: |
+  A designed sequence or assay feature on an array that measures a specific genomic location.
+PyTorch: |
+  An open-source deep learning library that provides tensor operations, automatic differentiation, and neural network tools.
+R2: |
+  The proportion of outcome variance explained by a model, often reported as a coefficient of determination.
+ReLU: |
+  Rectified Linear Unit, a common neural network activation function.
+regularization: |
+  Methods that constrain model complexity to reduce overfitting and improve generalization.
+residual: |
+  The difference between a predicted value and the corresponding observed value.
+RMSE: |
+  Root Mean Squared Error: the square root of the average squared prediction error.
+scorcher: |
+  An R package that provides a higher-level interface for building and training torch-based neural networks.
+SELU: |
+  Scaled Exponential Linear Unit, a neural network activation function designed for self-normalizing networks.
+sesame: |
+  A Bioconductor package for preprocessing Illumina DNA methylation array data.
+standardization: |
+  A scaling transformation that subtracts a mean and divides by a standard deviation, often producing z-scores.
+study-level validation: |
+  Evaluation where whole studies or cohorts are held out, testing whether a model generalizes across datasets.
+supervised learning: |
+  A machine learning setting where each training example includes input features and a known target outcome.
+torch: |
+  The R interface to the PyTorch deep learning library.
+training set: |
+  The data used to fit model parameters.
+validation: |
+  The process of assessing model performance on data not used to fit model parameters, often during model selection.
+weight decay: |
+  An L2 regularization term applied during optimization to discourage large neural network weights.
+z-score normalization: |
+  A standardization method that subtracts the training-set mean and divides by the training-set standard deviation.
