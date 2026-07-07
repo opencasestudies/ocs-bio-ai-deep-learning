@@ -1,9 +1,36 @@
-# **Suggested Homework**
+# **Continued Learning**
 ***
 
+:::{.next_steps_box}
+::::{.next_steps_box_header}
+Common Next Steps
+::::
+::::{.inner_block}
+Discuss common next steps for this type of an analysis in this box. Is there a specific number of steps that you need to do before a specific step? Is a "next step" more of an alternate step?
+::::
+:::
+
 <!--
-Suggest extra exercises using this data for students to practice the skills used in the case study.
-Example from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Suggested_Homework
+## Reinforcement Exercises
+
+Uncomment this section if you're suggesting an exercise that reiterates a large portion of the case study so learners can practice a hard skill again, reinforcing topics from the case study
+-->
+
+
+## Advancement Exercises
+
+Use this section to suggest different levels of exercises that build upon topics from the case study ... next steps, tangential skills, diving deeper into a side quest, etc.
+
+Perhaps explain how the suggested exercises relate to the common next steps.
+
+### Beginner
+
+### Intermediate
+
+### Advanced
+
+<!--
+Example from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Suggested_Homework (though this example doesn't include different levels like Beginner, Intermediate, and Advanced)
 -->
 
 ***
