@@ -55,7 +55,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -78,15 +97,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<<<<<<< HEAD
-<link href="site_libs/bootstrap/bootstrap-2ccc2715d22c855d98d1c4a9487fc79c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-2ccc2715d22c855d98d1c4a9487fc79c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-2ccc2715d22c855d98d1c4a9487fc79c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-=======
-<link href="site_libs/bootstrap/bootstrap-0c405366042b49ef95aaabe92e50da43.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-0c405366042b49ef95aaabe92e50da43.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-0c405366042b49ef95aaabe92e50da43.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
->>>>>>> dae83e32a54bbee84ed3f7b05e89e768607636de
+<link href="site_libs/bootstrap/bootstrap-b3bb40a8176a7974df64f59f1193bb6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b3bb40a8176a7974df64f59f1193bb6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b3bb40a8176a7974df64f59f1193bb6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -114,25 +130,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MFRJSR7FLK"></script>
 
 <script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
+gtag('config', 'G-MFRJSR7FLK', { 'anonymize_ip': true});
 </script>
 <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-<<<<<<< HEAD
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-=======
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
->>>>>>> dae83e32a54bbee84ed3f7b05e89e768607636de
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -221,7 +233,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><strong>Motivation</strong></a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link active" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation"><strong>Motivation</strong></a></li>
   <li><a href="#main-question" id="toc-main-question" class="nav-link" data-scroll-target="#main-question"><strong>Main Question</strong></a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><strong>Learning Objectives</strong></a></li>
   <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><strong>Context</strong></a>
@@ -250,10 +263,20 @@ window.Quarto = {
   <li><a href="#synopsis" id="toc-synopsis" class="nav-link" data-scroll-target="#synopsis"><strong>Synopsis</strong></a></li>
   <li><a href="#summary-plot" id="toc-summary-plot" class="nav-link" data-scroll-target="#summary-plot"><strong>Summary Plot</strong></a></li>
   </ul></li>
-  <li><a href="#suggested-homework" id="toc-suggested-homework" class="nav-link" data-scroll-target="#suggested-homework"><strong>Suggested Homework</strong></a></li>
+  <li><a href="#continued-learning" id="toc-continued-learning" class="nav-link" data-scroll-target="#continued-learning"><strong>Continued Learning</strong></a>
+  <ul class="collapse">
+  <li><a href="#advancement-exercises" id="toc-advancement-exercises" class="nav-link" data-scroll-target="#advancement-exercises">Advancement Exercises</a>
+  <ul class="collapse">
+  <li><a href="#beginner" id="toc-beginner" class="nav-link" data-scroll-target="#beginner">Beginner</a></li>
+  <li><a href="#intermediate" id="toc-intermediate" class="nav-link" data-scroll-target="#intermediate">Intermediate</a></li>
+  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced">Advanced</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#additional-information" id="toc-additional-information" class="nav-link" data-scroll-target="#additional-information"><strong>Additional Information</strong></a>
   <ul class="collapse">
   <li><a href="#helpful-links" id="toc-helpful-links" class="nav-link" data-scroll-target="#helpful-links"><strong>Helpful Links</strong></a></li>
+  <li><a href="#glossary" id="toc-glossary" class="nav-link" data-scroll-target="#glossary">Glossary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info"><strong>Session Info</strong></a></li>
   <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments"><strong>Acknowledgments</strong></a></li>
   </ul></li>
@@ -287,30 +310,42 @@ window.Quarto = {
 
 
 <!--
-  Update the various qmd documents below with each component of a Bio-OCS case 
-  study. Besides filling in the title in the header of this document, no other 
-  changes should be necessary within this file. Use the `include-sections` 
-  within the header to toggle section inclusion/exclusion as needed. For 
-  documentation on quarto syntax possibilities, use 
-  https://quarto.org/docs/authoring/markdown-basics.html.
-  Examples in the documentation range from including images and videos to 
-  including margin notes, annotating code, and linking within a document.
+  Update the various qmd documents below with each component of a Bio-OCS case study.
+  Besides filling in the title in the header of this document, no other changes should be necessary within this file.
+  Use the `include-sections` within the header to toggle section inclusion/exclusion as needed.
+  For documentation on quarto syntax possibilities, use https://quarto.org/docs/authoring/markdown-basics.html.
+  Examples in the documentation range from including images and videos to including margin notes, annotating code, and linking within a document.
 -->
-<p>{{&lt; include _main_image.qmd &gt;}} <!-- NEED TO UPDATE THIS --></p>
+<section id="section" class="level4 outline">
+<h4 class="outline anchored" data-anchor-id="section"></h4>
+<!--
+Replace the `img/mainplot.png` image with the appropriate case study image or consider using ottrpal::include_slide() with a publicly viewable slide deck as needed.
+See image here for example: https://www.opencasestudies.org/ocs-bp-school-shootings-dashboard/
+-->
+<p><a href="img/mainplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/mainplot.png" class="img-fluid" alt="Map showing amount of pollution across the US localized to monitors." width="800"></a></p>
+</section>
+<section id="section-1" class="level4">
+<h4 class="anchored" data-anchor-id="section-1"></h4>
 <!--
 The disclaimer block, license block, and funding info generally will not need updated
 
 Please update the access information (e.g., github link and data access)
 as well as any system or server requirements to work with the data
 -->
+<div class="tabset-margin-container"></div><div class="panel-tabset frontmatter-tabs">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Disclaimer</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">License</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Funding</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Citation</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">GitHub Repository</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false" href="">Keywords</a></li></ul>
+<div class="tab-content frontmatter-tabs">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="disclaimer_box">
 <div class="disclaimer_box_header">
 <p>Disclaimer</p>
 </div>
 <div class="inner_block">
-<p>The purpose of the <a href="https://opencasestudies.github.io" target="_blank">Open Case Studies</a> project is <strong>to demonstrate the use of various data science methods, tools, and software in the context of messy, real-world data</strong>. A given case study does not cover all aspects of the research process, is not claiming to be the most appropriate way to analyze a given data set, and should not be used in the context of making policy decisions without external consultation from scientific experts. In addition, due to size constraints, datasets used within a case study may be subset of the original/full dataset.</p>
+<p>The purpose of the <a href="https://opencasestudies.github.io" target="_blank">Open Case Studies</a> project is <strong>to demonstrate the use of various data science methods, tools, and software in the context of messy, real-world data</strong>. A given case study does not cover all aspects of the research process, is not claiming to be the most appropriate way to analyze a given data set, and should not be used in the context of making policy or clinical decisions without external consultation from scientific experts or medical care professionals. In addition, due to size constraints, datasets used within a case study may be subset of the original/full dataset.</p>
 </div>
 </div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="license_box">
 <div class="license_box_header">
 <p>License information</p>
@@ -319,31 +354,18 @@ as well as any system or server requirements to work with the data
 <p>This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en" target="_blank">(CC BY-NC 4.0)</a> United States License.</p>
 </div>
 </div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="funding_box">
+<div class="funding_box_header">
+<p>Funding information</p>
+</div>
+<div class="inner_block">
 <p>This work is funded through the National Institutes of Health, specifically the National Institute of General Medical Sciences: Grant Number 1R25GM160622.</p>
-<hr>
-<!--
-UPDATE: ACCESS Information (github source and data)
-In this space, provide an open access link to the case study source files.
-This is necessary for users to get access to case study data, at a minimum.
-See the following example from a previous case study (prior to Motivation section): https://www.opencasestudies.org/ocs-bp-co2-emissions/
--->
-<p>To access the GitHub repository for this case study see here: <a href="https://github.com/opencasestudies/ocs-bio-ai-deep-learning">https://github.com/opencasestudies/ocs-bio-ai-deep-learning</a></p>
-<!--
-If the data isn't in the main github repository, be sure to describe and link to the open source location of the data and how to access it
--->
-<!--
-Include bioOCSdata package information once ready/applicable
--->
-<hr>
-<!--
-UPDATE: SYSTEM, SERVER, or MOCK COMPUTING Information:
-
-In this space, provide any necessary system requirements or instructions on how to access a server (if necessary)
-or submit a mock computing job within the learnr environment in order to receive pre-processed datasets (if necessary).
-In essence this section is useful to provide information to learners on how to work with the data and follow along with this case study.
-This section may not be needed for all case studies and can be removed if not
--->
-<hr>
+</div>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <!--
 The reference block (specifically the inner_block) should be updated to reflect how this case study should be cited
 -->
@@ -355,6 +377,66 @@ The reference block (specifically the inner_block) should be updated to reflect 
 <p>{Fill In Authors}. {(YEAR)}. {github source url}. {Title} {(Version)}.</p>
 </div>
 </div>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<!--
+UPDATE: ACCESS Information (github source and data)
+In this space, provide an open access link to the case study source files.
+This is necessary for users to get access to case study data, at a minimum.
+See the following example from a previous case study (prior to Motivation section): https://www.opencasestudies.org/ocs-bp-co2-emissions/
+-->
+<div class="github_repo_box">
+<div class="github_repo_box_header">
+<p>GitHub repository</p>
+</div>
+<div class="inner_block">
+<p>To access the GitHub repository for this case study see here: {LINK}</p>
+</div>
+</div>
+<!--
+If the data isn't in the main github repository, be sure to describe and link to the open source location of the data and how to access it
+-->
+</div>
+<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
+<div class="keyword_box">
+<div class="keyword_box_header">
+<p>Keywords</p>
+</div>
+<div class="inner_block">
+<ul>
+<li>Keyword 1</li>
+<li>Keyword 2</li>
+<li>Keyword 3</li>
+<li>…Keyword n</li>
+</ul>
+<!-- Note that keywords should be the types of words that you'd use for a conference abstract or grant submission; focus on the emerging tech or best practice that is being covered as well as the specific part of the task/analysis/visualization that is being shown. Just a quick way to overview what skills/topics are part of the case study -->
+</div>
+</div>
+<!--
+Include bioOCSdata package information once ready/applicable
+-->
+</div>
+</div>
+</div>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<div class="prereq_box">
+<div class="prereq_box_header">
+<p>Prerequisites</p>
+</div>
+<div class="inner_block">
+<p>Add a list of prerequisites here.</p>
+</div>
+</div>
+<!--
+UPDATE: SYSTEM, SERVER, or MOCK COMPUTING Information:
+
+In this space, provide any necessary system requirements or instructions on how to access a server (if necessary)
+or submit a mock computing job within the learnr environment in order to receive pre-processed datasets (if necessary).
+In essence this section is useful to provide information to learners on how to work with the data and follow along with this case study.
+This section may not be needed for all case studies and can be removed if not
+-->
 <!--
   Describe the biological motivation for this case study. Include relevant 
   explanatory images and references throughout. See this previous case study 
@@ -363,6 +445,7 @@ The reference block (specifically the inner_block) should be updated to reflect 
   Images or videos may be helpful so this includes an example of including an 
   image.
 -->
+</section>
 <section id="motivation" class="level1">
 <h1><strong>Motivation</strong></h1>
 <hr>
@@ -440,20 +523,6 @@ https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
 <li><p>Train, tune, and evaluate deep learning-based predictive models using modern machine learning workflows such as <code>scorcher</code>.</p></li>
 <li><p>Compare model performance using appropriate validation strategies and metrics.</p></li>
 <li><p>Reason about computational tradeoffs, including memory usage, runtime, and the use of GPUs.</p></li>
-</ol>
-<p><u><strong>Statistical Learning Objectives:</strong></u></p>
-<!--
-  Enumerate the Statistical specific learning objectives here. (Can have more 
-  or less than 3 or be omitted completely dependent on the open case study 
-  overall topic). For an example, see this previous Open Case Study: 
-  https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
--->
-<ol type="1">
-<li><p>Explain the bias-variance tradeoff in high-dimensional prediction problems.</p></li>
-<li><p>Describe penalized regression methods (e.g., elastic net) and their role in feature selection.</p></li>
-<li><p>Understand loss functions, regularization, and optimization in neural network training.</p></li>
-<li><p>Design and interpret cross-validation and study-level validation strategies.</p></li>
-<li><p>Critically assess interpretability versus complexity when building prediction models.</p></li>
 </ol>
 <p><u><strong>Biological/Topical Learning Objectives:</strong></u></p>
 <!--
@@ -1503,14 +1572,40 @@ construct a plot here that summarizes the conclusions found in the data, if appl
 <hr>
 </section>
 </section>
-<section id="suggested-homework" class="level1">
-<h1><strong>Suggested Homework</strong></h1>
+<section id="continued-learning" class="level1">
+<h1><strong>Continued Learning</strong></h1>
 <hr>
+<div class="next_steps_box">
+<div class="next_steps_box_header">
+<p>Common Next Steps</p>
+</div>
+<div class="inner_block">
+<p>Discuss common next steps for this type of an analysis in this box. Is there a specific number of steps that you need to do before a specific step? Is a “next step” more of an alternate step?</p>
+</div>
+</div>
 <!--
-Suggest extra exercises using this data for students to practice the skills used in the case study.
-Example from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Suggested_Homework
+## Reinforcement Exercises
+
+Uncomment this section if you're suggesting an exercise that reiterates a large portion of the case study so learners can practice a hard skill again, reinforcing topics from the case study
+-->
+<section id="advancement-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="advancement-exercises">Advancement Exercises</h2>
+<p>Use this section to suggest different levels of exercises that build upon topics from the case study … next steps, tangential skills, diving deeper into a side quest, etc.</p>
+<p>Perhaps explain how the suggested exercises relate to the common next steps.</p>
+<section id="beginner" class="level3">
+<h3 class="anchored" data-anchor-id="beginner">Beginner</h3>
+</section>
+<section id="intermediate" class="level3">
+<h3 class="anchored" data-anchor-id="intermediate">Intermediate</h3>
+</section>
+<section id="advanced" class="level3">
+<h3 class="anchored" data-anchor-id="advanced">Advanced</h3>
+<!--
+Example from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Suggested_Homework (though this example doesn't include different levels like Beginner, Intermediate, and Advanced)
 -->
 <hr>
+</section>
+</section>
 </section>
 <section id="additional-information" class="level1">
 <h1><strong>Additional Information</strong></h1>
@@ -1528,21 +1623,38 @@ Automatically include the packages table from _packages.qmd?
 -->
 <hr>
 </section>
+<section id="glossary" class="level2">
+<h2 class="anchored" data-anchor-id="glossary">Glossary</h2>
+<hr>
+<table class="glossary_table caption-top table">
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th"><strong>Term</strong></th>
+<th data-quarto-table-cell-role="th"><strong>Definition</strong></th>
+</tr>
+<tr class="even">
+<td>Term 1</td>
+<td>Definition of Term 1</td>
+</tr>
+<tr class="odd">
+<td>Term2</td>
+<td>Definition of Term 2</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<hr>
+<div id="refs" role="list">
+
+</div>
+</section>
 <section id="session-info" class="level2">
 <h2 class="anchored" data-anchor-id="session-info"><strong>Session Info</strong></h2>
 <hr>
 <div class="cell">
-<<<<<<< HEAD
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in system2("quarto", "-V", stdout = TRUE, env = paste0("TMPDIR=", :
-running command '"quarto"
-TMPDIR=C:/Users/ssalerno/AppData/Local/Temp/Rtmp6xztS0/file2ed826e63516 -V' had
-status 1</code></pre>
-</div>
-=======
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
->>>>>>> dae83e32a54bbee84ed3f7b05e89e768607636de
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
@@ -1551,20 +1663,11 @@ status 1</code></pre>
  system   x86_64, linux-gnu
  ui       X11
  language (EN)
-<<<<<<< HEAD
- collate  English_United States.utf8
- ctype    English_United States.utf8
- tz       America/Los_Angeles
- date     2026-06-09
- pandoc   3.8.3 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
- quarto   NA @ C:\\PROGRA~1\\RStudio\\RESOUR~1\\app\\bin\\quarto\\bin\\quarto.exe
-=======
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Etc/UTC
- date     2026-06-09
+ date     2026-07-07
  pandoc   3.1.1 @ /usr/local/bin/ (via rmarkdown)
->>>>>>> dae83e32a54bbee84ed3f7b05e89e768607636de
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date (UTC) lib source
@@ -1622,7 +1725,7 @@ status 1</code></pre>
  vroom         1.6.5   2023-12-05 [1] RSPM (R 4.3.0)
  xfun          0.55    2025-12-16 [1] CRAN (R 4.3.2)
  xtable        1.8-4   2019-04-21 [1] RSPM (R 4.3.0)
- yaml          2.3.12  2025-12-10 [1] CRAN (R 4.3.2)
+ yaml        * 2.3.12  2025-12-10 [1] CRAN (R 4.3.2)
 
  [1] /usr/local/lib/R/site-library
  [2] /usr/local/lib/R/library
@@ -1638,7 +1741,7 @@ status 1</code></pre>
 Fill in any Acknowledgments using an example from a previous case study if needed: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Acknowledgments
 -->
 <p>We would also like to acknowledge the National Institute of General Medical Sciences for funding this work (1R25GM160622).</p>
-<p>Icons are from <a href="https://www.iconsets.com/">iconpacks</a>.</p>
+<p>Icons are from <a href="https://www.iconpacks.net/">iconpacks</a>.</p>
 
 
 </section>
@@ -2066,6 +2169,38 @@ Fill in any Acknowledgments using an example from a previous case study if neede
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

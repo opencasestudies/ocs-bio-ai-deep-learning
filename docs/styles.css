@@ -36,27 +36,29 @@
   background-color: RoyalBlue;
 }
 
-.main_question{
+/* set common elements for the outer boxes */
+.main_question,
+.think_question,
+.reference_box,
+.definition_box,
+.disclaimer_box,
+.license_box,
+.funding_box,
+.github_repo_box,
+.keyword_box,
+.prereq_box,
+.ai_box,
+.reproducibility_box,
+.next_steps_box {
   margin: 1em 0;
-  border: 3px solid #7ce364;
-  border-left: 10px solid #7ce364;
   border-radius: 10px;
   background-color: white;
 }
 
-.main_question_header {
-  margin-left: 0em;
-  padding-left: 60px;
-  padding-top: 5px;
-  padding-bottom: 0.1em;
-  color: black;
-  background-color: #7ce364;
-  font-size: 1em;
-  font-weight: bold;
-  background-size: 40px;
-  background-repeat: no-repeat;
-  background-position: 15px center;
-  background-image: url("assets/box_images/question.png");
+.main_question{
+  border: 3px solid #7ce364;
+  border-left: 10px solid #7ce364;
+
 }
 
 .inner_block {
@@ -67,119 +69,155 @@
   border-bottom-right-radius: 10px;
 }
 
-.think_question{
-  margin: 1em 0;
-  border: 3px solid #beeffd;
-  border-left: 10px solid #beeffd;
-  border-radius: 10px;
-  background-color: white;
-}
-
-.think_question_header{
+/* set common elements for the headers of the boxes */
+.main_question_header,
+.think_question_header,
+.reference_box_header,
+.definition_box_header,
+.disclaimer_box_header,
+.license_box_header,
+.funding_box_header,
+.github_repo_box_header,
+.keyword_box_header,
+.prereq_box_header,
+.ai_box_header,
+.reproducibility_box_header,
+.next_steps_box_header {
   margin-left: 0em;
   padding-left: 60px;
   padding-top: 5px;
   padding-bottom: 0.1em;
   color: black;
-  background-color: #beeffd;
   font-size: 1em;
   font-weight: bold;
   background-size: 40px;
   background-repeat: no-repeat;
   background-position: 15px center;
+}
+
+.main_question_header {
+  background-color: #7ce364;
+  background-image: url("assets/box_images/question.png");
+}
+
+.think_question{
+  border: 3px solid #7ce364;
+  border-left: 10px solid #7ce364;
+}
+
+.think_question_header{
+  background-color: #7ce364;
   background-image: url("assets/box_images/thinking_face.png");
 }
 
 .reference_box{
-  margin: 1em 0;
-  border: 3px solid #beeffd;
-  border-left: 10px solid #beeffd;
-  border-radius: 10px;
-  background-color: white;
+  border: 3px solid #bdeffc;
+  border-left: 10px solid #bdeffc;
 }
 
 .reference_box_header{
-  margin-left: 0em;
-  padding-left: 60px;
-  padding-top: 5px;
-  padding-bottom: 0.1em;
-  color: black;
-  background-color: #beeffd;
-  font-size: 1em;
-  font-weight: bold;
-  background-size: 40px;
-  background-repeat: no-repeat;
-  background-position: 15px center;
+  background-color: #bdeffc;
   background-image: url("assets/box_images/cite.png");
 }
 
 .definition_box{
-  margin: 1em 0;
   border: 3px solid #b5a8d6;
   border-left: 10px solid #b5a8d6;
-  border-radius: 10px;
-  background-color: white;
 }
 
 .definition_box_header{
-  margin-left: 0em;
-  padding-left: 60px;
-  padding-top: 5px;
-  padding-bottom: 0.1em;
-  color: black;
   background-color: #b5a8d6;
-  font-size: 1em;
-  font-weight: bold;
-  background-size: 40px;
-  background-repeat: no-repeat;
-  background-position: 15px center;
   background-image: url("assets/box_images/dictionary.png");
 }
 
 .disclaimer_box{
-  margin: 1em 0;
   border: 3px solid #f08f9c;
   border-left: 10px solid #f08f9c;
-  border-radius: 10px;
-  background-color: white;
 }
 
 .disclaimer_box_header{
-  margin-left: 0em;
-  padding-left: 60px;
-  padding-top: 5px;
-  padding-bottom: 0.1em;
-  color: black;
   background-color: #f08f9c;
-  font-size: 1em;
-  font-weight: bold;
-  background-size: 40px;
-  background-repeat: no-repeat;
-  background-position: 15px center;
   background-image: url("assets/box_images/warning.png");
 }
 
 .license_box{
-  margin: 1em 0;
-  border: 3px solid gray;
-  border-left: 10px solid gray;
-  border-radius: 10px;
-  background-color: white;
+  border: 3px solid #D6DCE5;
+  border-left: 10px solid #D6DCE5;
 }
 
 .license_box_header{
-  margin-left: 0em;
-  padding-left: 60px;
-  padding-top: 5px;
-  padding-bottom: 0.1em;
-  color: white;
-  background-color: gray;
-  font-size: 1em;
-  font-weight: bold;
-  background-size: 40px;
-  background-repeat: no-repeat;
-  background-position: 15px center;
+  background-color: #D6DCE5;
   background-image: url("assets/box_images/license.png");
+}
+
+.funding_box{
+  border: 3px solid #b5a8d6;
+  border-left: 10px solid #b5a8d6;
+}
+
+.funding_box_header{
+  background-color: #b5a8d6;
+  background-image: url("assets/box_images/funding.png");
+}
+
+.github_repo_box{
+  border: 3px solid #7ce364;
+  border-left: 10px solid #7ce364;
+}
+
+.github_repo_box_header{
+  background-color: #7ce364;
+  background-image: url("assets/box_images/github.png");
+}
+
+.keyword_box{
+  border: 3px solid #f08f9c;
+  border-left: 10px solid #f08f9c;
+}
+
+.keyword_box_header{
+  background-color: #f08f9c;
+  background-image: url("assets/box_images/magnifying-glass.png");
+}
+
+.prereq_box{
+  border: 3px solid #b5a8d6;
+  border-left: 10px solid #b5a8d6;
+}
+
+.prereq_box_header{
+  background-color: #b5a8d6;
+  background-image: url("assets/box_images/checklist.png");
+}
+
+.ai_box{
+  border: 3px solid #f08f9c;
+  border-left: 10px solid #f08f9c;
+}
+
+.ai_box_header{
+  background-color: #f08f9c;
+  background-image: url("assets/box_images/ai.png");
+}
+
+.reproducibility_box{
+  border: 3px solid #D6DCE5;
+  border-left: 10px solid #D6DCE5;
+}
+
+.reproducibility_box_header{
+  background-color: #D6DCE5;
+  background-image: url("assets/box_images/reproducibility.png");
+}
+
+.next_steps_box{
+  border: 3px solid #f08f9c;
+  border-left: 10px solid #f08f9c;
+}
+
+.next_steps_box_header{
+  background-color: #f08f9c;
+  background-image: url("assets/box_images/stairs.png");
 }
 
 .scrollable {
@@ -197,7 +235,62 @@
 }
 
 .blue-outline {
-   background-color: #beeffd;
+   background-color: #bdeffc;
    padding:10px;
    display: inline-block;
+}
+
+
+/* =========================
+   Frontmatter tab styling
+   (scoped ONLY to this tabset)
+   ========================= */
+
+.frontmatter-tabs .nav-tabs {
+  border-bottom: none;
+}
+
+.frontmatter-tabs .nav-tabs li a {
+  border-radius: 8px 8px 0 0;
+  margin-right: 4px;
+  padding: 8px 12px;
+  border: none;
+  color: black;
+}
+
+/* ===== Match tab colors to box headers ===== */
+
+/* 1. Disclaimer */
+.frontmatter-tabs .nav-tabs li:nth-child(1) a {
+  background-color: #f08f9c;
+}
+
+/* 2. License */
+.frontmatter-tabs .nav-tabs li:nth-child(2) a {
+  background-color: #D6DCE5;
+}
+
+/* 3. Funding */
+.frontmatter-tabs .nav-tabs li:nth-child(3) a {
+  background-color: #b5a8d6;
+}
+
+/* 4. Citation */
+.frontmatter-tabs .nav-tabs li:nth-child(4) a {
+  background-color: #bdeffc;
+}
+
+/* 5. GitHub repo */
+.frontmatter-tabs .nav-tabs li:nth-child(5) a {
+  background-color: #7ce364;
+}
+
+/* 6. keywords */
+.frontmatter-tabs .nav-tabs li:nth-child(6) a {
+  background-color: #f08f9c;
+}
+
+/* Active tab styling */
+.frontmatter-tabs .nav-tabs li a.active {
+  font-weight: bold;
 }
