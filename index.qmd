@@ -37,7 +37,6 @@ include-sections:
 
 :::
 
-{{< include _packages.qmd >}}
 
 {{< include _context.qmd >}}
 
@@ -46,6 +45,8 @@ include-sections:
 {{< include _limitations.qmd >}}
 
 {{< include _bioethics.qmd >}}
+
+{{< include _packages.qmd >}}
 
 ::: {.content-hidden unless-meta="include-sections.data-import"}
 
