@@ -36,6 +36,14 @@
   background-color: RoyalBlue;
 }
 
+.emphasis_block {
+    padding: 1em;
+    padding-top: .5em;
+    border: 1px grey;
+    background: #E8E8E8;
+    color: black;
+}
+
 /* set common elements for the outer boxes */
 .main_question,
 .think_question,

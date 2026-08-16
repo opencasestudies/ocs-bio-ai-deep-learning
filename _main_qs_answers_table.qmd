@@ -1,0 +1,19 @@
+<!--
+Don't adjust the shortcode or the table header in this file, only the markdown table contents
+-->
+
+## **Main Questions Revisited**
+
+::: {.callout-note collapse="true" title="Main Questions Revisited: What Did We Learn"}
+
+
+| Question                                    | Current answer                                     | Caveat                                |
+| :------------------------------------------ | :------------------------------------------------- |:------------------------------------- |
+| Reiteration or restatement of main question | Describe the answer based on case study activities | List any important caveats potentially connecting to earlier limitations |
+| Another main question                       | Description of its activity                        | Caveats for this Q & A                |
+| Another of the main questions               | Another description of this one's activity         | Q & A specific caveats                |
+
+
+:::
+
+***
