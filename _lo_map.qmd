@@ -1,0 +1,19 @@
+<!--
+Don't adjust the shortcode or the table header in this file, only the markdown table contents
+-->
+
+## **Objectives Map**
+
+::: {.callout-note collapse="true" title="Objectives Map: Where It Is Covered"}
+
+
+| Learning Goal          | Applications / Practice                            | Location                |
+| :----------------------------------- | :-------------------------------------------------------------|:-----------------------|
+| Term related to a learning objective | Description of action or activity that will reinforce that LO | [Data Import](https://www.opencasestudies.org/ocs-template-quarto/#data-import) |
+| Another term                         | Description of its activity                                   | [Data Wrangling](https://www.opencasestudies.org/ocs-template-quarto/#data-wrangling) |
+| Another learning objective concept   | Another description of this one's activity                    | [Data Visualization](https://www.opencasestudies.org/ocs-template-quarto/#data-visualization) |
+
+
+:::
+
+***
