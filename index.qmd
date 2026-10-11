@@ -1,30 +1,29 @@
 ---
 title: "**Biomedical Open Case Studies: Building a Neural Network-Based Epigenetic Clock in R Using `scorcher`**"
+bibliography: resources/references.bib
 include-sections:
-  stat-los: true
+  stat-los: false
+  lo-map: true
   data-import: true
   data-exploration: false
   data-wrangling: true
   data-viz: true
   data-analysis: true
+  main-q-table: true
 ---
 
 <!--
-  Update the various qmd documents below with each component of a Bio-OCS case 
-  study. Besides filling in the title in the header of this document, no other 
-  changes should be necessary within this file. Use the `include-sections` 
-  within the header to toggle section inclusion/exclusion as needed. For 
-  documentation on quarto syntax possibilities, use 
-  https://quarto.org/docs/authoring/markdown-basics.html.
-  Examples in the documentation range from including images and videos to 
-  including margin notes, annotating code, and linking within a document.
+  Update above to exclude optional or new sections by changing from true to false.
+  Update the various qmd documents below with each component of a Bio-OCS case study.
+  Besides filling in the title in the header of this document, no other changes should be necessary within this file.
+  Use the `include-sections` within the header to toggle section inclusion/exclusion as needed.
+  For documentation on quarto syntax possibilities, use https://quarto.org/docs/authoring/markdown-basics.html.
+  Examples in the documentation range from including images and videos to including margin notes, annotating code, and linking within a document.
 -->
 
-{{< include _main_image.qmd >}}                                                  <!-- NEED TO UPDATE THIS -->
+{{< include _main_image.qmd >}}
 
 {{< include _ocs_frontmatter.qmd >}}
-
-{{< include _cite.qmd >}}
 
 {{< include _motivation.qmd >}}
 
@@ -32,7 +31,12 @@ include-sections:
 
 {{< include _los.qmd >}}
 
-{{< include _packages.qmd >}}
+::: {.content-hidden unless-meta="include-sections.lo-map"}
+
+{{< include _lo_map.qmd >}}
+
+:::
+
 
 {{< include _context.qmd >}}
 
@@ -41,6 +45,8 @@ include-sections:
 {{< include _limitations.qmd >}}
 
 {{< include _bioethics.qmd >}}
+
+{{< include _packages.qmd >}}
 
 ::: {.content-hidden unless-meta="include-sections.data-import"}
 
@@ -74,15 +80,25 @@ include-sections:
 
 {{< include _summary.qmd >}}
 
+::: {.content-hidden unless-meta="include-sections.main-q-table"}
+
+{{< include _main_qs_answers_table.qmd >}}
+
+:::
+
 {{< include _suggested_hw.qmd >}}
 
 {{< include _additional_info.qmd >}}
+
+{{< include _glossary_table.qmd >}}
+
+{{< include _bibliography.qmd >}}
 
 ## **Session Info**
 ***
 
 ```{r}
-devtools::session_info() 
+devtools::session_info()
 ```
 
 {{< include _acknowledgements.qmd >}}
