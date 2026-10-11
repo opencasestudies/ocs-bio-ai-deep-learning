@@ -10,32 +10,41 @@
 
 ***
 
-This case study investigates whether DNA methylation profiles can be used to 
-accurately predict chronological age across independent studies and populations 
-using both classical and deep learning approaches.
+This case study investigates whether 
+{{< glossary "methylation profile" display="DNA methylation profiles" >}} can 
+be used to accurately predict {{< glossary "chronological age" >}} across 
+independent studies and populations using both classical and 
+{{< glossary "deep learning" >}} approaches. This case study investigates the 
+following research questions:
 
-:::{.main_question}
+::::{.main_question}
 
-::::{.main_question_header}
+:::{.main_question_header}
 
 Our main question(s)
 
-::::
+:::
 
-::::{.inner_block}
+:::{.inner_block}
 
-1. Can a neural network-based epigenetic clock accurately predict chronological 
-age from publicly-available DNA methylation data?
+1. Can a {{< glossary "neural network" display="neural network-based" >}} 
+   {{< glossary "epigenetic clock" >}} accurately predict 
+   {{< glossary "chronological age" >}} from publicly-available 
+   {{< glossary "DNA methylation" display="DNA methylation data" >}}?
 
-2. How does a deep learning-based epigenetic clock compare to a more 
-traditional, elastic net-based clock when trained on the same, harmonized data?
+2. How does a {{< glossary "deep learning" display="deep learning-based" >}} 
+   {{< glossary "epigenetic clock" >}} compare to a more traditional, 
+   {{< glossary "elastic net regression" display="elastic net-based" >}} clock 
+   when trained on the same, {{< glossary harmonization display="harmonized" >}} 
+   data?
 
-3. What practical challenges arise when applying deep learning model to 
-high-dimensional biological data, and how can these challenges be addressed in 
-a reproducible R workflow?
-
-::::
+3. What practical challenges arise when applying 
+   {{< glossary "deep learning" >}} models to 
+   {{< glossary "high-dimensional data" >}}, and how can these challenges be 
+   addressed in a reproducible R workflow?
 
 :::
+
+::::
 
 ***

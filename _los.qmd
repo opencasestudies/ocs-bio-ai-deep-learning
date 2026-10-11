@@ -1,7 +1,3 @@
-# **Learning Objectives**
-
-***
-
 <!--
   Replace the shell content and enumerate the learning objectives in the 
   referenced qmd files. For an example of this section, see this previous 
@@ -15,6 +11,10 @@
   Biological LOS were not provided in the original open case studies and should 
   be included in all Bio-OCS case studies.
 -->
+
+# **Learning Objectives**
+
+***
 
 In this case study, we will explore how deep learning methods can be applied 
 to high-dimensional biological data, using DNA methylation-based epigenetic 

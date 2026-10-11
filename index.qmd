@@ -1,5 +1,7 @@
 ---
-title: "**Biomedical Open Case Studies: Building a Neural Network-Based Epigenetic Clock in R Using `scorcher`**"
+title: |
+  | **Biomedical Open Case Studies:**
+  | **Building a Neural Network-Based Epigenetic Clock in R Using _scorcher_**
 bibliography: resources/references.bib
 include-sections:
   stat-los: false
@@ -9,6 +11,10 @@ include-sections:
   data-wrangling: true
   data-viz: true
   data-analysis: true
+glossary:
+  path: glossary.yml
+  popup: click
+  show: true
   main-q-table: true
 ---
 
